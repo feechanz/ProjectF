@@ -1,0 +1,100 @@
+
+.login-form{
+	position:relative;
+	margin-top: 2%;
+}
+.login-form div{
+	padding:5px 0;
+}
+.login-form span{
+	color: #575757;
+	display:block;
+	font-size: 0.8725em;
+	padding-bottom:5px;
+}
+
+.login-form input[type="text"],.contact-form textarea{
+	font-family: Arial, Geneva,Helvetica, sans-serif;
+	font-size: 0.8725em;
+	color: #575757;
+	padding: 8px;
+	display: inline-block;
+	width: 30%;
+	background: #FFFFFF;
+	border: 1px solid rgba(184, 184, 184, 0.86);
+	outline: none;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+        
+}
+
+.login-form input[type="password"],.contact-form textarea{
+	font-family: Arial, Geneva,Helvetica, sans-serif;
+	font-size: 0.8725em;
+	color: #575757;
+	padding: 8px;
+	display: inline-block;
+	width: 30%;
+	background: #FFFFFF;
+	border: 1px solid rgba(184, 184, 184, 0.86);
+	outline: none;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+}     
+.login-form textarea{
+	resize:none;
+	height:120px;		
+}
+.login-form input[type="text"]:focus,.contact-form textarea:focus{
+	-webkit-transition:0.9s;
+	-o-transition:0.9s;
+	-moz-transition:0.9s;
+	transition:0.9s;
+	box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
+	-webkit-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
+	-moz-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
+	-o-box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
+}
+.login-form input[type="password"]:focus,.contact-form textarea:focus{
+	-webkit-transition:0.9s;
+	-o-transition:0.9s;
+	-moz-transition:0.9s;
+	transition:0.9s;
+	box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
+	-webkit-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
+	-moz-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
+	-o-box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
+}
+.login-form input[type="submit"]{
+	font-family: 'Quattrocento Sans', sans-serif;
+	background: #6F6F6F;
+	color: #ffffff;
+	border: 1px solid #646464;
+	cursor: pointer;
+	padding: 10px 18px;
+	display: inline-block;
+	text-transform: uppercase;
+	font-size:1em;
+	font-weight: 400;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+.login-form input[type="submit"]:hover{
+	outline:none;
+	background: #e1184a;
+	color: #ffffff;
+}

@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['isLogin']))
+    {
+        $_SESSION['isLogin']=false;
+    }
+    include_once 'function/config.php';
+    include_once 'function/koneksi.php';
+    
+    include_once 'dao/User.php';
+    include_once 'dao/UserDao.php';
+    include_once 'dao/Registration.php';
+    include_once 'dao/RegistrationDao.php';
+    
+    $registrationdao = new RegistrationDao();
+    $userdao = new UserDao();
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -7,6 +25,7 @@
     <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/login_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/form_style.css" rel="stylesheet" type="text/css" media="all" />
     <!--slider-->
     <link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
@@ -45,18 +64,25 @@
                 include_once("view/about.php");
             break;
         
-            case ("staff") : 
-                include_once("view/staff.php");
+            case ("news") : 
+                include_once("view/news.php");
             break;
             
-            case ("contact") : 
-                include_once("view/contact.php");
+            case ("registration") : 
+                include_once("view/registration.php");
+            break;
+        
+            case ("registration_success") : 
+                include_once("view/registration_success.php");
             break;
             
             case ("login") : 
                 include_once("view/login.php");
             break;
         
+            case ("logout") : 
+                include_once("view/logout.php");
+            break;
             default : 
                 echo "<script> alert('menu tidak tersedia / belum memiliki akses');</script>";
             break;	

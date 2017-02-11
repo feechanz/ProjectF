@@ -15,17 +15,17 @@
         <div class="grids_1_of_3">
             <div class="grid_1_of_3 images_1_of_3">
                 <img src="images/icon1.jpg">
-                <h3>Lorem Ipsum is simply</h3>
+                <h3>Statistic</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur.</p>
             </div>
             <div class="grid_1_of_3 images_1_of_3">
                 <img src="images/icon2.jpg">
-                <h3>Lorem Ipsum is simply</h3>
+                <h3>People</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur.</p>
             </div>
             <div class="grid_1_of_3 images_1_of_3">
                 <img src="images/icon3.jpg">
-                <h3>Lorem Ipsum is simply</h3>
+                <h3>Time</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur.</p>
             </div>
             <div class="clear"></div>
@@ -48,7 +48,7 @@
     <div class="wrap">
         <div class="main">
             <div class="gallery">
-                <h3>Our latest projects</h3>
+                <h3>Gallery</h3>
                 <ul>
                     <li><a href="images/gallery1.jpg"><img src="images/gallery1.jpg" alt=""></a><a href="#"></a></li>
                     <li><a href="images/gallery2.jpg"><img src="images/gallery2.jpg" alt=""></a><a href="#"></a></li>

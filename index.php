@@ -86,6 +86,24 @@
                 include_once("view/detail_registration.php");
             break;
         
+            case ("registration_closed") : 
+                include_once("view/registration_closed.php");
+            break;
+        
+            case ("close_registration") :
+                $query = "UPDATE information
+                          SET pendaftaran = 0";
+                $hasil = mysqli_query($con, $query);
+                include_once("view/view_registration.php");
+            break;
+        
+            case ("open_registration") :
+                $query = "UPDATE information
+                          SET pendaftaran = 1";
+                $hasil = mysqli_query($con, $query);
+                include_once("view/view_registration.php");
+            break;
+        
             case ("login") : 
                 include_once("view/login.php");
             break;

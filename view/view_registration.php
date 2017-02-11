@@ -1,5 +1,15 @@
 <script type="text/javascript" src="js/function.js"></script>
 <?php
+    $query = "SELECT * FROM
+              information" ;
+    $hasil = mysqli_query($con, $query);
+    $dibuka = true;
+    while($row = mysqli_fetch_array($hasil)){
+        if( $row['pendaftaran']!=1 )
+        {
+            $dibuka = false;
+        }
+    }
     function getRegistrationStatus($status)
     {
         if($status == 1)
@@ -39,6 +49,35 @@
 <div class="main_btm">
     <div class="wrap">
         <div class="main">
+            <div class="col span_2_of_4">
+                <h2 class="style" align ="center">Status Pendaftaran : 
+                    
+                    <?php 
+                        if($dibuka)
+                        {
+                            echo "Dibuka"; 
+                        }
+                        else 
+                        {
+                            echo "Ditutup"; 
+                        }
+                    ?>
+                   
+                </h2>
+                <h1 align="center">
+                    <?php
+                        if($dibuka)
+                        {
+                            echo "<button class='btn btn-danger' onclick='closeRegistration()'>Tutup Pendaftaran</button>"; 
+                        }
+                        else 
+                        {
+                            echo "<button class='btn btn-primary' onclick='openRegistration()'>Buka Pendaftaran</button>"; 
+                        }
+                    ?>
+                    
+                </h1>
+            </div>
             <table align="center" class="table table-hover" style="border:2px solid brown">
                 <legend>
                     Tabel Pendaftaran

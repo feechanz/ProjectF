@@ -1,4 +1,14 @@
 <?php
+
+    $query = "SELECT * FROM
+              information" ;
+    $hasil = mysqli_query($con, $query);
+    while($row = mysqli_fetch_array($hasil)){
+        if( $row['pendaftaran']!=1 )
+        {
+            echo "<script>window.location='index.php?page=registration_closed'; </script>";
+        }
+    }
     if(isset($_POST['submit']))
     {
         $fullname = $_POST['fullname'];//1

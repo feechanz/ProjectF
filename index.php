@@ -31,6 +31,8 @@
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(window).load(function() {
             $('#slider').nivoSlider();
@@ -75,7 +77,15 @@
             case ("registration_success") : 
                 include_once("view/registration_success.php");
             break;
-            
+        
+            case ("view_registration") : 
+                include_once("view/view_registration.php");
+            break;
+        
+            case ("detail_registration") : 
+                include_once("view/detail_registration.php");
+            break;
+        
             case ("login") : 
                 include_once("view/login.php");
             break;

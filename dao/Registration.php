@@ -4,6 +4,7 @@ class Registration
     private $registrationid;
     private $fullname;
     private $gender;
+    private $startschool;
     private $birthplace;
     private $birthdate;
     private $religion;
@@ -33,7 +34,7 @@ class Registration
     private $brothercount;
     
     private $registrationdate;
-    
+    private $status;
     function getRegistrationid() {
         return $this->registrationid;
     }
@@ -44,6 +45,10 @@ class Registration
 
     function getGender() {
         return $this->gender;
+    }
+
+    function getStartschool() {
+        return $this->startschool;
     }
 
     function getBirthplace() {
@@ -146,6 +151,10 @@ class Registration
         return $this->registrationdate;
     }
 
+    function getStatus() {
+        return $this->status;
+    }
+
     function setRegistrationid($registrationid) {
         $this->registrationid = $registrationid;
     }
@@ -156,6 +165,10 @@ class Registration
 
     function setGender($gender) {
         $this->gender = $gender;
+    }
+
+    function setStartschool($startschool) {
+        $this->startschool = $startschool;
     }
 
     function setBirthplace($birthplace) {
@@ -257,5 +270,12 @@ class Registration
     function setRegistrationdate($registrationdate) {
         $this->registrationdate = $registrationdate;
     }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+
+    
 }
 ?>

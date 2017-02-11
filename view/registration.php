@@ -3,6 +3,7 @@
     {
         $fullname = $_POST['fullname'];//1
         $gender = $_POST['gender'];//2
+        $startschool = $_POST['startschool'];
         $birthplace = $_POST['birthplace'];//3
         $birthdate = $_POST['birthdate'];//4
         $religion = $_POST['religion'];//5
@@ -35,6 +36,7 @@
         
         $registration ->setFullname($fullname);
         $registration ->setGender($gender);
+        $registration ->setStartschool($startschool);
         $registration ->setBirthplace($birthplace);
         $registration ->setBirthdate($birthdate);
         $registration ->setReligion($religion);
@@ -79,8 +81,7 @@
     <div class="wrap">
         <div class="main">
             <div class="contact">
-                <div class="section group">				
-                   		
+                <div class="section group">		
                     <div class="col span_2_of_4">
                         <div class="registration-form">
                             <h2 class="style">IDENTITAS PESERTA DIDIK (WAJIB DI ISI)</h2>
@@ -100,6 +101,10 @@
                                     </span>
                                 </div>
                                 <div>
+                                    <span><label>Asal Sekolah</label></span>
+                                    <span><input name="startschool" type="text" class="textbox" required></span>
+                                </div>
+                                <div>
                                     <span><label>Tempat Lahir</label></span>
                                     <span><input name="birthplace" type="text" class="textbox" required></span>
                                 </div>
@@ -115,6 +120,7 @@
                                             <option value="protestan">Protestan</option>
                                             <option value="katolik">Katolik</option>
                                             <option value="hindu">Hindu</option>
+                                            <option value="budha">Budha</option>
                                             <option value="konghucu">Konghucu</option>
                                         </select>
                                         
@@ -135,9 +141,9 @@
                                 <div>
                                     <span><label>Jenis Tinggal</label></span>
                                     <select name="stay">
-                                        <option value="islam">Bersama Orang Tua</option>
-                                        <option value="protestan">Bersama Wali</option>
-                                        <option value="katolik">Tinggal Sendiri / Kost</option>
+                                        <option value="orangtua">Bersama Orang Tua</option>
+                                        <option value="wali">Bersama Wali</option>
+                                        <option value="sendiri">Tinggal Sendiri / Kost</option>
                                     </select>
                                 </div>
                                 <div>

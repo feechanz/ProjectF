@@ -24,7 +24,6 @@
 ?>
 <h1 align="center"><div class="col span_2_of_4">
     <div class="login-form">
-        <h2 class="style">Login</h2>
         <p style="color:red;">
            <?php echo $message;?>
         </p>

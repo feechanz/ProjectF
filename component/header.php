@@ -17,12 +17,12 @@
                 <?php
                     include_once 'menu.php';
                 ?>
-                <div class="search">
+<!--                <div class="search">
                     <form>
                         <input type="text" value="">
                         <input type="submit" value="">
                     </form>
-                </div>
+                </div>-->
                 <div class="clear"></div>
             </div>
         </div>

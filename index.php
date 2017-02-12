@@ -11,9 +11,15 @@
     include_once 'dao/UserDao.php';
     include_once 'dao/Registration.php';
     include_once 'dao/RegistrationDao.php';
+    include_once 'dao/Lesson.php';
+    include_once 'dao/LessonDao.php';
+    include_once 'dao/Teacher.php';
+    include_once 'dao/TeacherDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
+    $lessondao = new LessonDao();
+    $teacherdao = new TeacherDao();
 ?>
 
 <!DOCTYPE HTML>
@@ -26,6 +32,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/login_style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/form_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/adddata_style.css" rel="stylesheet" type="text/css" media="all" />
     <!--slider-->
     <link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
@@ -96,12 +103,48 @@
                 $hasil = mysqli_query($con, $query);
                 include_once("view/view_registration.php");
             break;
-        
+            
             case ("open_registration") :
                 $query = "UPDATE information
                           SET pendaftaran = 1";
                 $hasil = mysqli_query($con, $query);
                 include_once("view/view_registration.php");
+            break;
+            
+            case ("promotion") : 
+                include_once("view/promotion.php");
+            break;
+        
+            case ("master_data") : 
+                include_once("view/master_data.php");
+            break;
+        
+            case ("lesson") : 
+                include_once("view/lesson.php");
+            break;
+        
+            case ("edit_lesson") : 
+                include_once("view/edit_lesson.php");
+            break;
+        
+            case ("edit_teacher") : 
+                include_once("view/edit_teacher.php");
+            break;
+        
+            case ("teacher") : 
+                include_once("view/teacher.php");
+            break;
+        
+            case ("student") : 
+                include_once("view/student.php");
+            break;
+        
+            case ("jadwal_kelas") : 
+                include_once("view/jadwal_kelas.php");
+            break;
+        
+            case ("user") : 
+                include_once("view/user.php");
             break;
         
             case ("login") : 

@@ -11,6 +11,10 @@
                 {
                     include_once 'menu-role/menu-admin.php';
                 }
+                else if($_SESSION['role'] == "staff")
+                {
+                    include_once 'menu-role/menu-staff.php';
+                }
                 
             }
             else

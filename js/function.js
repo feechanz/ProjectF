@@ -18,6 +18,25 @@ function acceptRegistration(id)
 
 }
 
+function deleteRegistration(id)
+{
+    result = confirm("Apakah anda yakin menghapus pendaftaran ini?");
+    if(result)
+    {
+        window.location = "function/delete_registration.php?registrationid="+ id;
+    }
+
+}
+
+function passRegistration(id)
+{
+    result = confirm("Apakah anda yakin meluluskan pendaftaran ini?");
+    if(result)
+    {
+        window.location = "function/pass_registration.php?registrationid="+ id;
+    }
+
+}
 
 function closeRegistration()
 {
@@ -35,6 +54,17 @@ function openRegistration()
     if(result)
     {
         window.location = "index.php?page=open_registration";
+    }
+
+}
+
+
+function deactiveLesson(id)
+{
+    result = confirm("Apakah anda yakin menonaktifkan mata pelajaran ini?");
+    if(result)
+    {
+        window.location = "function/deactive_lesson.php?lessonid="+ id;
     }
 
 }

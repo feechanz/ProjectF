@@ -156,6 +156,38 @@ class RegistrationDao {
         }
         return $registrations;
     }
+    
+    public function get_pass_registration()
+    {
+        $registrations = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * from registration
+                      WHERE status = 3";
+            $stmt = $conn -> prepare($query);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $registration = $this ->get_registration_row($row);
+                    $registrations->append($registration);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $registrations;
+    }
+    
     public function insert_registration($registration)
     {
         $result = FALSE;

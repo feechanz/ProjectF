@@ -47,6 +47,7 @@
         text-align: center;
     }
 </style>
+<script type="text/javascript" src="js/function.js"></script>
 <div class="main_btm">
     <div class="wrap">
         <div class="main">
@@ -128,7 +129,7 @@
                         echo "<td>".$iterator->current()->getEmail()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_teacher&teacherid=".$iterator->current()->getTeacherid()."' class='btn btn-info'><span > Ubah </span></a>"
-                        . "<button class='btn btn-danger' onclick=''><span> Non-Aktifkan </span></button>"
+                        . "<button class='btn btn-danger' onclick='deactiveTeacher(\"".$iterator->current()->getTeacherid()."\")'><span> Non-Aktifkan </span></button>"
                        
                         . "</td>";
                         echo "</tr>";

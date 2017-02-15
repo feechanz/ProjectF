@@ -9,14 +9,23 @@
         $user = $userdao->get_one_user($email, md5($password));
         if( isset($user) )
         {
-            $_SESSION['isLogin'] = true;
-            $_SESSION['role'] = $user -> getRole();
-            echo "<script>window.location='index.php?page=home'; </script>";
+            
+            $_SESSION['status'] = $user -> getStatus();
+            if($_SESSION['status'] == 1)
+            {
+                $_SESSION['isLogin'] = true;
+                $_SESSION['role'] = $user -> getRole();
+                echo "<script>window.location='index.php?page=home'; </script>";
+            }
+            else
+            {
+                $message = "Pengguna sudah tidak aktif, mohon hubungi Tata Usaha!";
+            }
             
         }
         else
         {
-            $message = "Invalid email or password!";
+            $message = "Email atau password salah!";
         }
     }
     

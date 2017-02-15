@@ -113,7 +113,7 @@
                         echo "<td>".$status."</td>";
 
                         echo "<td> "
-                        . "<button class='btn btn-primary' onclick='acceptRegistration(\"".$iterator->current()->getRegistrationid()."\")'><span > Terima </span></a>"
+                        . "<button class='btn btn-primary' onclick='acceptRegistration(\"".$iterator->current()->getRegistrationid()."\")'><span > Terima </span></button>"
                         . "<button class='btn btn-danger' onclick='rejectRegistration(\"".$iterator->current()->getRegistrationid()."\")'><span> Tolak </span></button>"
                         . "<a href='index.php?page=detail_registration&registrationid=".$iterator->current()->getRegistrationid()."' class='btn btn-info'><span> Detail </span></a>"
                         . "</td>";

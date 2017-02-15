@@ -68,3 +68,31 @@ function deactiveLesson(id)
     }
 
 }
+
+function deactiveTeacher(id)
+{
+    result = confirm("Apakah anda yakin menonaktifkan guru ini?");
+    if(result)
+    {
+        window.location = "function/deactive_teacher.php?teacherid="+ id;
+    }
+
+}
+
+function deactiveUser(id)
+{
+    result = confirm("Apakah anda yakin menonaktifkan user ini?");
+    if(result)
+    {
+        window.location = "function/deactive_user.php?userid="+ id;
+    }
+}
+
+function activeUser(id)
+{
+    result = confirm("Apakah anda yakin mengaktifkan user ini?");
+    if(result)
+    {
+        window.location = "function/active_user.php?userid="+ id;
+    }
+}

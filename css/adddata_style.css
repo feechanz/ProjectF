@@ -32,6 +32,24 @@
         
 }
 
+.adddata-form input[type="password"],.contact-form textarea{
+	font-family: Arial, Geneva,Helvetica, sans-serif;
+	font-size: 0.8725em;
+	color: #575757;
+	padding: 8px;
+	
+	width: 20%;
+	background: #FFFFFF;
+	border: 1px solid rgba(184, 184, 184, 0.86);
+	outline: none;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+        
+}
+
 .adddata-form input[type="number"],.contact-form textarea{
 	font-family: Arial, Geneva,Helvetica, sans-serif;
 	font-size: 0.8725em;
@@ -64,6 +82,18 @@
 	-moz-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
 	-o-box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
 }
+
+.adddata-form input[type="password"]:focus,.contact-form textarea:focus{
+	-webkit-transition:0.9s;
+	-o-transition:0.9s;
+	-moz-transition:0.9s;
+	transition:0.9s;
+	box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
+	-webkit-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
+	-moz-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
+	-o-box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
+}
+
 .adddata-form input[type="submit"]{
 	font-family: 'Quattrocento Sans', sans-serif;
 	background: #6F6F6F;

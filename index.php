@@ -139,12 +139,24 @@
                 include_once("view/student.php");
             break;
         
+            case ("new_student") : 
+                include_once("view/new_student.php");
+            break;
+        
+            case ("kelas") : 
+                include_once("view/kelas.php");
+            break;
+        
             case ("jadwal_kelas") : 
                 include_once("view/jadwal_kelas.php");
             break;
         
             case ("user") : 
                 include_once("view/user.php");
+            break;
+        
+            case ("reset_password") : 
+                include_once("view/reset_password.php");
             break;
         
             case ("login") : 

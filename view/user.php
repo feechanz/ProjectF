@@ -31,10 +31,10 @@
         switch($role)
         {
             case "admin":
-                $role = "Admin Beasiswa";
+                $role = "Admin Pendaftaran";
                 break;
             case "beasiswa":
-                $role = "Orang Tua";
+                $role = "Admin Beasiswa";
                 break;
             
             case "staff":
@@ -75,9 +75,7 @@
                                 <select name="role">
                                     <option value="admin">Admin Pendaftaran</option>
                                     <option value="beasiswa">Admin Beasiswa</option>
-                                    <option value="parent">Orang Tua</option>
                                     <option value="staff">Tata Usaha</option>
-                                    <option value="teacher">Guru</option>
                                 </select>
 
                             </span>

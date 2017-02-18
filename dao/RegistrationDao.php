@@ -35,6 +35,7 @@ class RegistrationDao {
         $registration ->setDistanceschool($row['distanceschool']);//26
         $registration ->setTimeschool($row['timeschool']);//27
         $registration ->setBrothercount($row['brothercount']);//28
+        $registration ->setRegistrationscore($row['registrationscore']);
         $registration ->setRegistrationdate($row['registrationdate']);//29
         $registration ->setStatus($row['status']);//30
         return $registration;
@@ -281,6 +282,32 @@ class RegistrationDao {
         $conn = null;
         return $result;	
     }
+    
+    public function update_score($registrationscore,$registrationid)
+    {
+        $result = FALSE;
+        try {
+            $conn = Koneksi::get_connection();
+            $sql = "UPDATE registration  
+                    SET registrationscore = ?
+                    WHERE registrationid = ?";
+            $conn -> beginTransaction();
+            $stmt = $conn -> prepare($sql);
+
+            $stmt -> bindValue(1, $registrationscore);
+            $stmt -> bindValue(2, $registrationid);
+            
+            $result = $stmt -> execute();
+            $conn -> commit();
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+            $conn -> rollBack();
+            die();
+        }
+        $conn = null;
+        return $result;	
+    }
+    
     public function update_registration($registration) {
         $result = FALSE;
         try {

@@ -15,11 +15,20 @@
     include_once 'dao/LessonDao.php';
     include_once 'dao/Teacher.php';
     include_once 'dao/TeacherDao.php';
+    include_once 'dao/Periode.php';
+    include_once 'dao/PeriodeDao.php';
+    include_once 'dao/Kelas.php';
+    include_once 'dao/KelasDao.php';
+    include_once 'dao/Student.php';
+    include_once 'dao/StudentDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
     $lessondao = new LessonDao();
     $teacherdao = new TeacherDao();
+    $periodedao = new PeriodeDao();
+    $kelasdao = new KelasDao();
+    $studentdao = new StudentDao();
 ?>
 
 <!DOCTYPE HTML>
@@ -88,7 +97,11 @@
             case ("view_registration") : 
                 include_once("view/view_registration.php");
             break;
-        
+            
+             case ("registration_score") : 
+                include_once("view/registration_score.php");
+            break;
+            
             case ("detail_registration") : 
                 include_once("view/detail_registration.php");
             break;
@@ -109,6 +122,14 @@
                           SET pendaftaran = 1";
                 $hasil = mysqli_query($con, $query);
                 include_once("view/view_registration.php");
+            break;
+            
+            case ("proses_registration_finish"):
+                include_once("view/proses_registration_finish.php");
+            break;
+            
+            case ("announcement"):
+                include_once("view/announcement.php");
             break;
             
             case ("promotion") : 
@@ -139,12 +160,28 @@
                 include_once("view/student.php");
             break;
         
+            case ("class_student") : 
+                include_once("view/class_student.php");
+            break;
+        
             case ("new_student") : 
                 include_once("view/new_student.php");
+            break;
+            
+            case ("add_student_class") : 
+                include_once("view/add_student_class.php");
+            break;
+        
+            case ("proses_penerimaan") : 
+                include_once("view/proses_penerimaan.php");
             break;
         
             case ("kelas") : 
                 include_once("view/kelas.php");
+            break;
+        
+            case ("setting_kelas") : 
+                include_once("view/setting_kelas.php");
             break;
         
             case ("jadwal_kelas") : 

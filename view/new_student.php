@@ -26,7 +26,7 @@
         <div class="main">
              <table align="center" class="table table-hover" style="border:2px solid brown">
                 <legend>
-                    Tabel Siswa 
+                    Tabel Siswa Baru
                 </legend>
                 <thead>
                     <tr >
@@ -58,7 +58,7 @@
                             echo "<td>".$iterator->current()->getBirthdate()."</td>";
                             echo "<td>".$iterator->current()->getDisability()."</td>";
                             echo "<td> "
-                            . "<button class='btn btn-primary' onclick=''><span > Proses Penerimaan </span></button>"
+                            . "<a class='btn btn-primary' href='index.php?page=proses_penerimaan&registrationid=".$iterator->current()->getRegistrationid()."'><span > Proses Penerimaan </span></a>"
                             . "</td>";
                             echo "</tr>";
                             $number++;

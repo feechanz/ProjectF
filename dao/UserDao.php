@@ -77,6 +77,38 @@ class UserDao {
 
         return $user;
     }
+    
+    public function get_one_user_email($email)
+    {
+        try
+        {
+            $conn = Koneksi::get_connection();
+            $sql = "SELECT * FROM user 
+                    WHERE email = ?";
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindParam(1, $email);
+            $result = $stmt -> execute();
+            if ($stmt -> rowCount() > 0)
+            {
+                while ($row = $stmt -> fetch())
+                {
+                   $user = $this -> get_user_row($row);
+                }
+            }
+            else
+            {
+                $user = NULL;
+            }
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+            die();
+        }
+        $conn = null;
+
+        return $user;
+    }
     public function get_user()
     {
         $users = new ArrayObject();
@@ -106,6 +138,46 @@ class UserDao {
             echo $e -> getMessage();
         }
         return $users;
+    }
+    
+    public function insert_user($user)
+    {
+        $result = 0;
+        try
+        {
+            $conn = Koneksi::get_connection();
+            $sql = "INSERT INTO user(email,password,role)  
+                    VALUES(?,?,?)";
+            $conn -> beginTransaction();
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $user ->getEmail());
+            $stmt -> bindValue(2, $user ->getPassword());
+            $stmt -> bindValue(3, $user ->getRole());
+            
+            $stmt -> execute();
+            $result = $conn ->lastInsertId();
+            $conn -> commit();
+            
+            
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+            $stmt -> rollBacxk();
+            die();
+        }
+        try
+        {
+            if(!empty($conn) || $conn != null)
+            {
+                $conn = null;
+            }
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+        }
+        return $result;	
     }
     
     public function update_password($password, $userid)

@@ -34,7 +34,9 @@ class Registration
     private $brothercount;
     
     private $registrationdate;
+    private $registrationscore;
     private $status;
+    
     function getRegistrationid() {
         return $this->registrationid;
     }
@@ -149,6 +151,10 @@ class Registration
 
     function getRegistrationdate() {
         return $this->registrationdate;
+    }
+
+    function getRegistrationscore() {
+        return $this->registrationscore;
     }
 
     function getStatus() {
@@ -271,11 +277,12 @@ class Registration
         $this->registrationdate = $registrationdate;
     }
 
+    function setRegistrationscore($registrationscore) {
+        $this->registrationscore = $registrationscore;
+    }
+
     function setStatus($status) {
         $this->status = $status;
     }
-
-
-    
 }
 ?>

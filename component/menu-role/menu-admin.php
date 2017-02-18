@@ -62,7 +62,7 @@ switch($link)
         </li>";
     break; 
 
-    case "view_registration":
+    case "view_registration": case "registration_score": case "announcement":
         echo "
         <li >
             <a href='index.php?page=home'><span>Home</span></a>

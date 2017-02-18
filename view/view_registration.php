@@ -22,7 +22,7 @@
         }
         else
         {
-            $status = "Ditolak";
+            $status = "Pendaftaran Ditolak";
         }
         return $status;
     }
@@ -162,7 +162,7 @@
                         echo "<td>".$status."</td>";
 
                         echo "<td> "
-                        . "<button class='btn btn-success' onclick='passRegistration(\"".$iterator->current()->getRegistrationid()."\")'><span > Lulus </span></button>"
+                        . "<button class='btn btn-success' onclick='passRegistration(\"".$iterator->current()->getRegistrationid()."\")'><span > Seleksi </span></button>"
                         . "<button class='btn btn-danger' onclick='rejectRegistration(\"".$iterator->current()->getRegistrationid()."\")'><span> Tolak </span></button>"
                         . "<a href='index.php?page=detail_registration&registrationid=".$iterator->current()->getRegistrationid()."' class='btn btn-info'><span> Detail </span></a>"
                         . "</td>";
@@ -174,7 +174,9 @@
                 ?>
                 </tbody>
             </table>
-            
+            <h1 align="center">
+                <a class='btn btn-primary' href="index.php?page=announcement">Kirim Email Pengumuman</a>
+            </h1>
             
             <table align="center" class="table table-hover" style="border:2px solid brown">
                 <legend>

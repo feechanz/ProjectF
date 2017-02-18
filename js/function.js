@@ -30,10 +30,10 @@ function deleteRegistration(id)
 
 function passRegistration(id)
 {
-    result = confirm("Apakah anda yakin meluluskan pendaftaran ini?");
+    result = confirm("Apakah anda ingin seleksi pendaftaran ini?");
     if(result)
     {
-        window.location = "function/pass_registration.php?registrationid="+ id;
+        window.location = "index.php?page=registration_score&registrationid="+ id;
     }
 
 }
@@ -85,6 +85,15 @@ function deactiveUser(id)
     if(result)
     {
         window.location = "function/deactive_user.php?userid="+ id;
+    }
+}
+
+function deactivePeriode(id)
+{
+    result = confirm("Apakah anda yakin menonaktifkan periode ini?");
+    if(result)
+    {
+        window.location = "function/deactive_periode.php?periodeid="+ id;
     }
 }
 

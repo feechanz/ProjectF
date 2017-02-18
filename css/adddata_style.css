@@ -14,7 +14,7 @@
         align-content: center;
 }
 
-.adddata-form input[type="text"],.contact-form textarea{
+.adddata-form input[type="text"],.adddata-form textarea{
 	font-family: Arial, Geneva,Helvetica, sans-serif;
 	font-size: 0.8725em;
 	color: #575757;
@@ -32,7 +32,7 @@
         
 }
 
-.adddata-form input[type="password"],.contact-form textarea{
+.adddata-form input[type="password"],.adddata-form textarea{
 	font-family: Arial, Geneva,Helvetica, sans-serif;
 	font-size: 0.8725em;
 	color: #575757;
@@ -50,7 +50,7 @@
         
 }
 
-.adddata-form input[type="number"],.contact-form textarea{
+.adddata-form input[type="number"],.adddata-form textarea{
 	font-family: Arial, Geneva,Helvetica, sans-serif;
 	font-size: 0.8725em;
 	color: #575757;
@@ -72,7 +72,7 @@
 	resize:none;
 	height:120px;		
 }
-.adddata-form input[type="text"]:focus,.contact-form textarea:focus{
+.adddata-form input[type="text"]:focus,.adddata-form textarea:focus{
 	-webkit-transition:0.9s;
 	-o-transition:0.9s;
 	-moz-transition:0.9s;
@@ -83,7 +83,7 @@
 	-o-box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
 }
 
-.adddata-form input[type="password"]:focus,.contact-form textarea:focus{
+.adddata-form input[type="password"]:focus,.adddata-form textarea:focus{
 	-webkit-transition:0.9s;
 	-o-transition:0.9s;
 	-moz-transition:0.9s;

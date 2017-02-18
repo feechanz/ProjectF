@@ -1,47 +1,10 @@
-<style>
-    .btn
-    {
-        margin-left: 2px;
-    }
-    th,td
-    {
-        border:2px solid brown;
-        text-align: center;
-        
-    }
+<div class="col span_2_of_4">
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=0">Siswa Baru</a></h1>
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=1">Siswa Kelas 1</a></h1>
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=2">Siswa Kelas 2</a></h1>
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=3">Siswa Kelas 3</a></h1>
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=4">Siswa Kelas 4</a></h1>
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=5">Siswa Kelas 5</a></h1>
+    <h2 class="style" align ="center"><a href="index.php?page=class_student&classlevel=6">Siswa Kelas 6</a></h1>
     
-    th
-    {
-        background: gray;
-        color : white;
-        font: bold 12px/30px Georgia, serif;
-    }
-    form
-    {
-        text-align: center;
-    }
-</style>
-<div class="main_btm">
-    <div class="wrap">
-        <div class="main">
-             <table align="center" class="table table-hover" style="border:2px solid brown">
-                <legend>
-                    Tabel Siswa 
-                </legend>
-                <thead>
-                    <tr >
-                        <th style="width: 5%;">No</th>
-                        <th style="width: 15%;">Nama </th>
-                        <th style="width: 10%;">Jenis Kelamin</th>
-                        <th style="width: 10%;">Tanggal Lahir </th>
-                        <th style="width: 10%;">Disabilitas </th>
-                        <th style="width: 10%;">Status </th>
-                        <th style="width: 15%;">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-             </table>
-        </div>
-    </div> 
-</div> 
+</div>

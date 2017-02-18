@@ -4,10 +4,10 @@
         switch($role)
         {
             case "admin":
-                $role = "Admin Beasiswa";
+                $role = "Admin Pendaftaran";
                 break;
             case "beasiswa":
-                $role = "Orang Tua";
+                $role = "Admin Beasiswa";
                 break;
             
             case "staff":

@@ -13,7 +13,7 @@
 	padding-bottom:5px;
 }
 
-.registration-form input[type="text"],.contact-form textarea{
+.registration-form input[type="text"],.registration-form textarea{
 	font-family: Arial, Geneva,Helvetica, sans-serif;
 	font-size: 0.8725em;
 	color: #575757;
@@ -33,7 +33,7 @@
 	resize:none;
 	height:120px;		
 }
-.registration-form input[type="text"]:focus,.contact-form textarea:focus{
+.registration-form input[type="text"]:focus,.registration-form textarea:focus{
 	-webkit-transition:0.9s;
 	-o-transition:0.9s;
 	-moz-transition:0.9s;

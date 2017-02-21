@@ -13,6 +13,7 @@ class TeacherDao {
         $teacher ->setEmail($row['email']);
         $teacher ->setHiredate($row['hiredate']);
         $teacher ->setStatus($row['status']);
+        $teacher ->setUserid($row['userid']);
         return $teacher;
     }
     
@@ -80,8 +81,8 @@ class TeacherDao {
         try
         {
             $conn = Koneksi::get_connection();
-            $sql = "INSERT INTO teacher(nip,fullname,gender,phone,email)  
-                    VALUES(?,?,?,?,?)";
+            $sql = "INSERT INTO teacher(nip,fullname,gender,phone,email,userid)  
+                    VALUES(?,?,?,?,?,?)";
             $conn -> beginTransaction();
             $stmt = $conn -> prepare($sql);
             $stmt -> bindValue(1, $teacher ->getNip());
@@ -89,6 +90,7 @@ class TeacherDao {
             $stmt -> bindValue(3, $teacher ->getGender());
             $stmt -> bindValue(4, $teacher ->getPhone());
             $stmt -> bindValue(5, $teacher ->getEmail());
+            $stmt -> bindValue(6, $teacher ->getUserid());
             
             $result = $stmt -> execute();
             $conn -> commit();

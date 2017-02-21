@@ -59,6 +59,7 @@ function openRegistration()
 }
 
 
+
 function deactiveLesson(id)
 {
     result = confirm("Apakah anda yakin menonaktifkan mata pelajaran ini?");
@@ -103,5 +104,14 @@ function activeUser(id)
     if(result)
     {
         window.location = "function/active_user.php?userid="+ id;
+    }
+}
+
+function chooseClass(kelasid,studentid,classlevel)
+{
+    result = confirm("Apakah anda yakin memilih kelas ini untuk siswa?");
+    if(result)
+    {
+        window.location = "function/choose_kelas.php?kelasid="+ kelasid+"&studentid="+studentid+"&classlevel="+classlevel;
     }
 }

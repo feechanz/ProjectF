@@ -14,8 +14,17 @@
         $teacher->setPhone($phone);
         $teacher->setEmail($email);
         
+        $user = new User();
+        $user ->setEmail($email);
+        $user ->setPassword(md5($email));
+        $user ->setRole("teacher");
+        $userid = $userdao->insert_user($user);
+        $teacher->setUserid($userid);
+        
         if($teacherdao->insert_teacher($teacher))
         {
+            
+            
             echo "<script> alert('data berhasil ditambahkan!'); </script>";
         }
         else

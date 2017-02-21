@@ -1,13 +1,5 @@
 <?php
-    function getStudentStatus($status)
-    {
-        $result = "Drop Out";
-        if($status == 1)
-        {
-            $result = "Aktif";
-        }
-        return $result;
-    }
+
     if(isset($_GET['classlevel']))
     {
         $classlevel = $_GET['classlevel'];
@@ -49,7 +41,6 @@
         <div class="main">
              <table align="center" class="table table-hover" style="border:2px solid brown">
                 <legend>
-                    
                     <?php if($classlevel != 0)
                     {
                         echo "Tabel Siswa Kelas ".$classlevel;
@@ -93,7 +84,7 @@
                         echo "<td>".$status."</td>";
 
                         echo "<td> "
-                        . "<a class='btn btn-primary' href='".$iterator->current()->getStudentid()."' ><span > Atur Kelas </span></a>"
+                        . "<a class='btn btn-primary' href='index.php?page=add_student_class&studentid=".$iterator->current()->getStudentid()."&classlevel=".$classlevel."' ><span > Atur Kelas </span></a>"
                         . "<a href='index.php?page=detail_student&studentid=".$iterator->current()->getStudentid()."' class='btn btn-info'><span> Detail </span></a>"
                         . "</td>";
                         echo "</tr>";

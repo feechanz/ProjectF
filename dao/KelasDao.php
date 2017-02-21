@@ -62,6 +62,68 @@ class KelasDao {
         return $kelass;
     }
     
+    public function get_kelas_by_studentid($studentid)
+    {
+        $kelass = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * from kelas
+                      WHERE kelasid IN 
+                      (SELECT kelasid 
+                       FROM studentkelas
+                       WHERE studentid = ?)
+                      ORDER BY classlevel, namakelas";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $studentid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $kelas = $this ->get_kelas_row($row);
+                    $kelass->append($kelas);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $kelass;
+    }
+    
+    public function get_one_kelasid($kelasid)
+    {
+        $kelas = null;
+        try {
+            $conn = Koneksi::get_connection();
+            $sql = "SELECT * FROM kelas 
+                    WHERE kelasid = ?";
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $kelasid);
+            $result = $stmt -> execute();
+            if ($stmt -> rowCount() > 0) 
+            {
+                while ($row = $stmt -> fetch()) 
+                {
+                    $kelas = $this->get_kelas_row($row);
+                }
+            }
+            
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        $conn = null;
+        return $kelas;
+    }
+    
     public function insert_kelas($kelas)
     {
         $result = FALSE;
@@ -76,6 +138,42 @@ class KelasDao {
             $stmt -> bindValue(2, $kelas ->getClasslevel());
             $stmt -> bindValue(3, $kelas ->getTeacherid());
             $stmt -> bindValue(4, $kelas ->getPeriodeid());
+            $result = $stmt -> execute();
+            $conn -> commit();
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+            $stmt -> rollBacxk();
+            die();
+        }
+        try
+        {
+            if(!empty($conn) || $conn != null)
+            {
+                $conn = null;
+            }
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+        }
+        return $result;	
+    }
+    
+    
+    public function insert_kelas_student($kelasid,$studentid)
+    {
+        $result = FALSE;
+        try
+        {
+            $conn = Koneksi::get_connection();
+            $sql = "INSERT INTO studentkelas(studentid,kelasid)  
+                    VALUES(?,?)";
+            $conn -> beginTransaction();
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $studentid);
+            $stmt -> bindValue(2, $kelasid);
             $result = $stmt -> execute();
             $conn -> commit();
         }

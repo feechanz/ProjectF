@@ -9,6 +9,7 @@ class Teacher {
     private $email;
     private $hiredate;
     private $status;
+    private $userid;
     
     function getTeacherid() {
         return $this->teacherid;
@@ -42,6 +43,10 @@ class Teacher {
         return $this->status;
     }
 
+    function getUserid() {
+        return $this->userid;
+    }
+
     function setTeacherid($teacherid) {
         $this->teacherid = $teacherid;
     }
@@ -72,6 +77,10 @@ class Teacher {
 
     function setStatus($status) {
         $this->status = $status;
+    }
+
+    function setUserid($userid) {
+        $this->userid = $userid;
     }
 }
 ?>

@@ -17,7 +17,7 @@
             $kelas ->setTeacherid($teacherid);
             $kelas ->setPeriodeid($periodeid);
             
-            $kelasdao = new KelasDao();
+            
             if($kelasdao ->insert_kelas($kelas))
             {
                 echo "<script> alert('data kelas berhasil ditambahkan!'); </script>";
@@ -123,7 +123,7 @@
                             echo "<td>".$iterator->current()->getClasslevel().$iterator->current()->getNamakelas()."</td>";
                             echo "<td>".$iterator->current()->getTeacher()->getFullname()."</td>";
                             echo "<td> "
-                            . "<a class='btn btn-primary' href='index.php?page=detail_kelas&kelasid=".$iterator->current()->getKelasid()."'><span > Detail Kelas </span></a>"
+                            . "<a class='btn btn-primary' href='index.php?page=detailkelas&kelasid=".$iterator->current()->getKelasid()."'><span > Detail Kelas </span></a>"
                             . "</td>";
                             echo "</tr>";
                             $number++;

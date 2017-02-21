@@ -29,6 +29,25 @@
     $periodedao = new PeriodeDao();
     $kelasdao = new KelasDao();
     $studentdao = new StudentDao();
+    
+    
+    function getStudentStatus($status)
+    {
+        $result = "Drop Out";
+        if($status == 1)
+        {
+            $result = "Aktif";
+        }
+        else if($status == 2)
+        {
+            $result = "Lulus";
+        }
+        else if($status == 3)
+        {
+            $result = "Alumni";
+        }
+        return $result;
+    }
 ?>
 
 <!DOCTYPE HTML>
@@ -172,6 +191,21 @@
                 include_once("view/add_student_class.php");
             break;
         
+            case ("class_periode") :
+                include_once 'view/class_periode.php';
+            break;
+            
+            case ("detailkelas") :
+                include_once 'view/detailkelas.php';
+            break;
+        
+            case ("detail_student") :
+                include_once 'view/detail_student.php';
+            break;
+            
+            case ("change_student_status") :
+                include_once 'view/change_student_status.php';
+            break;
             case ("proses_penerimaan") : 
                 include_once("view/proses_penerimaan.php");
             break;
@@ -190,6 +224,14 @@
         
             case ("user") : 
                 include_once("view/user.php");
+            break;
+            
+            case ("pilih_kelas") :
+                include_once("view/pilih_kelas.php");
+            break;
+            
+            case ("pilih_mapel") :
+                include_once("view/pilih_mapel.php");
             break;
         
             case ("reset_password") : 

@@ -66,6 +66,42 @@ class StudentDao {
         return $student;
     }
     
+    public function get_student_kelasid($kelasid)
+    {
+        $students = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * 
+                      FROM student
+                      WHERE studentid IN
+                        (SELECT studentid
+                         FROM studentkelas
+                         WHERE kelasid = ?)";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $kelasid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $student = $this ->get_student_row($row);
+                    $students->append($student);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $students;
+    }
+    
     public function get_class_student($classlevel)
     {
         $students = new ArrayObject();
@@ -78,7 +114,7 @@ class StudentDao {
                       ON s.studentid = sk.studentid
                       LEFT JOIN `kelas` k 
                       ON k.kelasid = sk.kelasid
-                      GROUp BY s.studentid, s.registrationid, s.userid, s.status, s.createdate
+                      GROUP BY s.studentid, s.registrationid, s.userid, s.status, s.createdate
                       HAVING COALESCE(MAX(classlevel),0) = ?
                       ORDER BY COALESCE(MAX(classlevel),0)";
             $stmt = $conn -> prepare($query);
@@ -141,6 +177,32 @@ class StudentDao {
         {
             echo $e -> getMessage();
         }
+        return $result;	
+    }
+    
+    public function update_status($status, $studentid)
+    {
+        $result = FALSE;
+        try {
+            $conn = Koneksi::get_connection();
+            $sql = "UPDATE student  
+                    SET 
+                        status = ?
+                    WHERE studentid = ?";
+            $conn -> beginTransaction();
+            $stmt = $conn -> prepare($sql);
+
+            $stmt -> bindValue(1, $status );
+            $stmt -> bindValue(2, $studentid );
+            
+            $result = $stmt -> execute();
+            $conn -> commit();
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+            $conn -> rollBack();
+            die();
+        }
+        $conn = null;
         return $result;	
     }
 }

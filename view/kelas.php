@@ -46,7 +46,7 @@
         <div class="main">
             <div class="col span_2_of_4">
                 <div class="adddata-form">
-                    <h2 class="style" align="center">Menambah Mata Pelajaran</h2>
+                    <h2 class="style" align="center">Menambah Periode</h2>
                     <form method="post" action="" >
                         <div>
                             <span><label>Nama Periode</label></span>

@@ -1,7 +1,8 @@
 <?php
-    if(isset($_GET['studentid']))
+    if(isset($_GET['studentid']) && isset($_GET['classlevel']))
     {
         $studentid = $_GET['studentid'];
+        $classlevel = $_GET['classlevel'];
         $student = $studentdao->get_one_student($studentid);
         
         
@@ -23,7 +24,6 @@
         text-align: center;
         
     }
-    
     th
     {
         background: gray;
@@ -70,6 +70,71 @@
                         
                     </form>
                 </div>
+                
+                <table align="center" class="table table-hover" style="border:2px solid brown">
+                   <legend>
+                       Tabel Kelas Siswa 
+                   </legend>
+                   <thead>
+                       <tr >
+                           <th style="width: 5%;">No</th>
+                           <th style="width: 25%;">Nama Periode</th>
+                           <th style="width: 25%;">Nama Kelas</th>
+                           <th style="width: 15%;">Aksi</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                        <?php
+                           $number = 1;
+                           $kelasdao = new KelasDao();
+                           $iterator = $kelasdao->get_kelas_by_studentid($studentid)->getIterator();
+                           while ($iterator -> valid()) 
+                           {
+                               echo "<tr>";
+                               echo "<td>".$number."</td>";
+                               echo "<td>".$iterator->current()->getPeriode()->getPeriodename()."</td>";
+                               echo "<td>".$iterator->current()->getClasslevel().$iterator->current()->getNamakelas()."</td>";
+                               echo "<td> "
+                               . "<a class='btn btn-primary' href='index.php?page=detailkelas&kelasid=".$iterator->current()->getKelasid()."'><span > Detail Kelas </span></a>"
+                               . "</td>";
+                               echo "</tr>";
+                               $number++;
+                               $iterator->next();
+                           }
+                       ?>
+                   </tbody>
+                </table>
+                
+                <table align="center" class="table table-hover" style="border:2px solid brown">
+                   <legend>
+                       Tabel Periode 
+                   </legend>
+                   <thead>
+                       <tr >
+                           <th style="width: 5%;">No</th>
+                           <th style="width: 25%;">Nama Periode</th>
+                           <th style="width: 15%;">Aksi</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                        <?php
+                           $number = 1;
+                           $iterator = $periodedao->get_active_periode()->getIterator();
+                           while ($iterator -> valid()) 
+                           {
+                               echo "<tr>";
+                               echo "<td>".$number."</td>";
+                               echo "<td>".$iterator->current()->getPeriodename()."</td>";
+                               echo "<td> "
+                               . "<a class='btn btn-primary' href='index.php?page=class_periode&studentid=".$studentid."&periodeid=".$iterator->current()->getPeriodeid()."&classlevel=".$classlevel."'><span > Pilih Periode </span></a>"
+                               . "</td>";
+                               echo "</tr>";
+                               $number++;
+                               $iterator->next();
+                           }
+                       ?>
+                   </tbody>
+                </table>
             </div>
         </div>
     </div>

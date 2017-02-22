@@ -48,6 +48,46 @@ class LessonDao {
         return $lessons;
     }
     
+    public function get_lesson_by_class_and_kelasid($classlevel,$kelasid)
+    {
+        $lessons = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * from lesson
+                      WHERE classlevel = ?
+                      AND status = 1
+                      AND lessonid NOT IN
+                      (SELECT lessonid
+                       FROM mapelkelas
+                       WHERE kelasid = ?)
+                      ORDER BY lessonname";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $classlevel);
+            $stmt -> bindValue(2, $kelasid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $lesson = $this ->get_lesson_row($row);
+                    $lessons->append($lesson);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $lessons;
+    }
+    
+    
     public function get_one_lesson($lessonid)
     {
         $lesson = null;

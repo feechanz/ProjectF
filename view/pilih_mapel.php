@@ -6,7 +6,23 @@
         $classlevel = $kelas->getClasslevel();
         $periode = $kelas->getPeriode();
         
-        
+        if(isset($_POST['submit']))
+        {
+            $lessonid = $_POST['lessonid'];
+            $lessonname = $_POST['lessonname'];
+            $minimumscore = $_POST['minimumscore'];
+            $teacherid = $_POST['teacherid'];
+            
+            $mapelkelas = new Mapelkelas();
+            $mapelkelas ->setLessonid($lessonid);
+            $mapelkelas ->setLessonname($lessonname);
+            $mapelkelas ->setMinimumscore($minimumscore);
+            $mapelkelas ->setTeacherid($teacherid);
+            $mapelkelas ->setKelasid($kelasid);
+            
+            
+            $mapelkelasdao->insert_mapelkelas($mapelkelas);
+        }
     }
 ?>
 <style>
@@ -58,17 +74,18 @@
                 <?php
                     $number = 1;
 
-                    $iterator = $lessondao->get_lesson_by_class($classlevel)->getIterator();
+                    $iterator = $lessondao->get_lesson_by_class_and_kelasid($classlevel,$kelasid)->getIterator();
                     while ($iterator -> valid()) 
                     {
-                        echo "<form action='post'>";
+                        echo "<form action='' method='post'>";
+                        
                         echo "<tr>";
-                        echo "<td>".$number."</td>";
-                        echo "<td>".$iterator->current()->getLessonname()."</td>";
-                        echo "<td>".$iterator->current()->getMinimumscore()."</td>";
+                        echo "<td>".$number." <input type='hidden' name='lessonid' value = '".$iterator->current()->getLessonid()."'</td>";
+                        echo "<td>".$iterator->current()->getLessonname()." <input type='hidden' name='lessonname' value = '".$iterator->current()->getLessonname()."'/></td>";
+                        echo "<td>".$iterator->current()->getMinimumscore()." <input type='hidden' name='minimumscore' value = '".$iterator->current()->getMinimumscore()."'/></td>";
                         //teacher
                         echo "<td>";
-                        echo "<select name='teacher'>";
+                        echo "<select name='teacherid'>";
                         $it = $teacherdao->get_active_teacher()->getIterator();
                         while($it->valid())
                         {
@@ -81,7 +98,7 @@
                         echo "</td>";
                         //--teacher
                         echo "<td> "
-                        . "<button class='btn btn-warning'><span> Pilih </span></button>"
+                        . "<input type='submit' class='btn btn-warning' name='submit' value='Pilih Pelajaran'></input>"
                         . "</td>";
                         echo "</tr>";
                         echo "</form>";
@@ -92,6 +109,49 @@
                 ?>
                 </tbody>
             </table>
+            
+            <table align="center" class="table table-hover" style="border:2px solid brown">
+                <legend>
+                    Mata Pelajaran Kelas <?php echo $kelas->getClasslevel().$kelas->getNamakelas();?>
+                </legend>
+                <thead>
+                    <tr >
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 50%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">KKM</th>
+                        <th style="width: 20%;">Pengajar</th>
+                        <th style="width: 20%;">Aksi</th>
+                    </tr>
+                </thead>
+
+                <?php
+                    $number = 1;
+                    
+                    $iterator = $mapelkelasdao->get_mapelkelas_kelasid($kelasid)->getIterator();
+                    while ($iterator -> valid()) 
+                    {
+                        
+                        echo "<tr>";
+                        echo "<td>".$number."</td>";
+                        echo "<td>".$iterator->current()->getLesson()->getLessonname()." </td>";
+                        echo "<td>".$iterator->current()->getLesson()->getMinimumscore()."</td>";
+                        //teacher
+                        echo "<td>";
+                        echo $iterator->current()->getTeacher()->getFullname();
+                        echo "</td>";
+                        //--teacher
+                        echo "<td> "
+                        . "<a class='btn btn-primary' href='index.php?page=edit_mapelkelas&kelasid=".$kelasid."&mapelkelasid=".$iterator->current()->getMapelkelasid()."'><span>Ubah Pengajar</span> </a>"
+                        . "</td>";
+                        echo "</tr>";
+                        
+                        $number++;
+                        $iterator->next();
+                    }
+                ?>
+                </tbody>
+            </table>
+            <h1 align="center"><a class='btn btn-primary' ><span>Atur Jadwal Pelajaran</span> </a></h1>
         </div>
     </div>
 </div>

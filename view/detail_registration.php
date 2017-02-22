@@ -8,6 +8,7 @@
         {
             $fullname = $_POST['fullname'];//1
             $gender = $_POST['gender'];//2
+            $nisn = $_POST['nisn'];
             $startschool = $_POST['startschool'];
             $birthplace = $_POST['birthplace'];//3
             $birthdate = $_POST['birthdate'];//4
@@ -39,6 +40,7 @@
 
             $registration ->setFullname($fullname);
             $registration ->setGender($gender);
+            $registration ->setNisn($nisn);
             $registration ->setStartschool($startschool);
             $registration ->setBirthplace($birthplace);
             $registration ->setBirthdate($birthdate);
@@ -79,6 +81,7 @@
         }
         $fullname = $registration->getFullname();//2
         $gender = $registration->getGender();//3
+        $nisn = $registration ->getNisn();
         $startschool = $registration->getStartschool();//4
         $birthplace = $registration->getBirthplace();//5
         $birthdate = $registration->getBirthdate();//6
@@ -144,6 +147,10 @@
                                         </select>
                                         
                                     </span>
+                                </div>
+                                 <div>
+                                    <span><label>NISN</label></span>
+                                    <span><input name="nisn" type="text" class="textbox" value="<?php echo $nisn;?>"></span>
                                 </div>
                                 <div>
                                     <span><label>Asal Sekolah</label></span>

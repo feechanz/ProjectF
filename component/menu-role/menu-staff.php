@@ -67,7 +67,7 @@ switch($link)
         </li>";
     break;
         
-    case "jadwal_kelas": case "pilih_kelas" : case "pilih_mapel" :
+    case "jadwal_kelas": case "pilih_kelas" : case "pilih_mapel" : case "edit_mapelkelas" :
         echo "
         <li >
             <a href='index.php?page=home'><span>Home</span></a>

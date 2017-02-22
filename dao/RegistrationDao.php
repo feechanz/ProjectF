@@ -10,6 +10,7 @@ class RegistrationDao {
         $registration ->setRegistrationid($row['registrationid']);//1
         $registration ->setFullname($row['fullname']);//2
         $registration ->setGender($row['gender']);//3
+        $registration ->setNisn($row['nisn']);
         $registration ->setStartschool($row['startschool']);//4
         $registration ->setBirthplace($row['birthplace']);//5
         $registration ->setBirthdate($row['birthdate']);//6
@@ -195,11 +196,11 @@ class RegistrationDao {
         try
         {
             $conn = Koneksi::get_connection();
-            $sql = "INSERT INTO registration(fullname,gender,startschool,birthplace,birthdate,religion,disability,
+            $sql = "INSERT INTO registration(fullname,gender,nisn,startschool,birthplace,birthdate,religion,disability,
                         address,transport,stay,phone,email,fathername,fatherbirthyear,fatherjob,fatherschool,
                         fathermontly,mothername,motherbirthyear,motherjob,motherschool,mothermontly,height,
                         weight,distanceschool,timeschool,brothercount)  
-                    VALUES(?,?,?,?,?,?,?
+                    VALUES(?,?,?,?,?,?,?,?
                            ,?,?,?,?,?,?,?,?,?
                            ,?,?,?,?,?,?,?
                            ,?,?,?,?)";
@@ -207,34 +208,35 @@ class RegistrationDao {
             $stmt = $conn -> prepare($sql);
             $stmt -> bindValue(1, $registration ->getFullname());
             $stmt -> bindValue(2, $registration ->getGender());
-            $stmt -> bindValue(3, $registration ->getStartschool());
-            $stmt -> bindValue(4, $registration ->getBirthplace());
-            $stmt -> bindValue(5, $registration ->getBirthdate());
-            $stmt -> bindValue(6, $registration ->getReligion());
-            $stmt -> bindValue(7, $registration ->getDisability());
+            $stmt -> bindValue(3, $registration ->getNisn());
+            $stmt -> bindValue(4, $registration ->getStartschool());
+            $stmt -> bindValue(5, $registration ->getBirthplace());
+            $stmt -> bindValue(6, $registration ->getBirthdate());
+            $stmt -> bindValue(7, $registration ->getReligion());
+            $stmt -> bindValue(8, $registration ->getDisability());
 
-            $stmt -> bindValue(8, $registration ->getAddress());
-            $stmt -> bindValue(9, $registration ->getTransport());
-            $stmt -> bindValue(10, $registration ->getStay());
-            $stmt -> bindValue(11, $registration ->getPhone());
-            $stmt -> bindValue(12, $registration ->getEmail());
-            $stmt -> bindValue(13, $registration ->getFathername());
-            $stmt -> bindValue(14, $registration ->getFatherbirthyear());
-            $stmt -> bindValue(15, $registration ->getFatherjob());
-            $stmt -> bindValue(16, $registration ->getFatherschool());
+            $stmt -> bindValue(9, $registration ->getAddress());
+            $stmt -> bindValue(10, $registration ->getTransport());
+            $stmt -> bindValue(11, $registration ->getStay());
+            $stmt -> bindValue(12, $registration ->getPhone());
+            $stmt -> bindValue(13, $registration ->getEmail());
+            $stmt -> bindValue(14, $registration ->getFathername());
+            $stmt -> bindValue(15, $registration ->getFatherbirthyear());
+            $stmt -> bindValue(16, $registration ->getFatherjob());
+            $stmt -> bindValue(17, $registration ->getFatherschool());
             
-            $stmt -> bindValue(17, $registration ->getFathermontly());
-            $stmt -> bindValue(18, $registration ->getMothername());
-            $stmt -> bindValue(19, $registration ->getMotherbirthyear());
-            $stmt -> bindValue(20, $registration ->getMotherjob());
-            $stmt -> bindValue(21, $registration ->getMotherschool());
-            $stmt -> bindValue(22, $registration ->getMothermontly());
-            $stmt -> bindValue(23, $registration ->getHeight());
+            $stmt -> bindValue(18, $registration ->getFathermontly());
+            $stmt -> bindValue(19, $registration ->getMothername());
+            $stmt -> bindValue(20, $registration ->getMotherbirthyear());
+            $stmt -> bindValue(21, $registration ->getMotherjob());
+            $stmt -> bindValue(22, $registration ->getMotherschool());
+            $stmt -> bindValue(23, $registration ->getMothermontly());
+            $stmt -> bindValue(24, $registration ->getHeight());
             
-            $stmt -> bindValue(24, $registration ->getWeight());
-            $stmt -> bindValue(25, $registration ->getDistanceschool());
-            $stmt -> bindValue(26, $registration ->getTimeschool());
-            $stmt -> bindValue(27, $registration ->getBrothercount());
+            $stmt -> bindValue(25, $registration ->getWeight());
+            $stmt -> bindValue(26, $registration ->getDistanceschool());
+            $stmt -> bindValue(27, $registration ->getTimeschool());
+            $stmt -> bindValue(28, $registration ->getBrothercount());
             
             $result = $stmt -> execute();
             $conn -> commit();
@@ -315,6 +317,7 @@ class RegistrationDao {
             $sql = "UPDATE registration  
                     SET fullname = ?, 
                         gender = ?, 
+                        nisn = ?,
                         startschool = ?,
                         birthplace = ?,
                         birthdate = ?,
@@ -345,35 +348,36 @@ class RegistrationDao {
             $stmt = $conn -> prepare($sql);
             $stmt -> bindValue(1, $registration ->getFullname());
             $stmt -> bindValue(2, $registration ->getGender());
-            $stmt -> bindValue(3, $registration ->getStartschool());
-            $stmt -> bindValue(4, $registration ->getBirthplace());
-            $stmt -> bindValue(5, $registration ->getBirthdate());
-            $stmt -> bindValue(6, $registration ->getReligion());
-            $stmt -> bindValue(7, $registration ->getDisability());
+            $stmt -> bindValue(3, $registration ->getNisn());
+            $stmt -> bindValue(4, $registration ->getStartschool());
+            $stmt -> bindValue(5, $registration ->getBirthplace());
+            $stmt -> bindValue(6, $registration ->getBirthdate());
+            $stmt -> bindValue(7, $registration ->getReligion());
+            $stmt -> bindValue(8, $registration ->getDisability());
 
-            $stmt -> bindValue(8, $registration ->getAddress());
-            $stmt -> bindValue(9, $registration ->getTransport());
-            $stmt -> bindValue(10, $registration ->getStay());
-            $stmt -> bindValue(11, $registration ->getPhone());
-            $stmt -> bindValue(12, $registration ->getEmail());
-            $stmt -> bindValue(13, $registration ->getFathername());
-            $stmt -> bindValue(14, $registration ->getFatherbirthyear());
-            $stmt -> bindValue(15, $registration ->getFatherjob());
-            $stmt -> bindValue(16, $registration ->getFatherschool());
+            $stmt -> bindValue(9, $registration ->getAddress());
+            $stmt -> bindValue(10, $registration ->getTransport());
+            $stmt -> bindValue(11, $registration ->getStay());
+            $stmt -> bindValue(12, $registration ->getPhone());
+            $stmt -> bindValue(13, $registration ->getEmail());
+            $stmt -> bindValue(14, $registration ->getFathername());
+            $stmt -> bindValue(15, $registration ->getFatherbirthyear());
+            $stmt -> bindValue(16, $registration ->getFatherjob());
+            $stmt -> bindValue(17, $registration ->getFatherschool());
             
-            $stmt -> bindValue(17, $registration ->getFathermontly());
-            $stmt -> bindValue(18, $registration ->getMothername());
-            $stmt -> bindValue(19, $registration ->getMotherbirthyear());
-            $stmt -> bindValue(20, $registration ->getMotherjob());
-            $stmt -> bindValue(21, $registration ->getMotherschool());
-            $stmt -> bindValue(22, $registration ->getMothermontly());
-            $stmt -> bindValue(23, $registration ->getHeight());
+            $stmt -> bindValue(18, $registration ->getFathermontly());
+            $stmt -> bindValue(19, $registration ->getMothername());
+            $stmt -> bindValue(20, $registration ->getMotherbirthyear());
+            $stmt -> bindValue(21, $registration ->getMotherjob());
+            $stmt -> bindValue(22, $registration ->getMotherschool());
+            $stmt -> bindValue(23, $registration ->getMothermontly());
+            $stmt -> bindValue(24, $registration ->getHeight());
             
-            $stmt -> bindValue(24, $registration ->getWeight());
-            $stmt -> bindValue(25, $registration ->getDistanceschool());
-            $stmt -> bindValue(26, $registration ->getTimeschool());
-            $stmt -> bindValue(27, $registration ->getBrothercount());
-            $stmt -> bindValue(28, $registration ->getRegistrationid());
+            $stmt -> bindValue(25, $registration ->getWeight());
+            $stmt -> bindValue(26, $registration ->getDistanceschool());
+            $stmt -> bindValue(27, $registration ->getTimeschool());
+            $stmt -> bindValue(28, $registration ->getBrothercount());
+            $stmt -> bindValue(29, $registration ->getRegistrationid());
             
             $result = $stmt -> execute();
             $conn -> commit();

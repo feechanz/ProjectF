@@ -1,4 +1,33 @@
 <?php
+    if(isset($_POST['submit']))
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $repassword = $_POST['repassword'];
+        $role = $_POST['role'];
+        
+        if($password != $repassword)
+        {
+            echo "<script>alert('Password dan Konfirmasi Password harus sama!');</script>";
+        }
+        else
+        {
+            $user = new User();
+            $user ->setEmail($email);
+            $user ->setPassword(md5($password));
+            $user ->setRole($role);
+            
+            if($userdao ->insert_user($user))
+            {
+                echo "<script>alert('User berhasil dibuat!');</script>";
+            }
+            else
+            {
+                echo "<script>alert('User gagal dibuat!');</script>";
+            }
+        }
+        
+    }
 ?>
 
 <style>

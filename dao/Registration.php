@@ -4,6 +4,7 @@ class Registration
     private $registrationid;
     private $fullname;
     private $gender;
+    private $nisn;
     private $startschool;
     private $birthplace;
     private $birthdate;
@@ -47,6 +48,10 @@ class Registration
 
     function getGender() {
         return $this->gender;
+    }
+
+    function getNisn() {
+        return $this->nisn;
     }
 
     function getStartschool() {
@@ -173,6 +178,10 @@ class Registration
         $this->gender = $gender;
     }
 
+    function setNisn($nisn) {
+        $this->nisn = $nisn;
+    }
+
     function setStartschool($startschool) {
         $this->startschool = $startschool;
     }
@@ -284,5 +293,7 @@ class Registration
     function setStatus($status) {
         $this->status = $status;
     }
+
+
 }
 ?>

@@ -21,6 +21,8 @@
     include_once 'dao/KelasDao.php';
     include_once 'dao/Student.php';
     include_once 'dao/StudentDao.php';
+    include_once 'dao/Mapelkelas.php';
+    include_once 'dao/MapelkelasDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
@@ -29,7 +31,7 @@
     $periodedao = new PeriodeDao();
     $kelasdao = new KelasDao();
     $studentdao = new StudentDao();
-    
+    $mapelkelasdao = new MapelkelasDao();
     
     function getStudentStatus($status)
     {
@@ -220,6 +222,10 @@
         
             case ("jadwal_kelas") : 
                 include_once("view/jadwal_kelas.php");
+            break;
+        
+            case ("edit_mapelkelas") :
+                include_once("view/edit_mapelkelas.php");
             break;
         
             case ("user") : 

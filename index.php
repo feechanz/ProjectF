@@ -23,6 +23,8 @@
     include_once 'dao/StudentDao.php';
     include_once 'dao/Mapelkelas.php';
     include_once 'dao/MapelkelasDao.php';
+    include_once 'dao/Slotjadwal.php';
+    include_once 'dao/SlotjadwalDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
@@ -32,6 +34,7 @@
     $kelasdao = new KelasDao();
     $studentdao = new StudentDao();
     $mapelkelasdao = new MapelkelasDao();
+    $slotjadwaldao = new SlotjadwalDao();
     
     function getStudentStatus($status)
     {
@@ -75,6 +78,8 @@
             $('#slider').nivoSlider();
         });
     </script>
+    
+    
     <?php 
         //page state
         if(isset($_GET['page']))
@@ -227,7 +232,11 @@
             case ("edit_mapelkelas") :
                 include_once("view/edit_mapelkelas.php");
             break;
-        
+            
+            case ("atur_jadwal_kelas") :
+                include_once 'view/atur_jadwal_kelas.php';
+            break;
+            
             case ("user") : 
                 include_once("view/user.php");
             break;

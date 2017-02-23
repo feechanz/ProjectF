@@ -1,0 +1,195 @@
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Web Fonts -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,regular,600&subset=latin%2Clatin-ext" rel="stylesheet" type="text/css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Date Picker -->
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+
+<!-- Animate CSS -->
+<link rel="stylesheet" href="css/animate.css">
+
+<!-- Template CSS Files  -->
+<link href="css/style.css" rel="stylesheet">
+<link href="css/media.css" rel="stylesheet">
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85890776-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.appear.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<section id="timetable" class="default-bg">
+	<div class="container">
+	<!-- / College Timetable -->
+	<div class='tab'>
+	<table border='0' cellpadding='0' cellspacing='0'>
+		<tr class='days'>
+			<th></th>
+			<th class="text-center">Monday</th>
+			<th class="text-center">Tuesday</th>
+			<th class="text-center">Wednesday</th>
+			<th class="text-center">Thursday</th>
+			<th class="text-center">Friday</th>
+			<th class="text-center">Saturday</th>
+		</tr>
+		<tr>
+			<td class='time'>9.00</td>
+			<td class='timetable-col blue' rowspan="5">Cardiology <h6>Room: 11</h6> <h5>9.00 - 13.00</h5> <h6>Prof. John Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td class='timetable-col red' rowspan="3">Dental <h6>Room: 12</h6> <h5>9.00 - 11.00</h5> <h6>Prof. Johnathan Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td></td>
+			<td class='timetable-col green' rowspan="3">Dermatology <h6>Room: 14</h6> <h5>9.00 - 11.00</h5> <h6>Prof. Jon Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class='time'>10.00</td>
+			<td class='timetable-col red' rowspan="6">Dental <h6>Room: 12</h6> <h5>10.00 - 15.00</h5> <h6>Prof. Johnathan Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td class='timetable-col green' rowspan="4">Dermatology <h6>Room: 14</h6> <h5>10.00 - 13.00</h5> <h6>Prof. Jon Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class='time'>11.00</td>
+			<td class='timetable-col blue' rowspan="3">Cardiology <h6>Room: 11</h6> <h5>11.00 - 13.00</h5> <h6>Prof. John Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='time'>12.00</td>
+			<td></td>
+			<td class='timetable-col red' rowspan="3">Dental <h6>Room: 12</h6> <h5>12.00 - 14.00</h5> <h6>Prof. Johnathan Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='time'>13.00</td>
+			<td class='timetable-col green' rowspan="4">Dermatology <h6>Room: 14</h6> <h5>13.00 - 16.00</h5> <h6>Prof. Jon Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='time'>14.00</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class='time'>15.00</td>
+			<td></td>
+			<td></td>
+			<td class='timetable-col blue' rowspan="5">Cardiology <h6>Room: 11</h6> <h5>15.00 - 17.00</h5> <h6>Prof. John Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class='time'>16.00</td>
+			<td class='timetable-col blue' rowspan="2">Cardiology <h6>Room: 11</h6> <h5>16.00 - 17.00</h5> <h6>Prof. John Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td></td>
+			<td class='timetable-col blue' rowspan="2">Cardiology <h6>Room: 11</h6> <h5>16.00 - 17.00</h5> <h6>Prof. John Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+			<td class='timetable-col blue' rowspan="2">Cardiology <h6>Room: 11</h6> <h5>16.00 - 17.00</h5> <h6>Prof. John Doe</h6>
+			<div class="booking-tooltip">
+				<p>Book Appointment</p>
+				<button class="btn small" data-toggle="modal" data-target="#timeTableModal">+</button>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='time'>17.00</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	</div>
+	</div>
+</section>
+
+<!-- contactModal -->
+<div class="modal fade" id="timeTableModal" tabindex="-1" role="dialog" aria-labelledby="Book">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Book Appointment</h4>
+	  </div>
+	  <div class="modal-body">
+		<form action="#" id="contact">
+			<div class="row">
+				<div class="col-md-8">
+					<input type="text" class="form-control" placeholder="Name" required>
+					<input type="text" class="form-control" placeholder="Email" required>
+					<textarea placeholder="Message" class="form-control" required></textarea>
+					<input type="submit" class="btn blue medium" value="Submit">
+					<button type="button" class="btn medium" data-dismiss="modal" aria-label="Close">Cancel</button>
+				</div>
+				<div class="col-md-4">
+					<img src="img/doctor-small.png" alt="Doctor Profile" class="hidden-xs hidden-sm">
+				</div>
+			</div>
+		</form>
+	  </div>
+	</div>
+  </div>
+</div>

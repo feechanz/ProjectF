@@ -700,7 +700,7 @@ body {
 	transition:0.9s;
 	box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
 	-webkit-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
-	-moz-box-shadow0px 0px 1px rgba(154, 153, 162, 0.69);
+	-moz-box-shadow:0px 0px 1px rgba(154, 153, 162, 0.69);
 	-o-box-shadow: 0px 0px 1px rgba(154, 153, 162, 0.69);
 }
 .contact-form input[type="submit"]{

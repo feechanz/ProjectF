@@ -151,7 +151,7 @@
                 ?>
                 </tbody>
             </table>
-            <h1 align="center"><a class='btn btn-primary' ><span>Atur Jadwal Pelajaran</span> </a></h1>
+            <h1 align="center"><a class='btn btn-primary' href="index.php?page=atur_jadwal_kelas&kelasid=<?php echo $kelasid;?>"><span>Atur Jadwal Pelajaran</span> </a></h1>
         </div>
     </div>
 </div>

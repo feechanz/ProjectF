@@ -56,7 +56,36 @@
             $slotjadwalid = $_POST['slotjadwalid'];
             $hari = $_POST['hari'];
             
-            echo "<script>alert('Hapus Jadwal ".$slotjadwalid."|".$hari."');</script>";
+            $jadwalpelajarandao = new JadwalpelajaranDao();
+            if($jadwalpelajarandao->delete_jadwalpelajaran($slotjadwalid, $hari))
+            {
+                echo "<script>alert('Jadwal Pelajaran berhasil dihapus!');</script>";
+            }
+            else
+            {
+                echo "<script>alert('Jadwal Pelajaran gagal dihapus!');</script>";
+            }
+            //echo "<script>alert('Hapus Jadwal ".$slotjadwalid."|".$hari."');</script>";
+        }
+        if(isset($_POST['deleteslotsubmit']))
+        {
+            $slotjadwalid = $_POST['slotjadwalid'];
+            $jmlh = $jadwalpelajarandao->get_count_by_slotjadwalid($slotjadwalid);
+            if($jmlh > 0)
+            {
+                echo "<script>alert('Slot jadwal tidak dapat dihapus karena masih ada jadwal yang terdaftar dalam slot!');</script>";
+            }
+            else
+            {
+                if($slotjadwaldao->delete_slotjadwal($slotjadwalid))
+                {
+                    echo "<script>alert('Slot jadwal telah dihapus!');</script>";
+                }
+                else
+                {
+                    echo "<script>alert('Slot jadwal gagal dihapus!');</script>";
+                }
+            }
         }
     }
 ?>
@@ -155,7 +184,7 @@
                         
                         $time = $iterator->current()->getAwal()."-".$iterator->current()->getAkhir();
                         $time2 = $iterator->current()->getAwal()." - ".$iterator->current()->getAkhir();
-                        echo "<td>".$time2."</td>";
+                        echo "<td> <button class='btn btn-success' data-toggle='modal' onclick='deleteSlotJadwal(\"".$iterator->current()->getSlotjadwalid()."\",\"".$time2."\")'>".$time2." </button></td>";
                         
                        
                         $jadwalsenin = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Senin');
@@ -277,6 +306,13 @@ function showModal(slotjadwalid,hari,time)
     $("#timeTableModal").modal();
 }
 
+function deleteSlotJadwal(slotjadwalid,time)
+{
+   //you can do anything with data, or pass more data to this function. i set this data to modal header for example
+    $("#deleteSlotModal .slotjadwalid").val(slotjadwalid)
+    $("#deleteSlotModal .waktu").val(time)
+    $("#deleteSlotModal").modal();
+}
 
 function deleteJadwal(slotjadwalid,hari,time,lessonname,fullname)
 {
@@ -372,11 +408,45 @@ function deleteJadwal(slotjadwalid,hari,time,lessonname,fullname)
                         <input type="text" class="form-control fullname" placeholder="Pengajar"  required readonly="readonly">
                         <br>
                         <input type="hidden" class="slotjadwalid" name="slotjadwalid"/>
-                        <input type="hidden" class="hari" name="hari"/>
 <!--                        <input type="text" class="form-control" placeholder="Name" required>
                         <input type="text" class="form-control" placeholder="Email" required>
                         <textarea placeholder="Message" class="form-control" required></textarea>-->
                         <input type="submit" name="deletesubmit" class="btn blue medium" value="Hapus Jadwal">
+                        <button type="button" class="btn medium" data-dismiss="modal" aria-label="Close">Batal</button>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/delete.png" alt="Schedule" class="hidden-xs hidden-sm">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="deleteSlotModal" tabindex="-1" role="dialog" aria-labelledby="Book">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+            
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Hapus Slot Jadwal</h4>
+	  </div>
+        <div class="modal-body">
+            <form action='' method='post'>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Waktu Slot</h2>
+                        <input type="text" class="form-control waktu" placeholder="Waktu Slot" required readonly="readonly">
+                       
+                        <br>
+                        <input type="hidden" class="slotjadwalid" name="slotjadwalid"/>
+<!--                        <input type="text" class="form-control" placeholder="Name" required>
+                        <input type="text" class="form-control" placeholder="Email" required>
+                        <textarea placeholder="Message" class="form-control" required></textarea>-->
+                        <input type="submit" name="deleteslotsubmit" class="btn blue medium" value="Hapus Slot">
                         <button type="button" class="btn medium" data-dismiss="modal" aria-label="Close">Batal</button>
                     </div>
                     <div class="col-md-4">

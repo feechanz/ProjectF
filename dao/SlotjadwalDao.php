@@ -100,6 +100,40 @@ class SlotjadwalDao {
         return $result;	
     }
     
+    public function delete_slotjadwal($slotjadwalid)
+    {
+        $result = FALSE;
+        try
+        {
+            $conn = Koneksi::get_connection();
+            $sql = "DELETE FROM slotjadwal
+                    WHERE slotjadwalid = ?";
+            $conn -> beginTransaction();
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $slotjadwalid);
+            $result = $stmt -> execute();
+            $conn -> commit();
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+            $stmt -> rollBacxk();
+            die();
+        }
+        try
+        {
+            if(!empty($conn) || $conn != null)
+            {
+                $conn = null;
+            }
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+        }
+        return $result;	
+    }
+    
     public function get_one_slotjadwal($slotjadwalid)
     {
         $slotjadwal = null;

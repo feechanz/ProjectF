@@ -103,5 +103,65 @@ class JadwalpelajaranDao {
         return $result;	
     }
     
-   
+    public function get_count_by_slotjadwalid($slotjadwalid)
+    {
+        $result = 0;
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * from jadwalpelajaran
+                      WHERE slotjadwalid = ?";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $slotjadwalid);
+            $stmt -> execute();
+            $result = $stmt -> rowCount();
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $result;
+    }
+    
+    public function delete_jadwalpelajaran($slotjadwalid,$hari)
+    {
+        $result = FALSE;
+        try
+        {
+            $conn = Koneksi::get_connection();
+            $sql = "DELETE FROM jadwalpelajaran
+                    WHERE slotjadwalid = ? AND hari = ?";
+            $conn -> beginTransaction();
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $slotjadwalid);
+            $stmt -> bindValue(2, $hari);
+            $result = $stmt -> execute();
+            $conn -> commit();
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+            $stmt -> rollBacxk();
+            die();
+        }
+        try
+        {
+            if(!empty($conn) || $conn != null)
+            {
+                $conn = null;
+            }
+        }
+        catch (PDOException $e)
+        {
+            echo $e -> getMessage();
+        }
+        return $result;	
+    }
 }

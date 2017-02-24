@@ -99,4 +99,30 @@ class SlotjadwalDao {
         }
         return $result;	
     }
+    
+    public function get_one_slotjadwal($slotjadwalid)
+    {
+        $slotjadwal = null;
+        try {
+            $conn = Koneksi::get_connection();
+            $sql = "SELECT * FROM slotjadwal 
+                    WHERE slotjadwalid = ?";
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $slotjadwalid);
+            $result = $stmt -> execute();
+            if ($stmt -> rowCount() > 0) 
+            {
+                while ($row = $stmt -> fetch()) 
+                {
+                    $slotjadwal = $this->get_slotjadwal_row($row);
+                }
+            }
+            
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        $conn = null;
+        return $slotjadwal;
+    }
 }

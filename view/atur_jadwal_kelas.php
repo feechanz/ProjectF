@@ -32,6 +32,32 @@
                 }
             }
         }
+        if(isset($_POST['mapelsubmit']))
+        {
+            $mapelkelasid = $_POST['mapelkelasid'];
+            $slotjadwalid = $_POST['slotjadwalid'];
+            $hari = $_POST['hari'];
+            
+            $jadwalpelajaran = new Jadwalpelajaran();
+            $jadwalpelajaran ->setMapelkelasid($mapelkelasid);
+            $jadwalpelajaran ->setSlotjadwalid($slotjadwalid);
+            $jadwalpelajaran ->setHari($hari);
+            if($jadwalpelajarandao->insert_jadwalpelajaran($jadwalpelajaran))
+            {
+                echo "<script>alert('Jadwal Pelajaran berhasil ditambahkan!');</script>";
+            }
+            else
+            {
+                echo "<script>alert('Jadwal Pelajaran gagal ditambahkan!');</script>";
+            }
+        }
+        if(isset($_POST['deletesubmit']))
+        {
+            $slotjadwalid = $_POST['slotjadwalid'];
+            $hari = $_POST['hari'];
+            
+            echo "<script>alert('Hapus Jadwal ".$slotjadwalid."|".$hari."');</script>";
+        }
     }
 ?>
 <style>
@@ -99,7 +125,7 @@
                     <th class="text-center" style="width: 15%;">Sabtu</th>
                 </tr>
                 
-                <tr>
+<!--                <tr>
                     <td >9.00</td>
                     <td class='timetable-col blue'>
                         <button class="btn btn-primary" data-toggle="modal" onclick="showModal('senin')">+</button>
@@ -119,46 +145,117 @@
                     <td class='timetable-col blue'>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#timeTableModal">+</button>
                     </td>
-                </tr>
+                </tr>-->
                 <?php
                     
                     $iterator = $slotjadwaldao->get_slotjadwal_by_kelasid($kelasid)->getIterator();
                     while ($iterator -> valid()) 
                     {
+                        echo "<tr>";
+                        
                         $time = $iterator->current()->getAwal()."-".$iterator->current()->getAkhir();
                         $time2 = $iterator->current()->getAwal()." - ".$iterator->current()->getAkhir();
                         echo "<td>".$time2."</td>";
                         
+                       
+                        $jadwalsenin = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Senin');
+                        if(isset($jadwalsenin))
+                        {
+                            echo "
+                            <td class='timetable-col'>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."','".$jadwalsenin->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalsenin->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalsenin->getMapelkelas()->getLesson()->getLessonname()."</button>
+                            </td>";
+                        }
+                        else
+                        {
+                            echo "
+                            <td class='timetable-col blue'>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."')>+</button>
+                            </td>";
+                        }
                         
-                        echo "
-                        <td class='timetable-col blue'>
-                            <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."')>+</button>
-                        </td>";
+                     
+                        $jadwalselasa = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Selasa');
+                        if(isset($jadwalselasa))
+                        {
+                            echo "
+                            <td class='timetable-col'>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."','".$jadwalselasa->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalselasa->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalselasa->getMapelkelas()->getLesson()->getLessonname()."</button>
+                            </td>";
+                        }
+                        else
+                        {
+                            echo "
+                            <td class='timetable-col blue'>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."')>+</button>
+                            </td>";
+                        }
                         
-                        echo "
-                        <td class='timetable-col blue'>
-                            <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."')>+</button>
-                        </td>";
+                        $jadwalrabu = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Rabu');
+                        if(isset($jadwalrabu))
+                        {
+                            echo "
+                            <td class='timetable-col'>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."','".$jadwalrabu->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalrabu->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalrabu->getMapelkelas()->getLesson()->getLessonname()."</button>
+                            </td>";
+                        }
+                        else
+                        {
+                            echo "
+                            <td class='timetable-col blue'>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."')>+</button>
+                            </td>";
+                        }
                         
-                        echo "
-                        <td class='timetable-col blue'>
-                            <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."')>+</button>
-                        </td>";
+                        $jadwalkamis = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Kamis');
+                        if(isset($jadwalkamis))
+                        {
+                            echo "
+                            <td class='timetable-col'>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."','".$jadwalkamis->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalkamis->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalkamis->getMapelkelas()->getLesson()->getLessonname()."</button>
+                            </td>";
+                        }
+                        else
+                        {
+                            echo "
+                            <td class='timetable-col blue'>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."')>+</button>
+                            </td>";
+                        }
                         
-                        echo "
-                        <td class='timetable-col blue'>
-                            <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."')>+</button>
-                        </td>";
+                        $jadwaljumat = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Jumat');
+                        if(isset($jadwaljumat))
+                        {
+                            echo "
+                            <td class='timetable-col'>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."','".$jadwaljumat->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwaljumat->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwaljumat->getMapelkelas()->getLesson()->getLessonname()."</button>
+                            </td>";
+                        }
+                        else
+                        {
+                            echo "
+                            <td class='timetable-col blue'>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."')>+</button>
+                            </td>";
+                        }
                         
-                        echo "
-                        <td class='timetable-col blue'>
-                            <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."')>+</button>
-                        </td>";
+                        $jadwalsabtu = $jadwalpelajarandao->get_jadwalpelajaran_slotjadwalid_hari($iterator->current()->getSlotjadwalid(), 'Sabtu');
+                        if(isset($jadwalsabtu))
+                        {
+                            echo "
+                            <td class='timetable-col'>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."','".$jadwalsabtu->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalsabtu->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalsabtu->getMapelkelas()->getLesson()->getLessonname()."</button>
+                            </td>";
+                        }
+                        else
+                        {
+                            echo "
+                            <td class='timetable-col blue'>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."')>+</button>
+                            </td>";
+                        }
                         
-                        echo "
-                        <td class='timetable-col blue'>
-                            <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."')>+</button>
-                        </td>";
+                        echo "</tr>";
                         $iterator->next();
                     }
                 ?>
@@ -171,13 +268,25 @@
 
             
 <script>
-function showModal(jadwalid,hari,time)
+function showModal(slotjadwalid,hari,time)
 {
    //you can do anything with data, or pass more data to this function. i set this data to modal header for example
-    $("#timeTableModal .jadwalid").val(jadwalid)
+    $("#timeTableModal .slotjadwalid").val(slotjadwalid)
     $("#timeTableModal .hari").val(hari)
     $("#timeTableModal .modal-title").html("Pilih Jadwal untuk "+hari+" pukul "+time)
     $("#timeTableModal").modal();
+}
+
+
+function deleteJadwal(slotjadwalid,hari,time,lessonname,fullname)
+{
+   //you can do anything with data, or pass more data to this function. i set this data to modal header for example
+    $("#deleteModal .slotjadwalid").val(slotjadwalid)
+    $("#deleteModal .lessonname").val(lessonname)
+    $("#deleteModal .fullname").val(fullname)
+    $("#deleteModal .hari").val(hari)
+    $("#deleteModal .modal-title").html("Hapus Jadwal untuk "+hari+" pukul "+time)
+    $("#deleteModal").modal();
 }
 </script>
 
@@ -196,65 +305,86 @@ function showModal(jadwalid,hari,time)
 	  </div>
             
             
-	  <div class="modal-body">
-		<form action="" method="post">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <table align="center" class="table table-hover" style="border:2px solid brown">
-                                <legend>
-                                    Mata Pelajaran Kelas <?php echo $kelas->getClasslevel().$kelas->getNamakelas();?>
-                                </legend>
-                                <thead>
-                                    <tr >
-                                        <th style="width: 5%;">No</th>
-                                        <th style="width: 50%;">Mata Pelajaran </th>
-                                        <th style="width: 10%;">KKM</th>
-                                        <th style="width: 20%;">Pengajar</th>
-                                        <th style="width: 20%;">Aksi</th>
-                                    </tr>
-                                </thead>
+        <div class="modal-body">
+            <form action='' method='post'>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Pilih Mata Pelajaran</h2>
+                        <select name="mapelkelasid" class="form-control" >
 
-                                <?php
-                                    $number = 1;
+                            <?php
+                               
+                                $iterator = $mapelkelasdao->get_mapelkelas_kelasid($kelasid)->getIterator();
+                                while ($iterator -> valid()) 
+                                {
+                                   
 
-                                    $iterator = $mapelkelasdao->get_mapelkelas_kelasid($kelasid)->getIterator();
-                                    while ($iterator -> valid()) 
-                                    {
+                                    echo "<option value='".$iterator->current()->getMapelkelasid()."'>";
+                                    echo $iterator->current()->getLesson()->getLessonname()
+                                    ." - ".
+                                    $iterator->current()->getTeacher()->getFullname();
+                                    echo "</option>";
 
-                                        echo "<tr>";
-                                        echo "<td>".$number."</td>";
-                                        echo "<td>".$iterator->current()->getLesson()->getLessonname()." </td>";
-                                        echo "<td>".$iterator->current()->getLesson()->getMinimumscore()."</td>";
-                                        //teacher
-                                        echo "<td>";
-                                        echo $iterator->current()->getTeacher()->getFullname();
-                                        echo "</td>";
-                                        //--teacher
-                                        echo "<td> "
-                                        . "<a class='btn btn-warning' href=''><span>Pilih Jadwal</span> </a>"
-                                        . "</td>";
-                                        echo "</tr>";
-
-                                        $number++;
-                                        $iterator->next();
-                                    }
-                                ?>
-                                </tbody>
-                            </table>
-                            <input type="hidden" class="jadwalid"/>
-                            <input type="hidden" class="hari"/>
-<!--                            <input type="text" class="form-control" placeholder="Name" required>
-                            <input type="text" class="form-control" placeholder="Email" required>
-                            <textarea placeholder="Message" class="form-control" required></textarea>
-                            <input type="submit" class="btn blue medium" value="Submit">-->
-                            <button type="button" class="btn medium" data-dismiss="modal" aria-label="Close">Cancel</button>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="images/schedule.png" alt="Schedule" class="hidden-xs hidden-sm">
-                        </div>
+                                    
+                                    $iterator->next();
+                                }
+                            ?>
+                            </tbody>
+                        </select>
+                        <br>
+                        <input type="hidden" class="slotjadwalid" name="slotjadwalid"/>
+                        <input type="hidden" class="hari" name="hari"/>
+<!--                        <input type="text" class="form-control" placeholder="Name" required>
+                        <input type="text" class="form-control" placeholder="Email" required>
+                        <textarea placeholder="Message" class="form-control" required></textarea>-->
+                        <input type="submit" name="mapelsubmit" class="btn blue medium" value="Pilih Jadwal">
+                        <button type="button" class="btn medium" data-dismiss="modal" aria-label="Close">Batal</button>
                     </div>
-		</form>
+                    <div class="col-md-4">
+                        <img src="images/schedule.png" alt="Schedule" class="hidden-xs hidden-sm">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="Book">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+            
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Hapus Jadwal</h4>
 	  </div>
-	</div>
+            
+            
+        <div class="modal-body">
+            <form action='' method='post'>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Mata Pelajaran</h2>
+                        <input type="text" class="form-control lessonname" placeholder="Mata Pelajaran" required readonly="readonly">
+                        <input type="text" class="form-control fullname" placeholder="Pengajar"  required readonly="readonly">
+                        <br>
+                        <input type="hidden" class="slotjadwalid" name="slotjadwalid"/>
+                        <input type="hidden" class="hari" name="hari"/>
+<!--                        <input type="text" class="form-control" placeholder="Name" required>
+                        <input type="text" class="form-control" placeholder="Email" required>
+                        <textarea placeholder="Message" class="form-control" required></textarea>-->
+                        <input type="submit" name="deletesubmit" class="btn blue medium" value="Hapus Jadwal">
+                        <button type="button" class="btn medium" data-dismiss="modal" aria-label="Close">Batal</button>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/delete.png" alt="Schedule" class="hidden-xs hidden-sm">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
   </div>
 </div>

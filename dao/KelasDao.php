@@ -29,6 +29,46 @@ class KelasDao {
         return $kelas;
     }
     
+    public function get_my_kelas($teacherid, $periodeid)
+    {
+        $kelass = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT k.kelasid as kelasid, k.namakelas as namakelas, k.classlevel as classlevel, 
+                        k.teacherid as teacherid, k.periodeid as periodeid, COUNT(mk.studentkelasid) as jumlahsiswa
+                      FROM kelas k
+                      LEFT JOIN studentkelas mk
+                      ON k.kelasid = mk.kelasid
+                      WHERE k.teacherid = ? AND k.periodeid = ?
+                      GROUP BY k.kelasid, k.namakelas, k.classlevel, k.teacherid, k.periodeid
+                      ORDER BY k.classlevel, k.namakelas";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $teacherid);
+            $stmt -> bindValue(2, $periodeid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $kelas = $this ->get_kelas_row($row);
+                    $kelas ->setJumlahsiswa($row['jumlahsiswa']);
+                    $kelass->append($kelas);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $kelass;
+    }
+    
     public function get_kelas_by_periodeid($periodeid)
     {
         $kelass = new ArrayObject();

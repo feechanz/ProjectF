@@ -43,6 +43,32 @@ class TeacherDao {
         return $teacher;
     }
     
+    public function get_one_teacher_user($userid)
+    {
+        $teacher = null;
+        try {
+            $conn = Koneksi::get_connection();
+            $sql = "SELECT * FROM teacher 
+                    WHERE userid = ?";
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindValue(1, $userid);
+            $result = $stmt -> execute();
+            if ($stmt -> rowCount() > 0) 
+            {
+                while ($row = $stmt -> fetch()) 
+                {
+                    $teacher = $this->get_teacher_row($row);
+                }
+            }
+            
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        $conn = null;
+        return $teacher;
+    }
+    
     public function get_active_teacher()
     {
         $teachers = new ArrayObject();

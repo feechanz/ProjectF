@@ -15,6 +15,13 @@
             {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['role'] = $user -> getRole();
+                if($_SESSION['role']=="teacher")
+                {
+                    $userid = $user -> getUserid();
+                    $teacher = $teacherdao -> get_one_teacher_user($userid);
+                    $_SESSION['teacherid'] = $teacher -> getTeacherid();
+                    $_SESSION['fullname'] = $teacher -> getFullname();
+                }
                 echo "<script>window.location='index.php?page=home'; </script>";
             }
             else

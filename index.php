@@ -27,6 +27,8 @@
     include_once 'dao/SlotjadwalDao.php';
     include_once 'dao/Jadwalpelajaran.php';
     include_once 'dao/JadwalpelajaranDao.php';
+    include_once 'dao/Myjadwal.php';
+    include_once 'dao/MyjadwalDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
@@ -38,6 +40,7 @@
     $mapelkelasdao = new MapelkelasDao();
     $slotjadwaldao = new SlotjadwalDao();
     $jadwalpelajarandao = new JadwalpelajaranDao();
+    $myjadwaldao = new MyjadwalDao();
     
     function getStudentStatus($status)
     {
@@ -254,6 +257,30 @@
         
             case ("reset_password") : 
                 include_once("view/reset_password.php");
+            break;
+        
+            case ("my_schedule") :
+                include_once ("view/my_schedule.php");
+            break;
+        
+            case ("periode_schedule") :
+                include_once ("view/periode_schedule.php");
+            break;
+        
+            case ("periode_class") :
+                include_once ("view/periode_class.php");
+            break;
+        
+            case ("periode_lesson") :
+                include_once ("view/periode_lesson.php");
+            break;
+        
+            case ("my_class") :
+                include_once ("view/my_class.php");
+            break;
+        
+            case ("my_lesson") :
+                include_once ("view/my_lesson.php");
             break;
         
             case ("login") : 

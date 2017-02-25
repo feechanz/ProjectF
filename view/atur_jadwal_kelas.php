@@ -408,6 +408,7 @@ function deleteJadwal(slotjadwalid,hari,time,lessonname,fullname)
                         <input type="text" class="form-control fullname" placeholder="Pengajar"  required readonly="readonly">
                         <br>
                         <input type="hidden" class="slotjadwalid" name="slotjadwalid"/>
+                        <input type="hidden" class="hari" name="hari"/>
 <!--                        <input type="text" class="form-control" placeholder="Name" required>
                         <input type="text" class="form-control" placeholder="Email" required>
                         <textarea placeholder="Message" class="form-control" required></textarea>-->

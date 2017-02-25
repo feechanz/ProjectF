@@ -21,6 +21,17 @@ class Kelas {
     private $periodeid;
     private $periode;
     
+    
+    private $jumlahsiswa;
+    
+    function getJumlahsiswa() {
+        return $this->jumlahsiswa;
+    }
+
+    function setJumlahsiswa($jumlahsiswa) {
+        $this->jumlahsiswa = $jumlahsiswa;
+    }
+
     function getKelasid() {
         return $this->kelasid;
     }

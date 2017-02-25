@@ -49,6 +49,46 @@ class MapelkelasDao {
     }
     
     
+    public function get_my_mapelkelas($teacherid,$periodeid)
+    {
+        $mapelkelass = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT mk.mapelkelasid as mapelkelasid, mk.lessonid as lessonid,
+                    mk.lessonname as lessonname, mk.minimumscore as minimumscore,
+                    mk.teacherid as teacherid, mk.kelasid as kelasid, mk.createdate as createdate
+                    FROM mapelkelas mk
+                    JOIN kelas k 
+                    ON mk.kelasid = k.kelasid
+                    WHERE k.periodeid = ?
+                    AND mk.teacherid = ?
+                    ORDER BY k.classlevel, k.namakelas";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $periodeid);
+            $stmt -> bindValue(2, $teacherid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $mapelkelas = $this ->get_mapelkelas_row($row);
+                    $mapelkelass->append($mapelkelas);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $mapelkelass;
+    }
+    
     public function get_mapelkelas_kelasid($kelasid)
     {
         $mapelkelass = new ArrayObject();

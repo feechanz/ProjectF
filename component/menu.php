@@ -15,6 +15,10 @@
                 {
                     include_once 'menu-role/menu-staff.php';
                 }
+                else if($_SESSION['role'] == "teacher")
+                {
+                    include_once 'menu-role/menu-teacher.php';
+                }
                 
             }
             else

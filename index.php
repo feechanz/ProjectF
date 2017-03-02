@@ -278,9 +278,45 @@
             case ("my_class") :
                 include_once ("view/my_class.php");
             break;
+            
+            case ("view_class_schedule") :
+                include_once ("view/view_class_schedule.php");
+            break;
+        
+            case ("view_class_student") :
+                include_once ("view/view_class_student.php");
+            break;
+            
+            case ("view_class_score") :
+                include_once ("view/view_class_score.php");
+            break;
+            
+            case ("detail_student_score") :
+                include_once ("view/detail_student_score.php");
+            break;
         
             case ("my_lesson") :
                 include_once ("view/my_lesson.php");
+            break;
+        
+            case ("input_nilai") :
+                include_once ("view/input_nilai.php");
+            break;
+            
+            case ("children") :
+                include_once ("view/children.php");
+            break;
+            
+            case ("detail_siswa") :
+                include_once ("view/detail_siswa.php");
+            break;
+        
+            case ("detail_kelas_parent") :
+                include_once ("view/detail_kelas_parent.php");
+            break;
+        
+            case ("detail_nilai_parent") :
+                include_once ("view/detail_nilai_parent.php");
             break;
         
             case ("login") : 

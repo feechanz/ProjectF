@@ -47,7 +47,7 @@ switch($link)
         </li>";
     break;
     
-    case "my_class": case "periode_class" : 
+    case "my_class": case "periode_class" : case "view_class_schedule" :case "view_class_student" : case "view_class_score" : case "detail_student": case "detail_student_score": case "detailkelas": 
         echo "
         <li>
             <a href='index.php?page=home'><span>Home</span></a>
@@ -70,7 +70,7 @@ switch($link)
         </li>";
     break;
 
-    case "my_lesson": case "periode_lesson" :
+    case "my_lesson": case "periode_lesson" : case "input_nilai":
         echo "
         <li>
             <a href='index.php?page=home'><span>Home</span></a>

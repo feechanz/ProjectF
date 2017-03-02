@@ -53,14 +53,14 @@
                     
                     while ($iterator -> valid()) 
                     {
-                        $teacher = new Teacher();
                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getClasslevel().$iterator->current()->getNamakelas()."</td>";
                         echo "<td>".$iterator->current()->getJumlahsiswa()."</td>";
                         echo "<td> "
-                        . "<a href='' class='btn btn-success'><span > Lihat Siswa </span></a>"
-                        . "<button class='btn btn-info'><span> Lihat Nilai </span></button>"
+                        . "<a href='index.php?page=view_class_schedule&kelasid=".$iterator->current()->getKelasid()."' class='btn btn-warning'><span > Lihat Jadwal </span></a>"
+                        . "<a href='index.php?page=view_class_student&kelasid=".$iterator->current()->getKelasid()."' class='btn btn-success'><span > Lihat Siswa </span></a>"
+                        . "<a href='index.php?page=view_class_score&kelasid=".$iterator->current()->getKelasid()."' class='btn btn-info'><span> Lihat Nilai </span></a>"
                        
                         . "</td>";
                         echo "</tr>";

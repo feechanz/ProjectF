@@ -37,6 +37,11 @@ class StudentDao {
         $student ->setStatus($row['status']);
         $student ->setCreatedate($row['createdate']);
         
+        if(isset($row['classlevel']))
+        {
+            $student ->setNamakelas($row['classlevel'].$row['namakelas']);
+        }
+        
         return $student;
     }
     //put your code here
@@ -102,23 +107,95 @@ class StudentDao {
         return $students;
     }
     
+    public function get_childrens($userid)
+    {
+        $students = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * 
+                      FROM student
+                      WHERE userid = ?";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $userid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $student = $this ->get_student_row($row);
+                    $students->append($student);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $students;
+    }
+    
     public function get_class_student($classlevel)
     {
         $students = new ArrayObject();
         try 
         {
             $conn = Koneksi::get_connection();
-            $query = "SELECT s.studentid as studentid, s.registrationid as registrationid, s.userid as userid, s.status as status, s.createdate as createdate, COALESCE(MAX(classlevel),0) as kelas 
+            $query = "SELECT s.studentid as studentid, s.registrationid as registrationid, s.userid as userid, s.status as status, s.createdate as createdate, COALESCE(MAX(classlevel),0) as kelas , k.classlevel as classlevel, k.namakelas as namakelas
                       FROM `studentkelas` sk 
                       RIGHT JOIN `student` s
                       ON s.studentid = sk.studentid
                       LEFT JOIN `kelas` k 
                       ON k.kelasid = sk.kelasid
-                      GROUP BY s.studentid, s.registrationid, s.userid, s.status, s.createdate
+                      GROUP BY s.studentid, s.registrationid, s.userid, s.status, s.createdate, k.classlevel, k.namakelas
                       HAVING COALESCE(MAX(classlevel),0) = ?
-                      ORDER BY COALESCE(MAX(classlevel),0)";
+                      ORDER BY COALESCE(MAX(classlevel),0),k.namakelas";
             $stmt = $conn -> prepare($query);
             $stmt -> bindValue(1, $classlevel);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $student = $this ->get_student_row($row);
+                    $students->append($student);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $students;
+    }
+    
+    public function get_class_mapelkelasid($mapelkelasid)
+    {
+        $students = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * 
+                     FROM student
+                     WHERE studentid IN
+                     (SELECT studentid
+                      FROM studentkelas
+                      WHERE kelasid IN
+                        (SELECT kelasid
+                         FROM mapelkelas
+                         WHERE mapelkelasid = ?))";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $mapelkelasid);
             $stmt -> execute();
             if ($stmt -> rowCount() > 0) {
                 while ($row = $stmt -> fetch()) {

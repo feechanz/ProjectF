@@ -19,6 +19,7 @@ class Student {
     private $userid;
     private $user;
     private $status;
+    private $namakelas;
     private $createdate;
     
     function getStudentid() {
@@ -43,6 +44,10 @@ class Student {
 
     function getStatus() {
         return $this->status;
+    }
+
+    function getNamakelas() {
+        return $this->namakelas;
     }
 
     function getCreatedate() {
@@ -71,6 +76,10 @@ class Student {
 
     function setStatus($status) {
         $this->status = $status;
+    }
+
+    function setNamakelas($namakelas) {
+        $this->namakelas = $namakelas;
     }
 
     function setCreatedate($createdate) {

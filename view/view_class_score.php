@@ -1,5 +1,4 @@
 <?php
-
     if(isset($_GET['kelasid']))
     {
         $kelasid = $_GET['kelasid'];
@@ -39,7 +38,7 @@
             <div class="col span_2_of_4">
                 <div class="adddata-form">
                     
-                    <h2 class="style" align="center">Data Kelas </h2>
+                    <h2 class="style" align="center">Data Nilai Kelas </h2>
                     
                     <form method="post" action="" >
                         <div>
@@ -94,7 +93,7 @@
                                 echo "<td>".$status."</td>";
 
                                 echo "<td> "
-                                . "<a href='index.php?page=detail_student&studentid=".$iterator->current()->getStudentid()."' class='btn btn-info'><span> Detail </span></a>"
+                                . "<a href='index.php?page=detail_student_score&studentid=".$iterator->current()->getStudentid()."&kelasid=".$kelasid."' class='btn btn-primary'><span> Lihat Nilai Siswa </span></a>"
                                 . "</td>";
                                 echo "</tr>";
                                $number++;
@@ -103,8 +102,6 @@
                        ?>
                    </tbody>
                 </table>
-                
-                
             </div>
         </div>
     </div>

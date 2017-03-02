@@ -61,9 +61,7 @@
                         echo "<td>".$iterator->current()->getLesson()->getLessonname()."</td>";
                         echo "<td>".$iterator->current()->getLesson()->getMinimumscore()."</td>";
                         echo "<td> "
-                        . "<a href='index.php?page=edit_teacher&teacherid=".$iterator->current()->getTeacherid()."' class='btn btn-info'><span > Ubah </span></a>"
-                        . "<button class='btn btn-danger' onclick='deactiveTeacher(\"".$iterator->current()->getTeacherid()."\")'><span> Non-Aktifkan </span></button>"
-                       
+                        . "<a href='index.php?page=input_nilai&mapelkelasid=".$iterator->current()->getMapelkelasid()."' class='btn btn-info'><span > Nilai Kelas </span></a>"
                         . "</td>";
                         echo "</tr>";
 

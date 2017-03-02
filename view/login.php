@@ -15,6 +15,7 @@
             {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['role'] = $user -> getRole();
+                $_SESSION['userid'] = $user -> getUserid();
                 if($_SESSION['role']=="teacher")
                 {
                     $userid = $user -> getUserid();

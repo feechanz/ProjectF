@@ -96,9 +96,9 @@
                    <thead>
                        <tr >
                            <th style="width: 5%;">No</th>
-                           <th style="width: 25%;">Nama Periode</th>
-                           <th style="width: 25%;">Nama Kelas</th>
-                           <th style="width: 15%;">Aksi</th>
+                           <th style="width: 15%;">Nama Periode</th>
+                           <th style="width: 5%;">Nama Kelas</th>
+                           <th style="width: 25%;">Aksi</th>
                        </tr>
                    </thead>
                    <tbody>
@@ -113,7 +113,8 @@
                                echo "<td>".$iterator->current()->getPeriode()->getPeriodename()."</td>";
                                echo "<td>".$iterator->current()->getClasslevel().$iterator->current()->getNamakelas()."</td>";
                                echo "<td> "
-                               . "<a class='btn btn-primary' href='index.php?page=detailkelas&kelasid=".$iterator->current()->getKelasid()."'><span > Detail Kelas </span></a>"
+                               . "<a class='btn btn-primary' href='index.php?page=detail_kelas_parent&kelasid=".$iterator->current()->getKelasid()."&studentid=".$studentid."'><span > Lihat Jadwal Kelas </span></a>"
+                               . "<a class='btn btn-warning' href='index.php?page=detail_nilai_parent&kelasid=".$iterator->current()->getKelasid()."&studentid=".$studentid."'><span > Lihat Nilai Siswa </span></a>"
                                . "</td>";
                                echo "</tr>";
                                $number++;

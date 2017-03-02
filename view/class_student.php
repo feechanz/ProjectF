@@ -55,6 +55,7 @@
                     <tr >
                         <th style="width: 5%;">No</th>
                         <th style="width: 15%;">Nama </th>
+                        <th style="width: 5%;">Kelas </th>
                         <th style="width: 10%;">Jenis Kelamin</th>
                         <th style="width: 10%;">Tanggal Lahir </th>
                         <th style="width: 10%;">Disabilitas </th>
@@ -71,6 +72,7 @@
                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getRegistration()->getFullname()."</td>";
+                        echo "<td>".$iterator->current()->getNamakelas()."</td>";
                         $gender ="Perempuan";
                         if($iterator->current()->getRegistration()->getGender() == "male")
                         {

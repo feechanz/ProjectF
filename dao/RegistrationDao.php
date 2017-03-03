@@ -36,7 +36,9 @@ class RegistrationDao {
         $registration ->setDistanceschool($row['distanceschool']);//26
         $registration ->setTimeschool($row['timeschool']);//27
         $registration ->setBrothercount($row['brothercount']);//28
-        $registration ->setRegistrationscore($row['registrationscore']);
+        $registration ->setReadingscore($row['readingscore']);
+        $registration ->setWritingscore($row['writingscore']);
+        $registration ->setMathscore($row['mathscore']);
         $registration ->setRegistrationdate($row['registrationdate']);//29
         $registration ->setStatus($row['status']);//30
         return $registration;
@@ -285,19 +287,23 @@ class RegistrationDao {
         return $result;	
     }
     
-    public function update_score($registrationscore,$registrationid)
+    public function update_score($readingscore, $writingscore, $mathscore, $registrationid)
     {
         $result = FALSE;
         try {
             $conn = Koneksi::get_connection();
             $sql = "UPDATE registration  
-                    SET registrationscore = ?
+                    SET readingscore = ?,
+                        writingscore = ?,
+                        mathscore = ?
                     WHERE registrationid = ?";
             $conn -> beginTransaction();
             $stmt = $conn -> prepare($sql);
 
-            $stmt -> bindValue(1, $registrationscore);
-            $stmt -> bindValue(2, $registrationid);
+            $stmt -> bindValue(1, $readingscore);
+            $stmt -> bindValue(2, $writingscore);
+            $stmt -> bindValue(3, $mathscore);
+            $stmt -> bindValue(4, $registrationid);
             
             $result = $stmt -> execute();
             $conn -> commit();

@@ -23,7 +23,10 @@
                 {
                     include_once 'menu-role/menu-parent.php';
                 }
-                
+                else if($_SESSION['role'] == "beasiswa")
+                {
+                    include_once 'menu-role/menu-beasiswa.php';
+                }
             }
             else
             {

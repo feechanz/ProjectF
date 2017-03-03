@@ -13,7 +13,7 @@ switch($link)
             <a href='index.php?page=news'><span>News</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=children'><span>Children</span></a>
+            <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
@@ -33,7 +33,7 @@ switch($link)
             <a href='index.php?page=news'><span>News</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=children'><span>Children</span></a>
+            <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
@@ -52,14 +52,14 @@ switch($link)
             <a href='index.php?page=news'><span>News</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=children'><span>Children</span></a>
+            <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
     break; 
 
-    case "children": case "detail_siswa" : case "detail_kelas_parent" : case "detail_nilai_parent" :
+    case "beasiswa": 
         echo "
         <li >
             <a href='index.php?page=home'><span>Home</span></a>
@@ -71,7 +71,7 @@ switch($link)
             <a href='index.php?page=news'><span>News</span></a>
         </li>
         <li class='has-sub active'>
-            <a href='index.php?page=children'><span>Children</span></a>
+            <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
@@ -90,7 +90,7 @@ switch($link)
             <a href='index.php?page=news'><span>News</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=children'><span>Children</span></a>
+            <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
@@ -109,7 +109,7 @@ switch($link)
             <a href='index.php?page=news'><span>News</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=children'><span>Children</span></a>
+            <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>

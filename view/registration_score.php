@@ -7,17 +7,25 @@
         
         if(isset($_POST['submit']))
         {
-            $registrationscore = $_POST['registrationscore'];
+            $readingscore = $_POST['readingscore'];
+            $writingscore = $_POST['writingscore'];
+            $mathscore = $_POST['mathscore'];
             $pass = $_POST['pass'];
             
-            $registrationdao ->update_score($registrationscore, $registrationid);
-            if($pass == 1)
+            if($registrationdao ->update_score($readingscore, $writingscore, $mathscore, $registrationid))
             {
-               echo "<script>window.location='function/pass_registration.php?registrationid=".$registrationid."'; </script>";
+                if($pass == 1)
+                {
+                    echo "<script>window.location='function/pass_registration.php?registrationid=".$registrationid."'; </script>";
+                }
+                else
+                {
+                    echo "<script>window.location='function/fail_registration.php?registrationid=".$registrationid."'; </script>";
+                }
             }
             else
             {
-                echo "<script>window.location='function/fail_registration.php?registrationid=".$registrationid."'; </script>";
+                echo "<script>alert('Update Nilai gagal dilakukan!');</script>";
             }
         }
     }
@@ -36,8 +44,16 @@
                     <h2 class="style" align="center">Masukkan Nilai Seleksi <?php echo $registration->getFullname();?></h2>
                     <form method="post" action="" >
                         <div>
-                            <span><label>Nilai Seleksi</label></span>
-                            <span><input name="registrationscore" value="<?php echo $registration->getRegistrationscore(); ?>" type="number" class="textbox" required style=" text-align: center;" width="10%" min = 0 max = 100></span>
+                            <span><label>Nilai Membaca</label></span>
+                            <span><input name="readingscore" value="<?php echo $registration->getReadingscore(); ?>" type="number" class="textbox" required style=" text-align: center;" width="10%" min = 0 max = 100></span>
+                        </div>
+                        <div>
+                            <span><label>Nilai Menulis</label></span>
+                            <span><input name="writingscore" value="<?php echo $registration->getWritingscore(); ?>" type="number" class="textbox" required style=" text-align: center;" width="10%" min = 0 max = 100></span>
+                        </div>
+                        <div>
+                            <span><label>Nilai Menghitung</label></span>
+                            <span><input name="mathscore" value="<?php echo $registration->getMathscore(); ?>" type="number" class="textbox" required style=" text-align: center;" width="10%" min = 0 max = 100></span>
                         </div>
                         <div>
                             <div>

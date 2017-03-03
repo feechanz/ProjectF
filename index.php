@@ -318,6 +318,10 @@
             case ("detail_nilai_parent") :
                 include_once ("view/detail_nilai_parent.php");
             break;
+            
+            case ("beasiswa") :
+                include_once ("view/beasiswa.php");
+            break;
         
             case ("login") : 
                 include_once("view/login.php");

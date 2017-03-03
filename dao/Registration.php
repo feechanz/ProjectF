@@ -35,7 +35,9 @@ class Registration
     private $brothercount;
     
     private $registrationdate;
-    private $registrationscore;
+    private $readingscore;
+    private $writingscore;
+    private $mathscore;
     private $status;
     
     function getRegistrationid() {
@@ -158,8 +160,16 @@ class Registration
         return $this->registrationdate;
     }
 
-    function getRegistrationscore() {
-        return $this->registrationscore;
+    function getReadingscore() {
+        return $this->readingscore;
+    }
+
+    function getWritingscore() {
+        return $this->writingscore;
+    }
+
+    function getMathscore() {
+        return $this->mathscore;
     }
 
     function getStatus() {
@@ -286,14 +296,20 @@ class Registration
         $this->registrationdate = $registrationdate;
     }
 
-    function setRegistrationscore($registrationscore) {
-        $this->registrationscore = $registrationscore;
+    function setReadingscore($readingscore) {
+        $this->readingscore = $readingscore;
+    }
+
+    function setWritingscore($writingscore) {
+        $this->writingscore = $writingscore;
+    }
+
+    function setMathscore($mathscore) {
+        $this->mathscore = $mathscore;
     }
 
     function setStatus($status) {
         $this->status = $status;
     }
-
-
 }
 ?>

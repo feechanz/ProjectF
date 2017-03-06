@@ -65,6 +65,27 @@
         }
         return $result;
     }
+    
+    
+    
+    //initialize company information
+    $query = "SELECT * FROM
+              information" ;
+    $hasil = mysqli_query($con, $query);
+    while($row = mysqli_fetch_array($hasil))
+    {
+        $visi = $row['visi'];
+        $misi = $row['misi'];
+        $alamat = $row['alamat'];
+        $email = $row['email'];
+        $kodepos = $row['kodepos'];
+        $kota = $row['kota'];
+        $provinsi = $row['provinsi'];
+        $negara = $row['negara'];
+        $phone = $row['phone'];
+        $fax = $row['fax'];
+        $email =$row['email'];
+    }
 ?>
 
 <!DOCTYPE HTML>

@@ -21,14 +21,14 @@
                 </nav>
             </div>
             <div class="box1">
-                <h4 class="btm">Get in touch</h4>
+                <h4 class="btm">Temukan Kami</h4>
                 <div class="box1_address">
-                    <p>500 Lorem Ipsum Dolor Sit,</p>
-                    <p>22-56-2-9 Sit Amet, Lorem,</p>
-                    <p>USA</p>
-                    <p>Phone:(00) 222 666 444</p>
-                    <p>Fax: (000) 000 00 00 0</p>
-                    <p>Email: <span>info(at)mycompany.com</span></p>
+                    <p><?php echo $alamat;?>,</p>
+                    <p><?php echo $kodepos?> <?php echo $kota;?>, <?php echo $provinsi?>,</p>
+                    <p><?php echo $negara?></p>
+                    <p>Phone:<?php echo $phone;?></p>
+                    <p>Fax: <?php echo $fax;?></p>
+                    <p>Email: <span><?php echo $email;?></span></p>
                     <p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
                 </div>
             </div>

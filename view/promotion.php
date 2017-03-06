@@ -109,7 +109,7 @@
                         </div>
                         <div>
                             <span>
-                                <span><textarea name="visi"> </textarea></span>
+                                <span><textarea name="visi"><?php echo $visi;?></textarea></span>
                             </span>
                         </div>
                         <div >
@@ -117,11 +117,82 @@
                         </div>
                         <div>
                             <span>
-                                <span><textarea name="misi"> </textarea></span>
+                                <span><textarea name="misi"><?php echo $misi;?></textarea></span>
                             </span>
                         </div>
                         <div>
                             <div><input type="submit" name="submit" value="Update Visi Misi" ></div>
+                        </div>
+                    </h3>
+                </div>
+                <div class="col span_2_of_4">
+                    <h3 align="center">
+                        <div >
+                            <span><label>Alamat</label></span>
+                        </div>
+                        <div>
+                            <span>
+                                <span><input name="alamat" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="alamat" value="<?php echo $alamat;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Kode Pos</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="kodepos" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="kode pos" value="<?php echo $kodepos;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Kota</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="kota" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="kota" value="<?php echo $kota;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Provinsi</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="provinsi" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="provinsi" value="<?php echo $provinsi;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Negara</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="negara" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="negara" value="<?php echo $negara;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Telepon</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="phone" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="telepon" value="<?php echo $phone;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Fax</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="fax" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="fax" value="<?php echo $fax;?>"></span>
+                            </span>
+                        </div>
+                        <div >
+                            <span><label>Email</label></span>
+                        </div>
+                        <div>
+                             <span>
+                                <span><input name="email" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="email" value="<?php echo $email;?>"></span>
+                            </span>
+                        </div>
+                        <div>
+                            <div><input type="submit" name="submit" value="Update Informasi" ></div>
                         </div>
                     </h3>
                 </div>

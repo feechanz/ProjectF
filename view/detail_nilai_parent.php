@@ -11,7 +11,7 @@
         $studentid = $_GET['studentid'];
         $kelas = $kelasdao ->get_one_kelasid($kelasid);
         $student = $studentdao->get_one_student($studentid);
-        
+        $studentkelas = $studentkelasdao ->get_one_studentkelas($studentid, $kelasid);
         $gender = $student ->getRegistration()->getGender();
         
         if($gender == "male")
@@ -78,7 +78,18 @@
                             <span><label>Kelas</label></span>
                             <span><?php echo $kelas ->getClasslevel().$kelas->getNamakelas();?></span>
                         </div>
-                        
+                        <div>
+                            <span><label>Sakit</label></span>
+                            <span><?php echo $studentkelas->getSakit();?></span>
+                        </div>
+                        <div>
+                            <span><label>Izin</label></span>
+                            <span><?php echo $studentkelas->getIzin();?></span>
+                        </div>
+                        <div>
+                            <span><label>Tanpa Keterangan</label></span>
+                            <span><?php echo $studentkelas->getTanpaketerangan();?></span>
+                        </div>
                     </form>
                 </div>
                 <table align="center" class="table" style="border:2px solid brown">
@@ -120,9 +131,9 @@
 //                                echo "<td rowspan='2'>".$gender."</td>";
                                 echo "<td rowspan='6'><b>".$iterator->current()->getMapelkelas()->getLesson()->getMinimumscore()."</b></td>";
                                 //semester1
-                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian </td>";
+                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian (".$iterator->current()->getMapelkelas()->getLesson()->getUlanganpct().")%</td>";
                                 //semester2
-                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian </td>";
+                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian (".$iterator->current()->getMapelkelas()->getLesson()->getUlanganpct().")%</td>";
                                
                                 echo "</tr>";
                                 
@@ -149,9 +160,9 @@
                                 
                                 echo "<tr style='background-color:pink;'>";
                                 //semester1
-                                echo "<td colspan='5'>Nilai Quiz Harian </td>";
+                                echo "<td colspan='5'>Nilai Quiz Harian (".$iterator->current()->getMapelkelas()->getLesson()->getQuizpct().")%</td>";
                                 //semester2
-                                echo "<td colspan='5'>Nilai Quiz Harian </td>";
+                                echo "<td colspan='5'>Nilai Quiz Harian (".$iterator->current()->getMapelkelas()->getLesson()->getQuizpct().")%</td>";
                                 echo "</tr>";
                                 
                                 echo "<tr>";
@@ -176,9 +187,9 @@
                                 
                                 echo "<tr style='background-color:lightyellow;'>";
                                 //semester1
-                                echo "<td colspan='5'>Nilai UTS </td>";
+                                echo "<td colspan='5'>Nilai UTS (".$iterator->current()->getMapelkelas()->getLesson()->getUjianpct().")%</td>";
                                 //semester2
-                                echo "<td colspan='5'>Nilai UAS </td>";
+                                echo "<td colspan='5'>Nilai UAS (".$iterator->current()->getMapelkelas()->getLesson()->getUjianpct().")</td>";
                                 echo "</tr>";
                                 
                                 echo "<tr>";

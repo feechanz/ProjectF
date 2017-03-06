@@ -9,7 +9,7 @@
 /**
  * Description of Periode
  *
- * @author Feechan
+ * @author Fenita
  */
 class Periode 
 {

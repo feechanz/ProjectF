@@ -9,7 +9,7 @@
 /**
  * Description of Mapelkelas
  *
- * @author Feechan
+ * @author Fenita
  */
 class Mapelkelas {
     //put your code here

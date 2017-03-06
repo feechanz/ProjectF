@@ -8,10 +8,16 @@
         {
             $lessonname= $_POST['lessonname'];
             $minimumscore = $_POST['minimumscore'];
+            $ulanganpct = $_POST['ulanganpct'];
+            $quizpct = $_POST['quizpct'];
+            $ujianpct = $_POST['ujianpct'];
             $classlevel = $_POST['classlevel'];
             
             $lesson ->setLessonname($lessonname);
             $lesson ->setMinimumscore($minimumscore);
+            $lesson ->setUlanganpct($ulanganpct);
+            $lesson ->setQuizpct($quizpct);
+            $lesson ->setUjianpct($ujianpct);
             $lesson ->setClasslevel($classlevel);
             
             if($lessondao ->update_lesson($lesson))
@@ -26,10 +32,40 @@
         }
         $lessonname = $lesson ->getLessonname();
         $minimumscore = $lesson ->getMinimumscore();
+        $ulanganpct = $lesson ->getUlanganpct();
+        $quizpct = $lesson ->getQuizpct();
+        $ujianpct = $lesson ->getUjianpct();
         $classlevel = $lesson ->getClasslevel();
+        
     }
 ?>
-
+<style>
+    .btn
+    {
+        margin-left: 2px;
+    }
+    th,td
+    {
+        border:2px solid brown;
+        text-align: center;
+        
+    }
+    
+    th
+    {
+        background: gray;
+        color : white;
+        font: bold 12px/30px Georgia, serif;
+    }
+    form
+    {
+        text-align: center;
+    }
+    input
+    {
+        text-align: center;
+    }
+</style>
 <div class="main_btm">
     <div class="wrap">
         <div class="main">
@@ -37,7 +73,7 @@
                 <div class="section group">		
                     <div class="col span_2_of_4">
                         <div class="registration-form">
-                            <h2 class="style">IDENTITAS PESERTA DIDIK</h2>
+                            <h2 align="center" class="style">MATA PELAJARAN</h2>
                             <form method="post" action="">
                                 <div>
                                     <span><label>Nama Mata Pelajaran</label></span>
@@ -46,6 +82,18 @@
                                 <div>
                                     <span><label>Nilai KKM</label></span>
                                     <span><input name="minimumscore" type="number" class="textbox" required value="<?php echo $minimumscore;?>" min="0" max="100"></span>
+                                </div>
+                                 <div>
+                                    <span><label>Ulangan Persentase</label></span>
+                                    <span><input name="ulanganpct" type="number" style="width:10%;" class="textbox" required style="text-align: center;" value="<?php echo $ulanganpct;?>" max="100" min="0" >%</span>
+                                </div>
+                                <div>
+                                    <span><label>Quiz Persentase</label></span>
+                                    <span><input name="quizpct" type="number" style="width:10%;"  class="textbox" required style="text-align: center;" value="<?php echo $quizpct;?>" max="100" min="0">%</span>
+                                </div>
+                                <div>
+                                    <span><label>Ujian Persentase</label></span>
+                                    <span><input name="ujianpct" type="number" style="width:10%;"  class="textbox" required style="text-align: center;" value="<?php echo $ujianpct;?>"  max="100" min="0">%</span>
                                 </div>
                                 <div>
                                     <span><label>Kelas</label></span>

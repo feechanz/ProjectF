@@ -11,7 +11,7 @@ include_once 'StudentDao.php';
 /**
  * Description of NilaiDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class NilaiDao {
     //put your code here

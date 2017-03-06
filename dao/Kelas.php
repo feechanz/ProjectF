@@ -9,7 +9,7 @@
 /**
  * Description of Kelas
  *
- * @author Feechan
+ * @author Fenita
  */
 class Kelas {
     //put your code here

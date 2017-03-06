@@ -9,7 +9,7 @@ include_once 'Periode.php';
 /**
  * Description of PeriodeDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class PeriodeDao
 {

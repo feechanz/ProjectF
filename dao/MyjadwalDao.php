@@ -12,7 +12,7 @@ include_once 'LessonDao.php';
 /**
  * Description of MyjadwalDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class MyjadwalDao {
     //put your code here

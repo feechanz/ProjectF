@@ -3,11 +3,17 @@
     {
         $lessonname = $_POST['lessonname'];
         $minimumscore = $_POST['minimumscore'];
+        $ulanganpct = $_POST['ulanganpct'];
+        $quizpct = $_POST['quizpct'];
+        $ujianpct = $_POST['ujianpct'];
         $classlevel = $_POST['classlevel'];
         
         $lesson = new Lesson();
         $lesson ->setLessonname($lessonname);
         $lesson ->setMinimumscore($minimumscore);
+        $lesson ->setUlanganpct($ulanganpct);
+        $lesson ->setQuizpct($quizpct);
+        $lesson ->setUjianpct($ujianpct);
         $lesson ->setClasslevel($classlevel);
         
         if($lessondao ->insert_lesson($lesson))
@@ -60,6 +66,18 @@
                             <span><input name="minimumscore" type="number" class="textbox" required style="text-align: center;" max="100" min="0"></span>
                         </div>
                         <div>
+                            <span><label>Ulangan Persentase</label></span>
+                            <span><input name="ulanganpct" type="number" style="width:10%;" class="textbox" required style="text-align: center;" max="100" min="0">%</span>
+                        </div>
+                        <div>
+                            <span><label>Quiz Persentase</label></span>
+                            <span><input name="quizpct" type="number" style="width:10%;"  class="textbox" required style="text-align: center;" max="100" min="0">%</span>
+                        </div>
+                        <div>
+                            <span><label>Ujian Persentase</label></span>
+                            <span><input name="ujianpct" type="number" style="width:10%;"  class="textbox" required style="text-align: center;" max="100" min="0">%</span>
+                        </div>
+                        <div>
                             <span><label>Kelas</label></span>
                             <span>
                                 <select name="classlevel">
@@ -87,8 +105,11 @@
                 <thead>
                     <tr >
                         <th style="width: 5%;">No</th>
-                        <th style="width: 50%;">Mata Pelajaran </th>
-                        <th style="width: 20%;">KKM</th>
+                        <th style="width: 30%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">Ulangan Persentase</th>
+                        <th style="width: 10%;">Quiz Persentase</th>
+                        <th style="width: 10%;">Ujian Persentase</th>
+                        <th style="width: 15%;">KKM</th>
                         <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
@@ -102,6 +123,9 @@
                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getLessonname()."</td>";
+                        echo "<td>".$iterator->current()->getUlanganpct()."</td>";
+                        echo "<td>".$iterator->current()->getQuizpct()."</td>";
+                        echo "<td>".$iterator->current()->getUjianpct()."</td>";
                         echo "<td>".$iterator->current()->getMinimumscore()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_lesson&lessonid=".$iterator->current()->getLessonid()."' class='btn btn-info'><span > Ubah </span></a>"
@@ -124,8 +148,11 @@
                 <thead>
                     <tr >
                         <th style="width: 5%;">No</th>
-                        <th style="width: 50%;">Mata Pelajaran </th>
-                        <th style="width: 20%;">KKM</th>
+                        <th style="width: 30%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">Ulangan Persentase</th>
+                        <th style="width: 10%;">Quiz Persentase</th>
+                        <th style="width: 10%;">Ujian Persentase</th>
+                        <th style="width: 15%;">KKM</th>
                         <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
@@ -139,6 +166,9 @@
                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getLessonname()."</td>";
+                        echo "<td>".$iterator->current()->getUlanganpct()."</td>";
+                        echo "<td>".$iterator->current()->getQuizpct()."</td>";
+                        echo "<td>".$iterator->current()->getUjianpct()."</td>";
                         echo "<td>".$iterator->current()->getMinimumscore()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_lesson&lessonid=".$iterator->current()->getLessonid()."' class='btn btn-info'><span > Ubah </span></a>"
@@ -161,8 +191,11 @@
                 <thead>
                     <tr >
                         <th style="width: 5%;">No</th>
-                        <th style="width: 50%;">Mata Pelajaran </th>
-                        <th style="width: 20%;">KKM</th>
+                        <th style="width: 30%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">Ulangan Persentase</th>
+                        <th style="width: 10%;">Quiz Persentase</th>
+                        <th style="width: 10%;">Ujian Persentase</th>
+                        <th style="width: 15%;">KKM</th>
                         <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
@@ -176,6 +209,9 @@
                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getLessonname()."</td>";
+                        echo "<td>".$iterator->current()->getUlanganpct()."</td>";
+                        echo "<td>".$iterator->current()->getQuizpct()."</td>";
+                        echo "<td>".$iterator->current()->getUjianpct()."</td>";
                         echo "<td>".$iterator->current()->getMinimumscore()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_lesson&lessonid=".$iterator->current()->getLessonid()."' class='btn btn-info'><span > Ubah </span></a>"
@@ -198,8 +234,11 @@
                 <thead>
                     <tr >
                         <th style="width: 5%;">No</th>
-                        <th style="width: 50%;">Mata Pelajaran </th>
-                        <th style="width: 20%;">KKM</th>
+                        <th style="width: 30%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">Ulangan Persentase</th>
+                        <th style="width: 10%;">Quiz Persentase</th>
+                        <th style="width: 10%;">Ujian Persentase</th>
+                        <th style="width: 15%;">KKM</th>
                         <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
@@ -210,9 +249,12 @@
                     $iterator = $lessondao->get_lesson_by_class(4)->getIterator();
                     while ($iterator -> valid()) 
                     {
-                        echo "<tr>";
+                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getLessonname()."</td>";
+                        echo "<td>".$iterator->current()->getUlanganpct()."</td>";
+                        echo "<td>".$iterator->current()->getQuizpct()."</td>";
+                        echo "<td>".$iterator->current()->getUjianpct()."</td>";
                         echo "<td>".$iterator->current()->getMinimumscore()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_lesson&lessonid=".$iterator->current()->getLessonid()."' class='btn btn-info'><span > Ubah </span></a>"
@@ -234,9 +276,12 @@
                 </legend>
                 <thead>
                     <tr >
-                        <th style="width: 5%;">No</th>
-                        <th style="width: 50%;">Mata Pelajaran </th>
-                        <th style="width: 20%;">KKM</th>
+                       <th style="width: 5%;">No</th>
+                        <th style="width: 30%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">Ulangan Persentase</th>
+                        <th style="width: 10%;">Quiz Persentase</th>
+                        <th style="width: 10%;">Ujian Persentase</th>
+                        <th style="width: 15%;">KKM</th>
                         <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
@@ -247,9 +292,12 @@
                     $iterator = $lessondao->get_lesson_by_class(5)->getIterator();
                     while ($iterator -> valid()) 
                     {
-                        echo "<tr>";
+                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getLessonname()."</td>";
+                        echo "<td>".$iterator->current()->getUlanganpct()."</td>";
+                        echo "<td>".$iterator->current()->getQuizpct()."</td>";
+                        echo "<td>".$iterator->current()->getUjianpct()."</td>";
                         echo "<td>".$iterator->current()->getMinimumscore()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_lesson&lessonid=".$iterator->current()->getLessonid()."' class='btn btn-info'><span > Ubah </span></a>"
@@ -272,8 +320,11 @@
                 <thead>
                     <tr >
                         <th style="width: 5%;">No</th>
-                        <th style="width: 50%;">Mata Pelajaran </th>
-                        <th style="width: 20%;">KKM</th>
+                        <th style="width: 30%;">Mata Pelajaran </th>
+                        <th style="width: 10%;">Ulangan Persentase</th>
+                        <th style="width: 10%;">Quiz Persentase</th>
+                        <th style="width: 10%;">Ujian Persentase</th>
+                        <th style="width: 15%;">KKM</th>
                         <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
@@ -287,6 +338,9 @@
                         echo "<tr>";
                         echo "<td>".$number."</td>";
                         echo "<td>".$iterator->current()->getLessonname()."</td>";
+                        echo "<td>".$iterator->current()->getUlanganpct()."</td>";
+                        echo "<td>".$iterator->current()->getQuizpct()."</td>";
+                        echo "<td>".$iterator->current()->getUjianpct()."</td>";
                         echo "<td>".$iterator->current()->getMinimumscore()."</td>";
                         echo "<td> "
                         . "<a href='index.php?page=edit_lesson&lessonid=".$iterator->current()->getLessonid()."' class='btn btn-info'><span > Ubah </span></a>"

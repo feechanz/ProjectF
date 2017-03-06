@@ -11,7 +11,7 @@ include_once 'UserDao.php';
 /**
  * Description of StudentDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class StudentDao {
     

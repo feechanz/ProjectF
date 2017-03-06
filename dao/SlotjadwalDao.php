@@ -10,7 +10,7 @@ include_once 'KelasDao.php';
 /**
  * Description of SlotjadwalDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class SlotjadwalDao {
     //put your code here

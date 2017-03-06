@@ -189,9 +189,9 @@
 //                                echo "<td rowspan='2'>".$gender."</td>";
                                 echo "<td rowspan='6'><b>".$mapelkelas->getLesson()->getMinimumscore()."</b></td>";
                                 //semester1
-                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian </td>";
+                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian (".$mapelkelas->getLesson()->getUlanganpct().")%</td>";
                                 //semester2
-                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian </td>";
+                                echo "<td colspan='5' style='background-color:lightgreen;'>Nilai Ulangan Harian (".$mapelkelas->getLesson()->getUlanganpct().")%</td>";
                                 echo "<td rowspan='6'> "
                                 . "<input type='submit' name='scoresubmit' class='btn btn-primary' value='Simpan'/>"
                                 . "</td>";
@@ -220,9 +220,9 @@
                                 
                                 echo "<tr style='background-color:pink;'>";
                                 //semester1
-                                echo "<td colspan='5'>Nilai Quiz Harian </td>";
+                                echo "<td colspan='5'>Nilai Quiz Harian (".$mapelkelas->getLesson()->getQuizpct().")%</td>";
                                 //semester2
-                                echo "<td colspan='5'>Nilai Quiz Harian </td>";
+                                echo "<td colspan='5'>Nilai Quiz Harian (".$mapelkelas->getLesson()->getQuizpct().")%</td>";
                                 echo "</tr>";
                                 
                                 echo "<tr>";
@@ -247,9 +247,9 @@
                                 
                                 echo "<tr style='background-color:lightyellow;'>";
                                 //semester1
-                                echo "<td colspan='5'>Nilai UTS </td>";
+                                echo "<td colspan='5'>Nilai UTS (".$mapelkelas->getLesson()->getUjianpct().")%</td>";
                                 //semester2
-                                echo "<td colspan='5'>Nilai UAS </td>";
+                                echo "<td colspan='5'>Nilai UAS (".$mapelkelas->getLesson()->getUjianpct().")%</td>";
                                 echo "</tr>";
                                 
                                 echo "<tr>";

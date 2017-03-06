@@ -9,7 +9,7 @@
 /**
  * Description of Nilai
  *
- * @author Feechan
+ * @author Fenita
  */
 class Nilai {
     private $nilaiid;

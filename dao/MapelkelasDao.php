@@ -12,7 +12,7 @@ include_once 'KelasDao.php';
 /**
  * Description of MapelkelasDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class MapelkelasDao {
     //put your code here

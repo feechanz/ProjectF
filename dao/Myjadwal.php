@@ -9,7 +9,7 @@
 /**
  * Description of Myjadwal
  *
- * @author Feechan
+ * @author Fenita
  */
 class Myjadwal {
     //put your code here

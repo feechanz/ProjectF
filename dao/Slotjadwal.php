@@ -9,7 +9,7 @@
 /**
  * Description of Slotjadwal
  *
- * @author Feechan
+ * @author Fenita
  */
 class Slotjadwal {
     //put your code here

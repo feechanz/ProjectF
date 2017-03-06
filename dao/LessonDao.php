@@ -8,9 +8,11 @@ class LessonDao {
         $lesson ->setLessonid($row['lessonid']);
         $lesson ->setLessonname($row['lessonname']);
         $lesson ->setMinimumscore($row['minimumscore']);
+        $lesson ->setUlanganpct($row['ulanganpct']);
+        $lesson ->setQuizpct($row['quizpct']);
+        $lesson ->setUjianpct($row['ujianpct']);
         $lesson ->setClasslevel($row['classlevel']);
         $lesson ->setStatus($row['status']);
-        
         return $lesson;
     }
     
@@ -120,13 +122,16 @@ class LessonDao {
         try
         {
             $conn = Koneksi::get_connection();
-            $sql = "INSERT INTO lesson(lessonname,minimumscore,classlevel)  
-                    VALUES(?,?,?)";
+            $sql = "INSERT INTO lesson(lessonname,minimumscore,ulanganpct,quizpct,ujianpct,classlevel)  
+                    VALUES(?,?,?,?,?,?)";
             $conn -> beginTransaction();
             $stmt = $conn -> prepare($sql);
             $stmt -> bindValue(1, $lesson ->getLessonname());
             $stmt -> bindValue(2, $lesson ->getMinimumscore());
-            $stmt -> bindValue(3, $lesson ->getClasslevel());
+            $stmt -> bindValue(3, $lesson ->getUlanganpct());
+            $stmt -> bindValue(4, $lesson ->getQuizpct());
+            $stmt -> bindValue(5, $lesson ->getUjianpct());
+            $stmt -> bindValue(6, $lesson ->getClasslevel());
             
             $result = $stmt -> execute();
             $conn -> commit();
@@ -160,6 +165,9 @@ class LessonDao {
                     SET 
                         lessonname = ?,
                         minimumscore = ?,
+                        ulanganpct = ?,
+                        quizpct = ?,
+                        ujianpct = ?,
                         classlevel = ?
                     WHERE lessonid = ?";
             $conn -> beginTransaction();
@@ -167,8 +175,11 @@ class LessonDao {
 
             $stmt -> bindValue(1, $lesson ->getLessonname());
             $stmt -> bindValue(2, $lesson ->getMinimumscore());
-            $stmt -> bindValue(3, $lesson ->getClasslevel());
-            $stmt -> bindValue(4, $lesson ->getLessonid());
+            $stmt -> bindValue(3, $lesson ->getUlanganpct());
+            $stmt -> bindValue(4, $lesson ->getQuizpct());
+            $stmt -> bindValue(5, $lesson ->getUjianpct());
+            $stmt -> bindValue(6, $lesson ->getClasslevel());
+            $stmt -> bindValue(7, $lesson ->getLessonid());
             
             $result = $stmt -> execute();
             $conn -> commit();

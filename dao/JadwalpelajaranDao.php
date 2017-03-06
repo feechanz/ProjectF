@@ -11,7 +11,7 @@ include_once 'SlotjadwalDao.php';
 /**
  * Description of JadwalpelajaranDao
  *
- * @author Feechan
+ * @author Fenita
  */
 class JadwalpelajaranDao {
     //put your code here

@@ -4,15 +4,43 @@
         
         $studentid = $_GET['studentid'];
         $kelasid = $_GET['kelasid'];
+        
+        if(isset($_POST['submit']))
+        {
+            //update kehadiran siswa
+            $studentkelasid = $_POST['studentkelasid'];
+            $izin = $_POST['izin'];
+            $sakit = $_POST['sakit'];
+            $tanpaketerangan = $_POST['tanpaketerangan'];
+            
+            $studentkelas = new Studentkelas();
+            $studentkelas ->setStudentkelasid($studentkelasid);
+            $studentkelas ->setIzin($izin);
+            $studentkelas ->setSakit($sakit);
+            $studentkelas ->setTanpaketerangan($tanpaketerangan);
+            
+            if($studentkelasdao ->update_studentkelas($studentkelas))
+            {
+                echo "<script>alert('Ubah data kehadiran siswa berhasil!');</script>";
+            }
+            else
+            {
+                echo "<script>alert('Ubah data kehadiran siswa gagal!');</script>";
+            }
+        }
+        
         $kelas = $kelasdao->get_one_kelasid($kelasid);  
         $student = $studentdao->get_one_student($studentid);
-      
+        $studentkelas = $studentkelasdao ->get_one_studentkelas($studentid, $kelasid);
+        
         
         $gender ="Perempuan";
         if($student->getRegistration()->getGender() == "male")
         {
             $gender = "Laki-Laki";
         }
+        
+        
     }
 ?>
 <style>
@@ -78,7 +106,22 @@
                                         echo $status;?>
                             </span>
                         </div>
-                       
+                        <div>
+                            <span><label>Sakit</label></span>
+                            <span><input name="sakit" type="number" class="textbox" required style="text-align: center;" max="100" min="0" value="<?php echo $studentkelas->getSakit();?>"></span>
+                        </div>
+                        <div>
+                            <span><label>Izin</label></span>
+                            <span><input name="izin" type="number" class="textbox" required style="text-align: center;" max="100" min="0" value="<?php echo $studentkelas->getIzin();?>"></span>
+                        </div>
+                        <div>
+                            <span><label>Tanpa Keterangan</label></span>
+                            <span><input name="tanpaketerangan" type="number" class="textbox" required style="text-align: center;" max="100" min="0" value="<?php echo $studentkelas->getTanpaketerangan();?>"></span>
+                        </div>
+                        <input type="hidden" name="studentkelasid" value="<?php echo $studentkelas->getStudentkelasid();?>"/>
+                        <div>
+                            <div><input type="submit" name="submit" value="Simpan Data" ></div>
+                        </div>
                     </form>
                 </div>
                 

@@ -9,7 +9,7 @@
 /**
  * Description of Jadwalpelajaran
  *
- * @author Feechan
+ * @author Fenita
  */
 class Jadwalpelajaran {
     //put your code here

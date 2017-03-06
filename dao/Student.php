@@ -9,7 +9,7 @@
 /**
  * Description of Student
  *
- * @author Feechan
+ * @author Fenita
  */
 class Student {
     //put your code here

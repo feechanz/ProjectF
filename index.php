@@ -29,6 +29,8 @@
     include_once 'dao/JadwalpelajaranDao.php';
     include_once 'dao/Myjadwal.php';
     include_once 'dao/MyjadwalDao.php';
+    include_once 'dao/Nilai.php';
+    include_once 'dao/NilaiDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
@@ -41,6 +43,7 @@
     $slotjadwaldao = new SlotjadwalDao();
     $jadwalpelajarandao = new JadwalpelajaranDao();
     $myjadwaldao = new MyjadwalDao();
+    $nilaidao = new NilaiDao();
     
     function getStudentStatus($status)
     {

@@ -1,6 +1,7 @@
 <?php 
     if(isset($_POST['gambarsubmit']))
     {
+        $change = false;
         if (is_uploaded_file($_FILES['gambar1']['tmp_name']))
         {
             $picture = $_FILES['gambar1']['tmp_name'];
@@ -8,7 +9,7 @@
             $path = "images/banner1.jpg";
 
             move_uploaded_file ($picture, $path);
-            echo "a1!".$path.$picture.");</script>";
+           $change = true;
         }
         
         if (is_uploaded_file($_FILES['gambar2']['tmp_name']))
@@ -18,7 +19,7 @@
             $path = "images/banner2.jpg";
 
             move_uploaded_file ($_FILES['gambar2'] ['tmp_name'], $path);
-            echo "<script>alert('a2!');</script>";
+            $change = true;
         }
         
         if (is_uploaded_file($_FILES['gambar3']['tmp_name']))
@@ -28,7 +29,12 @@
             $path = "images/banner3.jpg";
 
             move_uploaded_file ($_FILES['gambar3'] ['tmp_name'], $path);
-            echo "<script>alert('a3!');</script>";
+            $change = true;
+        }
+        
+        if($change)
+        {
+            echo "<script>alert('Gambar Home telah diubah!');</script>";
         }
     }
     if(isset($_POST['visimisisubmit']))

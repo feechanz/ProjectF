@@ -33,6 +33,8 @@
     include_once 'dao/NilaiDao.php';
     include_once 'dao/Studentkelas.php';
     include_once 'dao/StudentkelasDao.php';
+    include_once 'dao/News.php';
+    include_once 'dao/NewsDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
@@ -47,6 +49,7 @@
     $myjadwaldao = new MyjadwalDao();
     $nilaidao = new NilaiDao();
     $studentkelasdao = new StudentkelasDao();
+    $newsdao = new NewsDao();
     
     function getStudentStatus($status)
     {
@@ -144,7 +147,15 @@
             case ("news") : 
                 include_once("view/news.php");
             break;
-            
+        
+            case ("detail_news") :
+                include_once("view/detail_news.php");
+            break;
+        
+            case ("detail_news_edit") :
+                include_once("view/detail_news_edit.php");;
+            break;
+                
             case ("registration") : 
                 include_once("view/registration.php");
             break;
@@ -193,6 +204,10 @@
             
             case ("promotion") : 
                 include_once("view/promotion.php");
+            break;
+        
+            case ("setting_news") :
+                include_once("view/setting_news.php");
             break;
         
             case ("master_data") : 

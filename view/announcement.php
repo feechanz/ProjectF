@@ -47,7 +47,7 @@
         <div class="main">
             <div class="col span_2_of_4">
                 <div class="adddata-form">
-                    <h2 class="style" align="center">Masukkan Nilai Seleksi </h2>
+                    <h2 class="style" align="center">Kirim Pengumuman </h2>
                     <form method="post" action="" >
                         <div>
                             <span><label>Isi Pesan</label></span>
@@ -99,7 +99,7 @@
                         echo "<td>".$status."</td>";
 
                         echo "<td> "
-                        . "<a href='index.php?page=detail_registration&registrationid=".$iterator->current()->getRegistrationid()."' class='btn btn-info'><span> Kirim Email </span></a>"
+                        . "<a href='index.php?page=detail_registration&registrationid=".$iterator->current()->getRegistrationid()."' class='btn btn-info'><span> Detail Pendaftaran </span></a>"
                         . "</td>";
                         echo "</tr>";
 

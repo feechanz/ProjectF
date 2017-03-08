@@ -23,7 +23,7 @@ switch($link)
         </li>";
     break;
         
-    case "promotion":
+    case "promotion": case "setting_news": case "detail_news_edit" :
         echo "
         <li >
             <a href='index.php?page=home'><span>Home</span></a>

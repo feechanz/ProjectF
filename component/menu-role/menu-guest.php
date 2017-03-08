@@ -7,13 +7,13 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li>
-            <a href='index.php?page=about'><span>About</span></a>
+            <a href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li>
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=registration'><span>Registration</span></a>
+            <a href='index.php?page=registration'><span>Pendaftaran</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=login'><span>Login</span></a>
@@ -27,32 +27,32 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li class='active'>
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li>
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=registration'><span>Registration</span></a>
+            <a href='index.php?page=registration'><span>Pendaftaran</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=login'><span>Login</span></a>
         </li>";
     break; 
 
-    case "news":
+    case "news": case "detail_news" :
         echo "
         <li >
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li class='active'>
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=registration'><span>Registration</span></a>
+            <a href='index.php?page=registration'><span>Pendaftaran</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=login'><span>Login</span></a>
@@ -65,13 +65,13 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li >
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub active'>
-            <a href='index.php?page=registration'><span>Registration</span></a>
+            <a href='index.php?page=registration'><span>Pendaftaran</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=login'><span>Login</span></a>
@@ -84,13 +84,13 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li >
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=registration'><span>Registration</span></a>
+            <a href='index.php?page=registration'><span>Pendaftaran</span></a>
         </li>
         <li class='last active'>
             <a href='index.php?page=login'><span>Login</span></a>
@@ -103,13 +103,13 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li >
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
-            <a href='index.php?page=registration'><span>Registration</span></a>
+            <a href='index.php?page=registration'><span>Pendaftaran</span></a>
         </li>
         <li class='last'>
             <a href='index.php?page=login'><span>Login</span></a>

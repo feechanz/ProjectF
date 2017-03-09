@@ -8,15 +8,15 @@ switch($link)
         </li>
         
         <li>
-            <a href='index.php?page=my_schedule'><span>My Schedule</span></a>
+            <a href='index.php?page=my_schedule'><span>Jadwal</span></a>
         </li>
       
         <li>
-            <a href='index.php?page=my_class'><span>My Class</span></a>
+            <a href='index.php?page=my_class'><span>Wali Kelas</span></a>
         </li>
         
         <li>
-            <a href='index.php?page=my_lesson'><span>My Lesson</span></a>
+            <a href='index.php?page=my_lesson'><span>Mengajar</span></a>
         </li>
          
         <li class='last'>
@@ -31,15 +31,15 @@ switch($link)
         </li>
         
         <li class='active'>
-            <a href='index.php?page=my_schedule'><span>My Schedule</span></a>
+            <a href='index.php?page=my_schedule'><span>Jadwal</span></a>
         </li>
       
         <li>
-            <a href='index.php?page=my_class'><span>My Class</span></a>
+            <a href='index.php?page=my_class'><span>Wali Kelas</span></a>
         </li>
         
         <li>
-            <a href='index.php?page=my_lesson'><span>My Lesson</span></a>
+            <a href='index.php?page=my_lesson'><span>Mengajar</span></a>
         </li>
          
         <li class='last'>
@@ -54,15 +54,15 @@ switch($link)
         </li>
         
         <li>
-            <a href='index.php?page=my_schedule'><span>My Schedule</span></a>
+            <a href='index.php?page=my_schedule'><span>Jadwal</span></a>
         </li>
       
         <li class='active'>
-            <a href='index.php?page=my_class'><span>My Class</span></a>
+            <a href='index.php?page=my_class'><span>Wali Kelas</span></a>
         </li>
         
         <li>
-            <a href='index.php?page=my_lesson'><span>My Lesson</span></a>
+            <a href='index.php?page=my_lesson'><span>Mengajar</span></a>
         </li>
          
         <li class='last'>
@@ -70,22 +70,22 @@ switch($link)
         </li>";
     break;
 
-    case "my_lesson": case "periode_lesson" : case "input_nilai":
+    case "my_lesson": case "periode_lesson" : case "input_nilai": case "input_nilai_ekskul":
         echo "
         <li>
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         
         <li>
-            <a href='index.php?page=my_schedule'><span>My Schedule</span></a>
+            <a href='index.php?page=my_schedule'><span>Jadwal</span></a>
         </li>
       
         <li>
-            <a href='index.php?page=my_class'><span>My Class</span></a>
+            <a href='index.php?page=my_class'><span>Wali Kelas</span></a>
         </li>
         
         <li class='active'>
-            <a href='index.php?page=my_lesson'><span>My Lesson</span></a>
+            <a href='index.php?page=my_lesson'><span>Mengajar</span></a>
         </li>
          
         <li class='last'>
@@ -99,15 +99,15 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
          <li>
-            <a href='index.php?page=my_schedule'><span>My Schedule</span></a>
+            <a href='index.php?page=my_schedule'><span>Jadwal</span></a>
         </li>
       
         <li>
-            <a href='index.php?page=my_class'><span>My Class</span></a>
+            <a href='index.php?page=my_class'><span>Wali Kelas</span></a>
         </li>
         
         <li>
-            <a href='index.php?page=my_lesson'><span>My Lesson</span></a>
+            <a href='index.php?page=my_lesson'><span>Mengajar</span></a>
         </li>
          
         <li class='last'>

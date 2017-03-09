@@ -45,7 +45,7 @@ switch($link)
         </li>";
     break;
         
-    case "master_data": case "lesson": case "edit_lesson" : case "edit_teacher": case "teacher" : case "student" : case "class_student": case "new_student": case "proses_penerimaan" : case "add_student_class" : case "class_periode" : case "proses_registration_finish" : case "kelas" : case "setting_kelas" : case "detailkelas" : case "detail_student" : case "change_student_status" :
+    case "master_data": case "lesson": case "edit_lesson" : case "edit_teacher": case "teacher" : case "student" : case "class_student": case "new_student": case "proses_penerimaan" : case "add_student_class" : case "class_periode" : case "proses_registration_finish" : case "kelas" : case "setting_kelas" : case "detailkelas" : case "detail_student" : case "change_student_status" : case "ekskul" : case "ekskul_data" : case "detail_ekskul" :
         echo "
         <li>
             <a href='index.php?page=home'><span>Home</span></a>

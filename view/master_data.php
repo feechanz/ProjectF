@@ -4,5 +4,5 @@
     <h2 class="style" align ="center"><a href="index.php?page=student">Data Siswa</a></h1>
     <h2 class="style" align ="center"><a href="index.php?page=new_student">Data Calon Siswa Baru</a></h1>
     <h2 class="style" align ="center"><a href="index.php?page=kelas">Data Kelas</a></h1>
-    
+    <h2 class="style" align ="center"><a href="index.php?page=ekskul">Data Ekstrakurikuler</a></h1>
 </div>

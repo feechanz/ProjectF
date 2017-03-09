@@ -115,3 +115,12 @@ function chooseClass(kelasid,studentid,classlevel)
         window.location = "function/choose_kelas.php?kelasid="+ kelasid+"&studentid="+studentid+"&classlevel="+classlevel;
     }
 }
+
+function chooseEkskul(ekskulid, studentid, classlevel)
+{
+    result = confirm("Apakah anda yakin memilih ekskul ini untuk siswa?");
+    if(result)
+    {
+        window.location = "function/choose_ekskul.php?ekskulid="+ ekskulid+"&studentid="+studentid+"&classlevel="+classlevel;
+    }
+}

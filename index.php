@@ -35,6 +35,10 @@
     include_once 'dao/StudentkelasDao.php';
     include_once 'dao/News.php';
     include_once 'dao/NewsDao.php';
+    include_once 'dao/Ekskul.php';
+    include_once 'dao/EkskulDao.php';
+    include_once 'dao/Nilaiekskul.php';
+    include_once 'dao/NilaiekskulDao.php';
     
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
@@ -50,6 +54,9 @@
     $nilaidao = new NilaiDao();
     $studentkelasdao = new StudentkelasDao();
     $newsdao = new NewsDao();
+    $ekskuldao = new EkskulDao();
+    $nilaiekskuldao = new NilaiekskulDao();
+    
     
     function getStudentStatus($status)
     {
@@ -282,9 +289,25 @@
             break;
             
             case ("atur_jadwal_kelas") :
-                include_once 'view/atur_jadwal_kelas.php';
+                include_once("view/atur_jadwal_kelas.php");
             break;
             
+            case ("ekskul") :
+                include_once ("view/ekskul.php");
+            break;
+            
+            case ("ekskul_data") :
+                include_once ("view/ekskul_data.php");
+            break;
+            
+            case ("detail_ekskul") :
+                include_once ("view/detail_ekskul.php");
+            break;
+            
+            case ("input_nilai_ekskul") :
+                include_once ("view/input_nilai_ekskul.php");
+            break;
+        
             case ("user") : 
                 include_once("view/user.php");
             break;

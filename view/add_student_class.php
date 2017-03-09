@@ -73,6 +73,37 @@
                 
                 <table align="center" class="table table-hover" style="border:2px solid brown">
                    <legend>
+                       Tabel Periode 
+                   </legend>
+                   <thead>
+                       <tr >
+                           <th style="width: 5%;">No</th>
+                           <th style="width: 25%;">Nama Periode</th>
+                           <th style="width: 15%;">Aksi</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                        <?php
+                           $number = 1;
+                           $iterator = $periodedao->get_active_periode()->getIterator();
+                           while ($iterator -> valid()) 
+                           {
+                               echo "<tr>";
+                               echo "<td>".$number."</td>";
+                               echo "<td>".$iterator->current()->getPeriodename()."</td>";
+                               echo "<td> "
+                               . "<a class='btn btn-primary' href='index.php?page=class_periode&studentid=".$studentid."&periodeid=".$iterator->current()->getPeriodeid()."&classlevel=".$classlevel."'><span > Pilih Periode </span></a>"
+                               . "</td>";
+                               echo "</tr>";
+                               $number++;
+                               $iterator->next();
+                           }
+                       ?>
+                   </tbody>
+                </table>
+                
+                <table align="center" class="table table-hover" style="border:2px solid brown">
+                   <legend>
                        Tabel Kelas Siswa 
                    </legend>
                    <thead>
@@ -107,28 +138,32 @@
                 
                 <table align="center" class="table table-hover" style="border:2px solid brown">
                    <legend>
-                       Tabel Periode 
+                       Tabel Esktrakurikuler Siswa 
                    </legend>
                    <thead>
-                       <tr >
-                           <th style="width: 5%;">No</th>
-                           <th style="width: 25%;">Nama Periode</th>
-                           <th style="width: 15%;">Aksi</th>
-                       </tr>
-                   </thead>
+                        <tr >
+                            <th style="width: 5%;">No</th>
+                            <th style="width: 25%;">Nama Periode</th>
+                            <th style="width: 25%;">Nama Ekstrakurikuler</th>
+                            <th style="width: 20%;">Pengajar</th>
+                            <th style="width: 15%;">Nilai</th>
+                        </tr>
+                    </thead>
                    <tbody>
                         <?php
                            $number = 1;
-                           $iterator = $periodedao->get_active_periode()->getIterator();
+                           $nilaiekskuldao = new NilaiekskulDao();
+                           $iterator = $nilaiekskuldao->get_nilaiekskul_studentid($studentid)->getIterator();
                            while ($iterator -> valid()) 
                            {
-                               echo "<tr>";
-                               echo "<td>".$number."</td>";
-                               echo "<td>".$iterator->current()->getPeriodename()."</td>";
-                               echo "<td> "
-                               . "<a class='btn btn-primary' href='index.php?page=class_periode&studentid=".$studentid."&periodeid=".$iterator->current()->getPeriodeid()."&classlevel=".$classlevel."'><span > Pilih Periode </span></a>"
-                               . "</td>";
-                               echo "</tr>";
+                                echo "<tr>";
+                                echo "<td>".$number."</td>";
+                                echo "<td>".$iterator->current()->getEkskul()->getPeriode()->getPeriodename()."</td>";
+                               
+                                echo "<td>".$iterator->current()->getEkskul()->getNamaekskul()."</td>";
+                                echo "<td>".$iterator->current()->getEkskul()->getTeacher()->getFullname()."</td>";
+
+                                echo "<td> ".$iterator->current()->getNilaimutu()."</tr>";
                                $number++;
                                $iterator->next();
                            }

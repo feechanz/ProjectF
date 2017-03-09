@@ -51,7 +51,7 @@
             <div class="col span_2_of_4">
                 <div class="adddata-form">
                     
-                    <h2 class="style" align="center">Data Kelas Siswa</h2>
+                    <h2 class="style" align="center">Data Kelas Siswa <?php echo $periode ->getPeriodename(); ?></h2>
                     
                     <form method="post" action="" >
                         <div>
@@ -112,6 +112,41 @@
                 </table>
                 
                 <table align="center" class="table table-hover" style="border:2px solid brown">
+                   <legend>
+                       Tabel Esktrakurikuler Siswa 
+                   </legend>
+                   <thead>
+                        <tr >
+                            <th style="width: 5%;">No</th>
+                            <th style="width: 25%;">Nama Periode</th>
+                            <th style="width: 25%;">Nama Ekstrakurikuler</th>
+                            <th style="width: 20%;">Pengajar</th>
+                            <th style="width: 15%;">Nilai</th>
+                        </tr>
+                    </thead>
+                   <tbody>
+                        <?php
+                           $number = 1;
+                           $nilaiekskuldao = new NilaiekskulDao();
+                           $iterator = $nilaiekskuldao->get_nilaiekskul_studentid($studentid)->getIterator();
+                           while ($iterator -> valid()) 
+                           {
+                                echo "<tr>";
+                                echo "<td>".$number."</td>";
+                                echo "<td>".$iterator->current()->getEkskul()->getPeriode()->getPeriodename()."</td>";
+                               
+                                echo "<td>".$iterator->current()->getEkskul()->getNamaekskul()."</td>";
+                                echo "<td>".$iterator->current()->getEkskul()->getTeacher()->getFullname()."</td>";
+
+                                echo "<td> ".$iterator->current()->getNilaimutu()."</tr>";
+                               $number++;
+                               $iterator->next();
+                           }
+                       ?>
+                   </tbody>
+                </table>
+                
+                <table align="center" class="table table-hover" style="border:2px solid brown">
                     <legend>
                         Tabel Kelas <?php echo $periode ->getPeriodename(); ?>
                     </legend>
@@ -135,6 +170,40 @@
                                 echo "<td>".$iterator->current()->getTeacher()->getFullname()."</td>";
                                 echo "<td> "
                                 . "<button class='btn btn-primary' onclick='chooseClass(\"".$iterator->current()->getKelasid()."\",\"".$studentid."\",\"".$classlevel."\")'><span > Pilih Kelas Untuk Siswa </span></button>"
+                                . "</td>";
+                                echo "</tr>";
+                                $number++;
+                                $iterator->next();
+                            }
+                        ?>
+                    </tbody>
+                 </table>
+                
+                <table align="center" class="table table-hover" style="border:2px solid brown">
+                    <legend>
+                        Tabel Ekstrakurikuler <?php echo $periode ->getPeriodename(); ?>
+                    </legend>
+                    <thead>
+                        <tr >
+                            <th style="width: 5%;">No</th>
+                            <th style="width: 25%;">Nama Ekstrakulikuler</th>
+                            <th style="width: 15%;">Pengajar</th>
+                            <th style="width: 15%;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <?php
+                            $number = 1;
+                            $ekskuldao = new EkskulDao();
+                            $iterator = $ekskuldao->get_ekskul_periode($periodeid)->getIterator();
+                            while ($iterator -> valid()) 
+                            {
+                                echo "<tr>";
+                                echo "<td>".$number."</td>";
+                                echo "<td>".$iterator->current()->getNamaekskul()."</td>";
+                                echo "<td>".$iterator->current()->getTeacher()->getFullname()."</td>";
+                                echo "<td> "
+                                . "<button class='btn btn-primary' onclick='chooseEkskul(\"".$iterator->current()->getEkskulid()."\",\"".$studentid."\",\"".$classlevel."\")'><span > Pilih Ekstrakurikuler Untuk Siswa</span></button>"
                                 . "</td>";
                                 echo "</tr>";
                                 $number++;

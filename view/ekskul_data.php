@@ -6,29 +6,28 @@
         
         if(isset($_POST['submit']))
         {
-            $namakelas = $_POST['namakelas'];
-            $classlevel = $_POST['classlevel'];
+            $namaekskul = $_POST['namaekskul'];
             $teacherid = $_POST['teacherid'];
             
 
-            $kelas = new Kelas();
-            $kelas ->setNamakelas($namakelas);
-            $kelas ->setClasslevel($classlevel);
-            $kelas ->setTeacherid($teacherid);
-            $kelas ->setPeriodeid($periodeid);
+            $ekskul = new Ekskul();
+            $ekskul ->setNamaekskul($namaekskul);
+            $ekskul ->setTeacherid($teacherid);
+            $ekskul ->setPeriodeid($periodeid);
             
             
-            if($kelasdao ->insert_kelas($kelas))
+            if($ekskuldao ->insert_ekskul($ekskul))
             {
-                echo "<script> alert('data kelas berhasil ditambahkan!'); </script>";
+                echo "<script> alert('data ekstrakurikuler berhasil ditambahkan!'); </script>";
             }
             else
             {
-                echo "<script> alert('data kelas gagal ditambahkan!'); </script>";
+                echo "<script> alert('data ekstrakurikuler gagal ditambahkan!'); </script>";
             }
         }
     }
 ?>
+
 <style>
     .btn
     {
@@ -57,27 +56,15 @@
         <div class="main">
             <div class="col span_2_of_4">
                 <div class="adddata-form">
-                    <h2 class="style" align="center">Menambah Kelas Baru</h2>
+                    <h2 class="style" align="center">Menambah Ekstrakurikuler Baru</h2>
                     <form method="post" action="" >
+                        
                         <div>
-                            <span><label>Kelas</label></span>
-                            <span>
-                                <select name="classlevel">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
-                            </span>
-                        </div>
-                        <div>
-                            <span><label>Huruf Kelas</label></span>
-                            <span><input name="namakelas" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="ex: A, B, or C"></span>
+                            <span><label>Nama Ekstrakurikuler</label></span>
+                            <span><input name="namaekskul" type="text" class="textbox" required style=" text-align: center;" width="10%" placeholder="Nama Ekstrakurikuler"></span>
                         </div>
                          <div>
-                            <span><label>Wali Kelas</label></span>
+                            <span><label>Pengajar</label></span>
                             <span>
                                 <select name="teacherid">
                                 <?php
@@ -94,35 +81,36 @@
                             </span>
                         </div>
                         <div>
-                            <div><input type="submit" name="submit" value="Tambah Kelas" ></div>
+                            <div><input type="submit" name="submit" value="Tambah Ekstrakurikuler" ></div>
                         </div>
                     </form>
                 </div>
             </div>
             <table align="center" class="table table-hover" style="border:2px solid brown">
                 <legend>
-                    Tabel Kelas <?php echo $periode ->getPeriodename(); ?>
+                    Tabel Ekstrakurikuler <?php echo $periode ->getPeriodename(); ?>
                 </legend>
                 <thead>
                     <tr >
                         <th style="width: 5%;">No</th>
-                        <th style="width: 25%;">Kelas</th>
-                        <th style="width: 15%;">Wali Kelas</th>
+                        <th style="width: 25%;">Nama Ekstrakulikuler</th>
+                        <th style="width: 15%;">Pengajar</th>
                         <th style="width: 15%;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                      <?php
                         $number = 1;
-                        $iterator = $kelasdao->get_kelas_by_periodeid($periodeid)->getIterator();
+                        $ekskuldao = new EkskulDao();
+                        $iterator = $ekskuldao->get_ekskul_periode($periodeid)->getIterator();
                         while ($iterator -> valid()) 
                         {
                             echo "<tr>";
                             echo "<td>".$number."</td>";
-                            echo "<td>".$iterator->current()->getClasslevel().$iterator->current()->getNamakelas()."</td>";
+                            echo "<td>".$iterator->current()->getNamaekskul()."</td>";
                             echo "<td>".$iterator->current()->getTeacher()->getFullname()."</td>";
                             echo "<td> "
-                            . "<a class='btn btn-primary' href='index.php?page=detailkelas&kelasid=".$iterator->current()->getKelasid()."'><span > Detail Kelas </span></a>"
+                            . "<a class='btn btn-primary' href='index.php?page=detail_ekskul&ekskulid=".$iterator->current()->getEkskulid()."'><span > Detail Ekstrakurikuler </span></a>"
                             . "</td>";
                             echo "</tr>";
                             $number++;

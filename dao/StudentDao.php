@@ -107,6 +107,42 @@ class StudentDao {
         return $students;
     }
     
+    public function get_student_ekskulid($ekskulid)
+    {
+        $students = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT * 
+                      FROM student
+                      WHERE studentid IN
+                        (SELECT studentid
+                         FROM nilaiekskul
+                         WHERE ekskulid = ?)";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $ekskulid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $student = $this ->get_student_row($row);
+                    $students->append($student);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $students;
+    }
+    
     public function get_childrens($userid)
     {
         $students = new ArrayObject();

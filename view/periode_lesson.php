@@ -71,6 +71,39 @@
                 ?>
                 </tbody>
             </table>
+            
+            <table align="center" class="table table-hover" style="border:2px solid brown">
+                <legend>
+                    Tabel Ekstrakurikuler <?php echo $periode ->getPeriodename(); ?>
+                </legend>
+                <thead>
+                    <tr >
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 25%;">Nama Ekstrakurikuler</th>
+                        <th style="width: 15%;">Pengajar</th>
+                        <th style="width: 15%;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <?php
+                        $number = 1;
+                        $iterator = $ekskuldao->get_ekskul_periode_teacher($periodeid,$teacherid)->getIterator();
+                        while ($iterator -> valid()) 
+                        {
+                            echo "<tr>";
+                            echo "<td>".$number."</td>";
+                            echo "<td>".$iterator->current()->getNamaekskul()."</td>";
+                            echo "<td>".$iterator->current()->getTeacher()->getFullname()."</td>";
+                            echo "<td> "
+                            . "<a class='btn btn-primary' href='index.php?page=input_nilai_ekskul&ekskulid=".$iterator->current()->getEkskulid()."'><span > Input Nilai Ekstrakurikuler </span></a>"
+                            . "</td>";
+                            echo "</tr>";
+                            $number++;
+                            $iterator->next();
+                        }
+                    ?>
+                </tbody>
+             </table>
         </div>
     </div>
 </div>

@@ -15,6 +15,10 @@ class Ekskul {
     //put your code here
     private $ekskulid;
     private $namaekskul;
+    private $deskripsiekskul;
+    private $jammulai;
+    private $jamselesai;
+    private $hari;
     private $periodeid;
     private $periode;
     private $teacherid;
@@ -26,6 +30,23 @@ class Ekskul {
 
     function getNamaekskul() {
         return $this->namaekskul;
+    }
+
+    function getDeskripsiekskul() {
+        return $this->deskripsiekskul;
+    }
+
+    function getJammulai() {
+        
+        return date_format(date_create($this->jammulai), 'H:i');;
+    }
+
+    function getJamselesai() {
+        return date_format(date_create($this->jamselesai), 'H:i');;
+    }
+
+    function getHari() {
+        return $this->hari;
     }
 
     function getPeriodeid() {
@@ -50,6 +71,22 @@ class Ekskul {
 
     function setNamaekskul($namaekskul) {
         $this->namaekskul = $namaekskul;
+    }
+
+    function setDeskripsiekskul($deskripsiekskul) {
+        $this->deskripsiekskul = $deskripsiekskul;
+    }
+
+    function setJammulai($jammulai) {
+        $this->jammulai = $jammulai;
+    }
+
+    function setJamselesai($jamselesai) {
+        $this->jamselesai = $jamselesai;
+    }
+
+    function setHari($hari) {
+        $this->hari = $hari;
     }
 
     function setPeriodeid($periodeid) {

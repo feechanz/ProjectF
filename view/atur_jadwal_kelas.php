@@ -144,6 +144,7 @@
             
             
             <table style="width: 100%;">
+                <legend><a class='btn btn-info' href="PDF/JadwalPelajaranReport.php?kelasid=<?php echo $kelasid;?>" target="_blank">Print Jadwal Pelajaran</a></legend>
                 <tr class='days'>
                     <th style="width: 10%;"></th>
                     <th class="text-center" style="width: 15%;">Senin</th>
@@ -192,14 +193,14 @@
                         {
                             echo "
                             <td class='timetable-col'>
-                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."','".$jadwalsenin->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalsenin->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalsenin->getMapelkelas()->getLesson()->getLessonname()."</button>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=\"deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."','".$jadwalsenin->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalsenin->getMapelkelas()->getTeacher()->getFullname())."')\">".$jadwalsenin->getMapelkelas()->getLesson()->getLessonname()."</button>
                             </td>";
                         }
                         else
                         {
                             echo "
                             <td class='timetable-col blue'>
-                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."')>+</button>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=\"showModal('".$iterator->current()->getSlotjadwalid()."','Senin','".$time."')\">+</button>
                             </td>";
                         }
                         
@@ -209,14 +210,14 @@
                         {
                             echo "
                             <td class='timetable-col'>
-                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."','".$jadwalselasa->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalselasa->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalselasa->getMapelkelas()->getLesson()->getLessonname()."</button>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=\"deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."','".$jadwalselasa->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalselasa->getMapelkelas()->getTeacher()->getFullname())."')\">".$jadwalselasa->getMapelkelas()->getLesson()->getLessonname()."</button>
                             </td>";
                         }
                         else
                         {
                             echo "
                             <td class='timetable-col blue'>
-                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."')>+</button>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=\"showModal('".$iterator->current()->getSlotjadwalid()."','Selasa','".$time."')\">+</button>
                             </td>";
                         }
                         
@@ -225,14 +226,14 @@
                         {
                             echo "
                             <td class='timetable-col'>
-                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."','".$jadwalrabu->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalrabu->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalrabu->getMapelkelas()->getLesson()->getLessonname()."</button>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=\"deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."','".$jadwalrabu->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalrabu->getMapelkelas()->getTeacher()->getFullname())."')\">".$jadwalrabu->getMapelkelas()->getLesson()->getLessonname()."</button>
                             </td>";
                         }
                         else
                         {
                             echo "
                             <td class='timetable-col blue'>
-                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."')>+</button>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=\"showModal('".$iterator->current()->getSlotjadwalid()."','Rabu','".$time."')\">+</button>
                             </td>";
                         }
                         
@@ -241,14 +242,14 @@
                         {
                             echo "
                             <td class='timetable-col'>
-                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."','".$jadwalkamis->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalkamis->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalkamis->getMapelkelas()->getLesson()->getLessonname()."</button>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=\"deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."','".$jadwalkamis->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalkamis->getMapelkelas()->getTeacher()->getFullname())."')\">".$jadwalkamis->getMapelkelas()->getLesson()->getLessonname()."</button>
                             </td>";
                         }
                         else
                         {
                             echo "
                             <td class='timetable-col blue'>
-                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."')>+</button>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=\"showModal('".$iterator->current()->getSlotjadwalid()."','Kamis','".$time."')\">+</button>
                             </td>";
                         }
                         
@@ -257,14 +258,14 @@
                         {
                             echo "
                             <td class='timetable-col'>
-                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."','".$jadwaljumat->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwaljumat->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwaljumat->getMapelkelas()->getLesson()->getLessonname()."</button>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=\"deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."','".$jadwaljumat->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwaljumat->getMapelkelas()->getTeacher()->getFullname())."')\">".$jadwaljumat->getMapelkelas()->getLesson()->getLessonname()."</button>
                             </td>";
                         }
                         else
                         {
                             echo "
                             <td class='timetable-col blue'>
-                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."')>+</button>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=\"showModal('".$iterator->current()->getSlotjadwalid()."','Jumat','".$time."')\">+</button>
                             </td>";
                         }
                         
@@ -273,14 +274,14 @@
                         {
                             echo "
                             <td class='timetable-col'>
-                                <button class='btn btn-warning' data-toggle='modal' onclick=deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."','".$jadwalsabtu->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalsabtu->getMapelkelas()->getTeacher()->getFullname())."')>".$jadwalsabtu->getMapelkelas()->getLesson()->getLessonname()."</button>
+                                <button class='btn btn-warning' data-toggle='modal' onclick=\"deleteJadwal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."','".$jadwalsabtu->getMapelkelas()->getLesson()->getLessonname()."','".str_replace(' ', '_',$jadwalsabtu->getMapelkelas()->getTeacher()->getFullname())."')\">".$jadwalsabtu->getMapelkelas()->getLesson()->getLessonname()."</button>
                             </td>";
                         }
                         else
                         {
                             echo "
                             <td class='timetable-col blue'>
-                                <button class='btn btn-primary' data-toggle='modal' onclick=showModal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."')>+</button>
+                                <button class='btn btn-primary' data-toggle='modal' onclick=\"showModal('".$iterator->current()->getSlotjadwalid()."','Sabtu','".$time."')\">+</button>
                             </td>";
                         }
                         

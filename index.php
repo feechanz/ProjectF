@@ -40,6 +40,8 @@
     include_once 'dao/Nilaiekskul.php';
     include_once 'dao/NilaiekskulDao.php';
     
+    include_once 'dao/Calonbeasiswa.php';
+    
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
     $lessondao = new LessonDao();
@@ -386,6 +388,18 @@
             
             case ("beasiswa") :
                 include_once ("view/beasiswa.php");
+            break;
+            
+            case ("bobot_beasiswa") :
+                include_once ("view/bobot_beasiswa.php");
+            break;
+            
+            case ("calon_beasiswa") :
+                include_once ("view/calon_beasiswa.php");
+            break;
+        
+            case ("class_beasiswa") :
+                include_once ("view/class_beasiswa.php");
             break;
         
             case ("login") : 

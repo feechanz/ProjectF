@@ -36,7 +36,7 @@
                 
                 $studentid = $studentdao->insert_student($student);
                 $registrationdao->update_status(4, $registrationid);
-                echo "<script>window.location='index.php?page=proses_registration_finish'; </script>";
+                echo "<script>window.location='index.php?page=new_student'; </script>";
                 
                 
             }
@@ -51,7 +51,7 @@
                 
                 $studentid = $studentdao->insert_student($student);
                 $registrationdao->update_status(4, $registrationid);
-                echo "<script>window.location='index.php?page=proses_registration_finish'; </script>";
+                echo "<script>window.location='index.php?page=new_student'; </script>";
             }
         }
     }

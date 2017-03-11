@@ -176,6 +176,7 @@
             </table>
             <h1 align="center">
                 <a class='btn btn-primary' href="index.php?page=announcement">Kirim Email Pengumuman</a>
+                <a class='btn btn-success' href="PDF/RegistrationReport.php" target="_blank">Print Daftar Pendaftaran</a>
             </h1>
             
             <table align="center" class="table table-hover" style="border:2px solid brown">

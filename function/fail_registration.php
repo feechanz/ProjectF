@@ -7,7 +7,7 @@
     {
         $registrationid = $_GET['registrationid'];
         $registrationdao = new RegistrationDao();
-        $registrationdao->update_status(0, $registrationid);
+        $registrationdao->update_status(4, $registrationid);
         
     }
     

@@ -69,8 +69,9 @@ class MyjadwalDao {
                     ON jp.mapelkelasid = mk.mapelkelasid
                     JOIN kelas k
                     ON sj.kelasid = k.kelasid
-                    WHERE k.periodeid = 3
-                    AND mk.teacherid = 5";
+                    WHERE k.periodeid = ?
+                    AND mk.teacherid = ?
+                    ORDER BY jp.hari DESC";
             
             $stmt = $conn -> prepare($query);
             $stmt -> bindValue(1, $periodeid);

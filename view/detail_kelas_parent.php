@@ -70,6 +70,7 @@
                 <table style="width: 100%;">
                     <legend>
                         Jadwal Kelas <?php echo $kelas->getClasslevel().$kelas->getNamakelas();?>
+                        <br><a class='btn btn-info' href="PDF/JadwalPelajaranReport.php?kelasid=<?php echo $kelasid;?>" target="_blank">Print Jadwal Pelajaran</a>
                     </legend>
                     <tr class='days'>
                         <th style="width: 10%;"></th>

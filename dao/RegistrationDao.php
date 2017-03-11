@@ -168,7 +168,8 @@ class RegistrationDao {
         {
             $conn = Koneksi::get_connection();
             $query = "SELECT * from registration
-                      WHERE status = 3";
+                      WHERE status = 3 or status = -2
+                      ORDER BY fullname";
             $stmt = $conn -> prepare($query);
             $stmt -> execute();
             if ($stmt -> rowCount() > 0) {

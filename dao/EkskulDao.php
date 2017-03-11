@@ -21,6 +21,10 @@ class EkskulDao {
         $ekskul = new Ekskul();
         $ekskul ->setEkskulid($row['ekskulid']);
         $ekskul ->setNamaekskul($row['namaekskul']);
+        $ekskul ->setDeskripsiekskul($row['deskripsiekskul']);
+        $ekskul ->setJammulai($row['jammulai']);
+        $ekskul ->setJamselesai($row['jamselesai']);
+        $ekskul ->setHari($row['hari']);
         
         $periodeid = $row['periodeid'];
         $periodedao = new PeriodeDao();
@@ -29,6 +33,8 @@ class EkskulDao {
         $teacherid = $row['teacherid'];
         $teacherdao = new TeacherDao();
         $teacher = $teacherdao ->get_one_teacher($teacherid);
+        
+        
         
         $ekskul ->setPeriodeid($periodeid);
         $ekskul ->setPeriode($periode);
@@ -71,13 +77,17 @@ class EkskulDao {
         try
         {
             $conn = Koneksi::get_connection();
-            $sql = "INSERT INTO ekskul(namaekskul,periodeid,teacherid)  
-                    VALUES(?,?,?)";
+            $sql = "INSERT INTO ekskul(namaekskul,deskripsiekskul,jammulai,jamselesai,hari,periodeid,teacherid)  
+                    VALUES(?,?,?,?,?,?,?)";
             $conn -> beginTransaction();
             $stmt = $conn -> prepare($sql);
             $stmt -> bindValue(1, $ekskul ->getNamaekskul());
-            $stmt -> bindValue(2, $ekskul ->getPeriodeid());
-            $stmt -> bindValue(3, $ekskul ->getTeacherid());
+            $stmt -> bindValue(2, $ekskul ->getDeskripsiekskul());
+            $stmt -> bindValue(3, $ekskul ->getJammulai());
+            $stmt -> bindValue(4, $ekskul ->getJamselesai());
+            $stmt -> bindValue(5, $ekskul ->getHari());
+            $stmt -> bindValue(6, $ekskul ->getPeriodeid());
+            $stmt -> bindValue(7, $ekskul ->getTeacherid());
             $result = $stmt -> execute();
             $conn -> commit();
         }
@@ -109,7 +119,8 @@ class EkskulDao {
             $conn = Koneksi::get_connection();
             $query = "SELECT *
                       FROM ekskul
-                      WHERE periodeid = ?";
+                      WHERE periodeid = ?
+                      ORDER BY namaekskul";
             $stmt = $conn -> prepare($query);
             $stmt -> bindValue(1, $periodeid);
             $stmt -> execute();

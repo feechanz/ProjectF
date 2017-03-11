@@ -49,8 +49,20 @@
                             <span><label>Nama Ekstrakurikuler</label></span>
                             <span><?php echo $ekskul->getNamaekskul();?></span>
                        
+                            <span><label>Hari</label></span>
+                            <span><?php echo $ekskul->getHari();?></span>
+                            
+                            <span><label>Jam Mulai</label></span>
+                            <span><?php echo $ekskul->getJammulai();?></span>
+                            
+                            <span><label>Jam Selesai</label></span>
+                            <span><?php echo $ekskul->getJamselesai();?></span>
+                            
                             <span><label>Pengajar</label></span>
                             <span><?php echo $ekskul->getTeacher()->getFullName();?></span>
+                            
+                            <span><label>Deskripsi</label></span>
+                            <span><?php echo $ekskul->getDeskripsiekskul();?></span>
                         </div>
                         
                     </form>
@@ -80,7 +92,7 @@
                                 echo "<td>".$number."</td>";
                                 echo "<td>".$iterator->current()->getStudent()->getRegistration()->getFullname()."</td>";
                                 $gender ="Perempuan";
-                                if($iterator->current()->getRegistration()->getGender() == "male")
+                                if($iterator->current()->getStudent()->getRegistration()->getGender() == "male")
                                 {
                                     $gender = "Laki-Laki";
                                 }

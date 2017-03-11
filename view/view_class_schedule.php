@@ -37,6 +37,9 @@
         <div class="main">
             <h1 align="center">Jadwal Kelas <?php echo $kelas->getClasslevel().$kelas->getNamakelas()." ".$periode->getPeriodename();?></h1>
             <table style="width: 100%;">
+                <legend>
+                    <a class='btn btn-info' href="PDF/JadwalPelajaranReport.php?kelasid=<?php echo $kelasid;?>" target="_blank">Print Jadwal Pelajaran</a>
+                </legend>
                 <tr class='days'>
                     <th style="width: 10%;"></th>
                     <th class="text-center" style="width: 15%;">Senin</th>

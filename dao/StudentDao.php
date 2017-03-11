@@ -190,7 +190,7 @@ class StudentDao {
                       ON k.kelasid = sk.kelasid
                       GROUP BY s.studentid, s.registrationid, s.userid, s.status, s.createdate, k.classlevel, k.namakelas
                       HAVING COALESCE(MAX(classlevel),0) = ?
-                      ORDER BY COALESCE(MAX(classlevel),0),k.namakelas";
+                      ORDER BY COALESCE(MAX(classlevel),0),k.namakelas,s.studentid";
             $stmt = $conn -> prepare($query);
             $stmt -> bindValue(1, $classlevel);
             $stmt -> execute();

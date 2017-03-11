@@ -28,6 +28,16 @@ function deleteRegistration(id)
 
 }
 
+function removeRegistration(id)
+{
+    result = confirm("Apakah anda yakin menghilangkan pendaftaran ini?");
+    if(result)
+    {
+        window.location = "function/remove_registration.php?registrationid="+ id;
+    }
+
+}
+
 function passRegistration(id)
 {
     result = confirm("Apakah anda ingin seleksi pendaftaran ini?");

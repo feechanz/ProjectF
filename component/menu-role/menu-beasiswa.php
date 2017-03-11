@@ -7,10 +7,10 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li>
-            <a href='index.php?page=about'><span>About</span></a>
+            <a href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li>
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
             <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
@@ -27,10 +27,10 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li class='active'>
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li>
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
             <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
@@ -46,10 +46,10 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li class='active'>
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
             <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
@@ -59,16 +59,16 @@ switch($link)
         </li>";
     break; 
 
-    case "beasiswa": 
+    case "beasiswa": case "bobot_beasiswa": case "calon_beasiswa" : case "class_beasiswa" :
         echo "
         <li >
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li >
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub active'>
             <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
@@ -84,10 +84,10 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li >
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
             <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>
@@ -103,10 +103,10 @@ switch($link)
             <a href='index.php?page=home'><span>Home</span></a>
         </li>
         <li >
-            <a  href='index.php?page=about'><span>About</span></a>
+            <a  href='index.php?page=about'><span>Tentang Kami</span></a>
         </li>
         <li >
-            <a href='index.php?page=news'><span>News</span></a>
+            <a href='index.php?page=news'><span>Berita</span></a>
         </li>
         <li class='has-sub'>
             <a href='index.php?page=beasiswa'><span>Beasiswa</span></a>

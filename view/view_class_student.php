@@ -59,6 +59,8 @@
                 <table align="center" class="table table-hover" style="border:2px solid brown">
                    <legend>
                        Tabel Siswa 
+                       <br>
+                       <a class='btn btn-info' href="PDF/DaftarKelasSiswaReport.php?kelasid=<?php echo $kelasid;?>" target="_blank">Print Daftar Siswa</a>
                    </legend>
                    <thead>
                         <tr >

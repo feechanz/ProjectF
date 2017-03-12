@@ -127,7 +127,9 @@
                 
                 <table align="center" class="table" style="border:2px solid brown">
                    <legend>
-                       Tabel Nilai Siswa 
+                       Tabel Nilai Siswa <br>
+                       <a class='btn btn-info' href="index.php?page=UTSReport&studentid=<?php echo $studentid;?>&kelasid=<?php echo $kelasid;?>">Print Raport Semester Ganjil</a>
+                       <a class='btn btn-primary' href="index.php?page=UASReport&studentid=<?php echo $studentid;?>&kelasid=<?php echo $kelasid;?>">Print Raport Semester Genap</a>
                    </legend>
                    <thead>
                         <tr >

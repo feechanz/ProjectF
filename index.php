@@ -402,6 +402,14 @@
                 include_once ("view/class_beasiswa.php");
             break;
         
+            case ("UTSReport") :
+                include_once ("view/UTSReport.php");
+            break;
+        
+            case ("UASReport") :
+                include_once ("view/UASReport.php");
+            break;
+        
             case ("login") : 
                 include_once("view/login.php");
             break;
@@ -409,6 +417,8 @@
             case ("logout") : 
                 include_once("view/logout.php");
             break;
+        
+            
             default : 
                 echo "<script> alert('menu tidak tersedia / belum memiliki akses');</script>";
             break;	

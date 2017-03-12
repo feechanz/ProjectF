@@ -123,7 +123,7 @@
                 <legend>
                     Tabel Ekstrakurikuler <?php echo $periode ->getPeriodename(); ?>
                     <br>
-                    <a class='btn btn-info' href="PDF/DaftarEkskulReport.php?periodeid=<?php echo $periodeid;?>" target="_blank">Print Daftar Ekskul</a>
+                    <a class='btn btn-info' href="PDF/DaftarEkskulReport.php?ekskulid=<?php echo $ekskulid;?>" target="_blank">Print Daftar Ekskul</a>
                 </legend>
                 <thead>
                     <tr >

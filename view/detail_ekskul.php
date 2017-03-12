@@ -71,6 +71,7 @@
                 <table align="center" class="table table-hover" style="border:2px solid brown">
                    <legend>
                        Tabel Siswa 
+                       <br><a class='btn btn-info' href="PDF/PesertaEkskulReport.php?ekskulid=<?php echo $ekskulid;?>" target="_blank">Print Daftar Peserta</a>
                    </legend>
                    <thead>
                         <tr >

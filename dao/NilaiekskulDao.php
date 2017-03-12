@@ -181,6 +181,43 @@ class NilaiekskulDao {
         return $nilaiekskuls;
     }
     
+    public function get_nilaiekskul_student_periodeid($periodeid,$studentid)
+    {
+        $nilaiekskuls = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT *
+                      FROM nilaiekskul
+                      WHERE studentid = ? AND ekskulid IN
+                        (SELECT ekskulid
+                         FROM ekskul
+                         WHERE periodeid = ?)";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $studentid);
+            $stmt -> bindValue(2, $periodeid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $nilaiekskul = $this ->get_nilaiekskul_row($row);
+                    $nilaiekskuls->append($nilaiekskul);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $nilaiekskuls;
+    }
+    
     public function insert_nilaiekskul($nilaiekskul)
     {
         $result = FALSE;

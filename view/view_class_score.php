@@ -58,7 +58,8 @@
                 
                 <table align="center" class="table table-hover" style="border:2px solid brown">
                    <legend>
-                       Tabel Siswa 
+                       Tabel Siswa <br>
+                       <a class='btn btn-info' href="PDF/NilaiKelasReport.php?kelasid=<?php echo $kelasid;?>" target="_blank">Print Nilai Kelas</a>
                    </legend>
                    <thead>
                         <tr >

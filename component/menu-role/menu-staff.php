@@ -18,6 +18,9 @@ switch($link)
          <li>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
@@ -40,6 +43,9 @@ switch($link)
          <li>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
@@ -62,6 +68,9 @@ switch($link)
          <li>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
@@ -84,6 +93,9 @@ switch($link)
          <li>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
@@ -106,6 +118,9 @@ switch($link)
         <li class='active'>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
@@ -128,11 +143,39 @@ switch($link)
          <li>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last active'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";
     break;
-    
+
+    case "change_password":
+        echo "
+        <li >
+            <a href='index.php?page=home'><span>Home</span></a>
+        </li>
+        <li>
+            <a href='index.php?page=promotion'><span>Promosi</span></a>
+        </li>
+        <li>
+            <a href='index.php?page=master_data'><span>Data Master</span></a>
+        </li>
+        <li>
+            <a href='index.php?page=jadwal_kelas'><span>Jadwal & Kelas</span></a>
+        </li>
+         <li>
+            <a href='index.php?page=user'><span>Pengguna</span></a>
+        </li>
+        <li class='has-sub active' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
+        <li class='last'>
+            <a href='index.php?page=logout'><span>Logout</span></a>
+        </li>";
+    break;
+
     default:
         echo "
         <li>
@@ -150,6 +193,9 @@ switch($link)
          <li>
             <a href='index.php?page=user'><span>Pengguna</span></a>
         </li>
+        <li class='has-sub' >
+            <a href='index.php?page=change_password'><span>Profil</span></a>
+        </li> 
         <li class='last'>
             <a href='index.php?page=logout'><span>Logout</span></a>
         </li>";

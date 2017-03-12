@@ -435,7 +435,10 @@
             case ("logout") : 
                 include_once("view/logout.php");
             break;
-        
+            
+            case ("change_password") :
+                include_once("view/change_password.php");
+            break;
             
             default : 
                 echo "<script> alert('menu tidak tersedia / belum memiliki akses');</script>";

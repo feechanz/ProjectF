@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 function numberToRupiah($number)
 {
     return 'Rp. ' . number_format( $number, 0 , '' , '.' ) . ',-'; 

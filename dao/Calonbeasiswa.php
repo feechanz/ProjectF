@@ -20,6 +20,15 @@ class Calonbeasiswa {
     private $nilairatarata;
     private $gajiorangtua;
     
+    private $bobotjarak;
+    private $bobotjaraknormalisasi;
+    private $bobotsaudara;
+    private $bobotsaudaranormalisasi;
+    private $bobotnilai;
+    private $bobotnilainormalisasi;
+    private $bobotgaji;
+    private $bobotgajinormalisasi;
+    
     function getNama() {
         return $this->nama;
     }
@@ -44,6 +53,38 @@ class Calonbeasiswa {
         return $this->gajiorangtua;
     }
 
+    function getBobotjarak() {
+        return $this->bobotjarak;
+    }
+
+    function getBobotjaraknormalisasi() {
+        return $this->bobotjaraknormalisasi;
+    }
+
+    function getBobotsaudara() {
+        return $this->bobotsaudara;
+    }
+
+    function getBobotsaudaranormalisasi() {
+        return $this->bobotsaudaranormalisasi;
+    }
+
+    function getBobotnilai() {
+        return $this->bobotnilai;
+    }
+
+    function getBobotnilainormalisasi() {
+        return $this->bobotnilainormalisasi;
+    }
+
+    function getBobotgaji() {
+        return $this->bobotgaji;
+    }
+
+    function getBobotgajinormalisasi() {
+        return $this->bobotgajinormalisasi;
+    }
+
     function setNama($nama) {
         $this->nama = $nama;
     }
@@ -66,5 +107,37 @@ class Calonbeasiswa {
 
     function setGajiorangtua($gajiorangtua) {
         $this->gajiorangtua = $gajiorangtua;
+    }
+
+    function setBobotjarak($bobotjarak) {
+        $this->bobotjarak = $bobotjarak;
+    }
+
+    function setBobotjaraknormalisasi($bobotjaraknormalisasi) {
+        $this->bobotjaraknormalisasi = $bobotjaraknormalisasi;
+    }
+
+    function setBobotsaudara($bobotsaudara) {
+        $this->bobotsaudara = $bobotsaudara;
+    }
+
+    function setBobotsaudaranormalisasi($bobotsaudaranormalisasi) {
+        $this->bobotsaudaranormalisasi = $bobotsaudaranormalisasi;
+    }
+
+    function setBobotnilai($bobotnilai) {
+        $this->bobotnilai = $bobotnilai;
+    }
+
+    function setBobotnilainormalisasi($bobotnilainormalisasi) {
+        $this->bobotnilainormalisasi = $bobotnilainormalisasi;
+    }
+
+    function setBobotgaji($bobotgaji) {
+        $this->bobotgaji = $bobotgaji;
+    }
+
+    function setBobotgajinormalisasi($bobotgajinormalisasi) {
+        $this->bobotgajinormalisasi = $bobotgajinormalisasi;
     }
 }

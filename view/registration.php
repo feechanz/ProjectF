@@ -255,7 +255,7 @@
                                 </div>
                                  <div>
                                     <span><label>Jumlah Saudara Kandung</label></span>
-                                    <span><input name="brothercount" type="number" class="textbox" style="width: 5%" required></span>
+                                    <span><input name="brothercount" type="number" class="textbox" style="width: 5%" min="0" required></span>
                                 </div>
                                 <div>
                                     <div><input type="submit" name="submit" value="Apply" ><input type="reset" value="Reset" style="margin-left: 5px;"></div>

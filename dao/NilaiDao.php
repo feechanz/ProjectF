@@ -186,6 +186,44 @@ class NilaiDao {
         return $nilais;
     }
     
+    public function get_all_nilai_by_studentid($studentid)
+    {
+        $nilais = new ArrayObject();
+        try 
+        {
+            $conn = Koneksi::get_connection();
+            $query = "SELECT nilaiid, 
+                        COALESCE(uts_ulangan1,0) as uts_ulangan1, COALESCE(uts_ulangan2,0) as uts_ulangan2, COALESCE(uts_ulangan3,0) as uts_ulangan3, COALESCE(uts_ulangan4,0) as uts_ulangan4, COALESCE(uts_ulangan5,0) as uts_ulangan5,
+                        COALESCE(uts_quiz1,0) as uts_quiz1, COALESCE(uts_quiz2,0) as uts_quiz2, COALESCE(uts_quiz3,0) as uts_quiz3, COALESCE(uts_quiz4,0) as uts_quiz4, COALESCE(uts_quiz5,0) as uts_quiz5,
+                        COALESCE(uas_ulangan1,0) as uas_ulangan1, COALESCE(uas_ulangan2,0) as uas_ulangan2, COALESCE(uas_ulangan3,0) as uas_ulangan3, COALESCE(uas_ulangan4,0) as uas_ulangan4, COALESCE(uas_ulangan5,0) as uas_ulangan5,
+                        COALESCE(uas_quiz1,0) as uas_quiz1, COALESCE(uas_quiz2,0) as uas_quiz2, COALESCE(uas_quiz3,0) as uas_quiz3, COALESCE(uas_quiz4,0) as uas_quiz4, COALESCE(uas_quiz5,0) as uas_quiz5,
+                        COALESCE(uts,0) as uts, COALESCE(uas,0) as uas, mapelkelasid, studentid
+                      FROM nilai
+                      WHERE studentid = ?";
+            $stmt = $conn -> prepare($query);
+            $stmt -> bindValue(1, $studentid);
+            $stmt -> execute();
+            if ($stmt -> rowCount() > 0) {
+                while ($row = $stmt -> fetch()) {
+                    $nilai = $this ->get_nilai_row($row);
+                    $nilais->append($nilai);
+                }
+            }
+        } 
+        catch (PDOException $e) {
+            echo $e -> getMessage();
+            die();
+        }
+        try {
+            if (!empty($conn) || $conn != null) {
+                $conn = null;
+            }
+        } catch (PDOException $e) {
+            echo $e -> getMessage();
+        }
+        return $nilais;
+    }
+    
     public function insert_nilai($nilai)
     {
         $result = FALSE;

@@ -42,6 +42,15 @@
     
     include_once 'dao/Calonbeasiswa.php';
     
+    include_once 'dao/Bobotgaji.php';
+    include_once 'dao/BobotgajiDao.php';
+    include_once 'dao/Bobotjarak.php';
+    include_once 'dao/BobotjarakDao.php';
+    include_once 'dao/Bobotnilai.php';
+    include_once 'dao/BobotnilaiDao.php';
+    include_once 'dao/Bobotsaudara.php';
+    include_once 'dao/BobotsaudaraDao.php';
+    
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
     $lessondao = new LessonDao();
@@ -59,6 +68,10 @@
     $ekskuldao = new EkskulDao();
     $nilaiekskuldao = new NilaiekskulDao();
     
+    $bobotgajidao = new BobotgajiDao();
+    $bobotjarakdao = new BobotjarakDao();
+    $bobotnilaidao = new BobotnilaiDao();
+    $bobotsaudaradao = new BobotsaudaraDao();
     
     function getStudentStatus($status)
     {

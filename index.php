@@ -51,6 +51,9 @@
     include_once 'dao/Bobotsaudara.php';
     include_once 'dao/BobotsaudaraDao.php';
     
+    include_once 'dao/Bobotkriteria.php';
+    include_once 'dao/BobotkriteriaDao.php';
+    
     $registrationdao = new RegistrationDao();
     $userdao = new UserDao();
     $lessondao = new LessonDao();
@@ -72,6 +75,8 @@
     $bobotjarakdao = new BobotjarakDao();
     $bobotnilaidao = new BobotnilaiDao();
     $bobotsaudaradao = new BobotsaudaraDao();
+    
+    $bobotkriteriadao = new BobotkriteriaDao();
     
     function getStudentStatus($status)
     {

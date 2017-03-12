@@ -3,6 +3,22 @@ function numberToRupiah($number)
 {
     return 'Rp. ' . number_format( $number, 0 , '' , '.' ) . ',-'; 
 }
+if(isset($_POST['submitkriteria']))
+{
+    $bobotkriteriaid = $_POST['bobotkriteriaid'];
+    $bobot = $_POST['bobot'];
+    
+    
+    if($bobotkriteriadao->update_bobot($bobot, $bobotkriteriaid))
+    {
+        echo "<script>alert('Ubah bobot kriteria berhasil!');</script>";
+    }
+    else
+    {
+        echo "<script>alert('Ubah bobot kriteria gagal!');</script>";
+    }
+}
+
 if(isset($_POST['submitjarak']))
 {
     $bobotjarakid = $_POST['bobotjarakid'];
@@ -63,6 +79,8 @@ if(isset($_POST['submitgaji']))
         echo "<script>alert('Ubah bobot gaji gagal!');</script>";
     }
 }
+
+
 //function cmp($a, $b)
 //{
 //    return $a->getNilairatarata() <  $b->getNilairatarata();
@@ -162,6 +180,49 @@ function nilaiRataRata($studentid)
 <div class="main_btm">
     <div class="wrap">
         <div class="main">
+            <table align="center" class="table table-hover bodytcalonbeasiswa" style="border:2px solid brown">
+                <legend>Bobot Kriteria</legend>
+                <thead>
+                    <tr >
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 10%;">Kode Kriteria</th>
+                        <th style="width: 25%;">Nama Kriteria</th>
+                        <th style="width: 20%;">Bobot (Total = 100%) </th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <?php
+                        $jarakprev = 0;
+                        $no = 1;
+                        
+                        $iterator = $bobotkriteriadao->get_bobotkriteria()->getIterator();
+                        while($iterator->valid())
+                        {
+                            echo "<form method='post' action=''>";
+                            
+                            echo "<tr>";
+                            echo "<td>".$no."<input type='hidden' name='bobotkriteriaid' value='".$iterator->current()->getBobotkriteriaid()."'/></td>";
+                            
+                            echo "<td> C".$iterator->current()->getIdkriteria()."</td>";
+                            
+                            echo "<td>".$iterator->current()->getNamakriteria()."</td>";
+                            
+                            echo "<td>";
+                            $bobot = $iterator->current()->getBobot();
+          
+                            echo "<input type='number' name='bobot' value='".$bobot."' min='0' max='1' step='0.01'/>";
+                            echo "<input type='submit' name='submitkriteria' value='Simpan Bobot' class='btn btn-info'>";
+                            echo "</td>";
+                            echo "</tr>";
+                            
+                            echo "</form>";
+                            $no++;
+                            $iterator->next();
+                        }
+                    ?>
+                </tbody>
+            </table>
+            
              <table align="center" class="table table-hover bodytcalonbeasiswa" style="border:2px solid brown">
                 <legend>Bobot Jarak Rumah</legend>
                 <thead>

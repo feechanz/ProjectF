@@ -22,12 +22,18 @@ class Calonbeasiswa {
     
     private $bobotjarak;
     private $bobotjaraknormalisasi;
+    private $bobotjarakkriteria;
     private $bobotsaudara;
     private $bobotsaudaranormalisasi;
+    private $bobotsaudarakriteria;
     private $bobotnilai;
     private $bobotnilainormalisasi;
+    private $bobotnilaikriteria;
     private $bobotgaji;
     private $bobotgajinormalisasi;
+    private $bobotgajikriteria;
+    
+    private $totalbobot;
     
     function getNama() {
         return $this->nama;
@@ -61,12 +67,20 @@ class Calonbeasiswa {
         return $this->bobotjaraknormalisasi;
     }
 
+    function getBobotjarakkriteria() {
+        return $this->bobotjarakkriteria;
+    }
+
     function getBobotsaudara() {
         return $this->bobotsaudara;
     }
 
     function getBobotsaudaranormalisasi() {
         return $this->bobotsaudaranormalisasi;
+    }
+
+    function getBobotsaudarakriteria() {
+        return $this->bobotsaudarakriteria;
     }
 
     function getBobotnilai() {
@@ -77,12 +91,24 @@ class Calonbeasiswa {
         return $this->bobotnilainormalisasi;
     }
 
+    function getBobotnilaikriteria() {
+        return $this->bobotnilaikriteria;
+    }
+
     function getBobotgaji() {
         return $this->bobotgaji;
     }
 
     function getBobotgajinormalisasi() {
         return $this->bobotgajinormalisasi;
+    }
+
+    function getBobotgajikriteria() {
+        return $this->bobotgajikriteria;
+    }
+
+    function getTotalbobot() {
+        return $this->totalbobot;
     }
 
     function setNama($nama) {
@@ -117,12 +143,20 @@ class Calonbeasiswa {
         $this->bobotjaraknormalisasi = $bobotjaraknormalisasi;
     }
 
+    function setBobotjarakkriteria($bobotjarakkriteria) {
+        $this->bobotjarakkriteria = $bobotjarakkriteria;
+    }
+
     function setBobotsaudara($bobotsaudara) {
         $this->bobotsaudara = $bobotsaudara;
     }
 
     function setBobotsaudaranormalisasi($bobotsaudaranormalisasi) {
         $this->bobotsaudaranormalisasi = $bobotsaudaranormalisasi;
+    }
+
+    function setBobotsaudarakriteria($bobotsaudarakriteria) {
+        $this->bobotsaudarakriteria = $bobotsaudarakriteria;
     }
 
     function setBobotnilai($bobotnilai) {
@@ -133,11 +167,23 @@ class Calonbeasiswa {
         $this->bobotnilainormalisasi = $bobotnilainormalisasi;
     }
 
+    function setBobotnilaikriteria($bobotnilaikriteria) {
+        $this->bobotnilaikriteria = $bobotnilaikriteria;
+    }
+
     function setBobotgaji($bobotgaji) {
         $this->bobotgaji = $bobotgaji;
     }
 
     function setBobotgajinormalisasi($bobotgajinormalisasi) {
         $this->bobotgajinormalisasi = $bobotgajinormalisasi;
+    }
+
+    function setBobotgajikriteria($bobotgajikriteria) {
+        $this->bobotgajikriteria = $bobotgajikriteria;
+    }
+
+    function setTotalbobot($totalbobot) {
+        $this->totalbobot = $totalbobot;
     }
 }

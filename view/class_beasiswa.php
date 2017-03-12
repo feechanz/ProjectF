@@ -1,13 +1,14 @@
 <?php
+session_start();
 function numberToRupiah($number)
 {
     return 'Rp. ' . number_format( $number, 0 , '' , '.' ) . ',-'; 
 }
 
-//function cmp($a, $b)
-//{
-//    return $a->getNilairatarata() <  $b->getNilairatarata();
-//}
+function cmp($a, $b)
+{
+    return $a->getTotalbobot() <  $b->getTotalbobot();
+}
 
 function nilaiRataRata($studentid)
 {
@@ -65,7 +66,59 @@ function nilaiRataRata($studentid)
 //WHERE s.studentid = 2
     }
 ?>
+<?php
+    //bobot kriteria dll
 
+//bobot jarak
+$iterator = $bobotjarakdao->get_bobotjarak()->getIterator();
+$no = 0;
+while($iterator->valid())
+{
+    $bobotjaraks[$no]=$iterator->current();
+    $no++;
+    $iterator->next();
+}
+
+//bobot saudara
+$iterator = $bobotsaudaradao->get_bobotsaudara()->getIterator();
+$no = 0;
+while($iterator->valid())
+{
+    $bobotsaudaras[$no]=$iterator->current();
+    $no++;
+    $iterator->next();
+}
+
+//bobot nilai
+$iterator = $bobotnilaidao->get_bobotnilai()->getIterator();
+$no = 0;
+while($iterator->valid())
+{
+    $bobotnilais[$no]=$iterator->current();
+    $no++;
+    $iterator->next();
+}
+
+//bobot gaji
+$iterator = $bobotgajidao->get_bobotgaji()->getIterator();
+$no = 0;
+while($iterator->valid())
+{
+    $bobotgajis[$no]=$iterator->current();
+    $no++;
+    $iterator->next();
+}
+
+//bobot kriteria
+$iterator = $bobotkriteriadao->get_bobotkriteria()->getIterator();
+$no = 0;
+while($iterator->valid())
+{
+    $bobotkriterias[$no]=$iterator->current();
+    $no++;
+    $iterator->next();
+}
+?>
 <style>
     .btn
     {
@@ -160,7 +213,10 @@ function nilaiRataRata($studentid)
                         $number++;
                         $iterator->next();
                     }
-                    
+                    $maxbobotjarak = 0;
+                    $maxbobotsaudara = 0;
+                    $maxbobotnilai = 0;
+                    $maxbobotgaji = 0;
 //                    usort($calonbeasiswas,"cmp");
                     for ($i = 0; $i < $number; $i++)
                     {
@@ -174,7 +230,72 @@ function nilaiRataRata($studentid)
                        
                         echo "<td>".numberToRupiah($calonbeasiswas[$i]->getGajiorangtua()) ."</td>";
 
-                       
+                        
+                        //bobot jarak
+                        for($j = 3;$j >= 0;$j-- )
+                        {
+                            //kalau batas bawah udah lebih kecil daripada jarak
+                            if($bobotjaraks[$j]->getBatasjarakbawah() < $calonbeasiswas[$i]->getJarakrumah())
+                            {
+                                $bobotjarak = $bobotjaraks[$j]->getBobot();
+                                $calonbeasiswas[$i]->setBobotjarak($bobotjarak);
+                                
+                                if($maxbobotjarak < $bobotjarak)
+                                {
+                                    $maxbobotjarak = $bobotjarak;
+                                }
+                                break;
+                            }
+                        }
+                        
+                        //bobot saudara
+                        for($j = 4;$j >= 0;$j-- )
+                        {
+                            if($bobotsaudaras[$j]->getBatasjumlahbawah() <= $calonbeasiswas[$i]->getJumlahsaudara())
+                            {
+                                $bobotsaudara = $bobotsaudaras[$j]->getBobot();
+                                $calonbeasiswas[$i]->setBobotsaudara($bobotsaudara);
+                                
+                                if($maxbobotsaudara < $bobotsaudara)
+                                {
+                                    $maxbobotsaudara = $bobotsaudara;
+                                }
+                                break;
+                            }
+                        }
+                        
+                        //bobot nilai
+                        for($j = 0;$j < 4;$j++ )
+                        {
+                            //kalau nilai batas atas udah lebih besar atau sama daripada nilai rata-rata
+                            if($bobotnilais[$j]->getBatasnilaiatas() >= $calonbeasiswas[$i]->getNilairatarata())
+                            {
+                                $bobotnilai = $bobotnilais[$j]->getBobot();
+                                $calonbeasiswas[$i]->setBobotnilai($bobotnilai);
+                                
+                                if($maxbobotnilai < $bobotnilai)
+                                {
+                                    $maxbobotnilai = $bobotnilai;
+                                }
+                                break;
+                            }
+                        }
+                        for($j = 3;$j >= 0;$j-- )
+                        {
+                            //kalau gaji batas bawah uda lebih kecil dari pada gaji orang tua
+                            if($bobotgajis[$j]->getBatasgajibawah() < $calonbeasiswas[$i]->getGajiorangtua())
+                            {
+                                $bobotgaji = $bobotgajis[$j]->getBobot();
+                                $calonbeasiswas[$i]->setBobotgaji($bobotgaji);
+                                
+                                if($maxbobotgaji < $bobotgaji)
+                                {
+                                    $maxbobotgaji = $bobotgaji;
+                                }
+                                break;
+                            }
+                        }
+                        //bobot gaji
                         echo "</tr>";
                     }
                 ?>
@@ -225,18 +346,47 @@ function nilaiRataRata($studentid)
                         echo "<td>".$calonbeasiswas[$i]->getNama()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getKelas()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getJarakrumah()." km </td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotjarak()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getJumlahsaudara()." orang</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotsaudara()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getNilairatarata()."</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotnilai()."</td>";
                        
                         echo "<td>".numberToRupiah($calonbeasiswas[$i]->getGajiorangtua()) ."</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotgaji()."</td>";
 
-                       
+                        
                         echo "</tr>";
-                    }
+                        
+                        //set bobot normalisasi
+                        $bobotjaraknormalisasi = $calonbeasiswas[$i]->getBobotjarak()/$maxbobotjarak;
+                        $calonbeasiswas[$i]->setBobotjaraknormalisasi(number_format((float)$bobotjaraknormalisasi,2,'.', ''));
+                        
+                        $bobotsaudaranormalisasi = $calonbeasiswas[$i]->getBobotsaudara() / $maxbobotsaudara;
+                        $calonbeasiswas[$i]->setBobotsaudaranormalisasi(number_format((float)$bobotsaudaranormalisasi,2,'.', ''));
+                        
+                        $bobotnilainormalisasi = $calonbeasiswas[$i]->getBobotnilai() / $maxbobotnilai;
+                        $calonbeasiswas[$i]->setBobotnilainormalisasi(number_format((float)$bobotnilainormalisasi,2,'.', ''));
+                       
+                        $bobotgajinormalisasi = $calonbeasiswas[$i]->getBobotgaji() / $maxbobotgaji;
+                        $calonbeasiswas[$i]->setBobotgajinormalisasi(number_format((float)$bobotgajinormalisasi,2,'.', ''));
+                        
+                        //set bobot normalisasi * kriteria
+                        $bobotgajikriteria = $bobotgajinormalisasi * $bobotkriterias[0]->getBobot();
+                        $calonbeasiswas[$i]->setBobotgajikriteria(number_format((float)$bobotgajikriteria,2,'.', ''));
+                        $bobotjarakkriteria = $bobotjaraknormalisasi * $bobotkriterias[1]->getBobot();
+                        $calonbeasiswas[$i]->setBobotjarakkriteria(number_format((float)$bobotjarakkriteria,2,'.', ''));
+                        $bobotnilaikriteria = $bobotnilainormalisasi * $bobotkriterias[2]->getBobot();
+                        $calonbeasiswas[$i]->setBobotnilaikriteria(number_format((float)$bobotnilaikriteria,2,'.', ''));
+                        $bobotsaudarakriteria = $bobotsaudaranormalisasi * $bobotkriterias[3]->getBobot();
+                        $calonbeasiswas[$i]->setBobotsaudarakriteria(number_format((float)$bobotsaudarakriteria,2,'.', ''));
+                        
+                        
+                        //set total bobot
+                        $totalbobot = $bobotgajikriteria+ $bobotjarakkriteria + $bobotnilaikriteria + $bobotsaudarakriteria;
+                        $calonbeasiswas[$i]->setTotalbobot($totalbobot);
+                        
+                    } 
                 ?>
                 </tbody>
              </table>
@@ -286,14 +436,14 @@ function nilaiRataRata($studentid)
                         echo "<td>".$calonbeasiswas[$i]->getNama()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getKelas()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getJarakrumah()." km </td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotjaraknormalisasi()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getJumlahsaudara()." orang</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotsaudaranormalisasi()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getNilairatarata()."</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotnilainormalisasi()."</td>";
                        
                         echo "<td>".numberToRupiah($calonbeasiswas[$i]->getGajiorangtua()) ."</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotgajinormalisasi()."</td>";
 
                        
                         echo "</tr>";
@@ -312,13 +462,15 @@ function nilaiRataRata($studentid)
                 </a>
             </h2>
             <table align="center" class="table table-hover bodytresultbeasiswa" style="border:2px solid brown">
-                <legend>Semakin atas hasil perhitungan, maka semakin diprioritaskan untuk beasiswa</legend>
+                <legend>Semakin atas hasil perhitungan, maka semakin diprioritaskan untuk beasiswa<br>
+                    <a class='btn btn-info' href="PDF/BeasiswaReport.php" target="_blank">Print Hasil Perhitungan Beasiswa</a>
+                </legend>
                 <thead>
                     <tr >
                         <th style="width: 5%;" rowspan="2">Rank</th>
                         <th style="width: 15%;" rowspan="2">Nama </th>
                         <th style="width: 5%;" rowspan="2">Kelas </th>
-                         <th style="width: 5%;" rowspan="2">Total Bobot </th>
+                        <th style="width: 5%;" rowspan="2">Total Bobot </th>
                         <th style="width: 10%;" colspan="2">Jarak Rumah</th>
                         <th style="width: 10%;" colspan="2">Jumlah Saudara </th>
                         <th style="width: 10%;" colspan="2">Nilai Rata-Rata</th>
@@ -340,28 +492,30 @@ function nilaiRataRata($studentid)
                 <?php
                    
                     
-//                    usort($calonbeasiswas,"cmp");
+                    usort($calonbeasiswas,"cmp");
                     for ($i = 0; $i < $number; $i++)
                     {
-                        $totalbobot = 0.894534;
+                        $totalbobot = $calonbeasiswas[$i]->getTotalbobot();
                         echo "<tr>";
                         echo "<td>".($i+1)."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getNama()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getKelas()."</td>";
-                        echo "<td>".number_format((float)$totalbobot,2,'.', '')."</td>";
+                        echo "<td>".number_format((float)$totalbobot,3,'.', '')."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getJarakrumah()." km </td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotjarakkriteria()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getJumlahsaudara()." orang</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotsaudarakriteria()."</td>";
                         echo "<td>".$calonbeasiswas[$i]->getNilairatarata()."</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotnilaikriteria()."</td>";
                        
                         echo "<td>".numberToRupiah($calonbeasiswas[$i]->getGajiorangtua()) ."</td>";
-                        echo "<td></td>";
+                        echo "<td>".$calonbeasiswas[$i]->getBobotgajikriteria()."</td>";
 
                        
                         echo "</tr>";
                     }
+                    $_SESSION['calonbeasiswas']= $calonbeasiswas;
+                    $_SESSION['number']=$number;
                 ?>
                 </tbody>
              </table>
